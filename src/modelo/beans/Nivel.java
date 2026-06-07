@@ -21,7 +21,7 @@ public class Nivel {
 	}
 
 	public Nivel(String idNivel, Dificultad dificultad, Personaje asesino, Escenario escenarioCrimen, Arma armaCrimen,
-			String descripcion, List<String> pistas) {
+			String descripcion, List<String> pistas, int pistaActual) {
 
 		this.idNivel = idNivel;
 		this.dificultad = dificultad;
@@ -30,6 +30,7 @@ public class Nivel {
 		this.armaCrimen = armaCrimen;
 		this.descripcion = descripcion;
 		this.pistas = pistas;
+		this.pistaActual = pistaActual;
 	}
 
 	// Getters y setters
@@ -108,9 +109,6 @@ public class Nivel {
 	}
 
 	public String obtenerSiguientePista() {
-		if (pistas == null) {
-			throw new IllegalStateException("Pistas no inicializadas.");
-		}
 
 		if (pistas.isEmpty()) {
 			throw new IllegalStateException("No hay pistas en este nivel.");
@@ -124,7 +122,7 @@ public class Nivel {
 	}
 
 	public int getNumeroPistas() {
-		return (pistas == null) ? 0 : pistas.size();
+		return pistas.size();
 	}
 
 }
