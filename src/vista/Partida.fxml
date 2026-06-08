@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+	xmlns:fx="http://javafx.com/fxml/1">
+
+	<!-- DATOS DE PARTIDA -->
+
+	<top>
+		<HBox alignment="CENTER" spacing="25">
+
+			<padding>
+				<Insets top="10" right="10" bottom="10" left="10" />
+			</padding>
+
+			<Label fx:id="lblJugador" text="Jugador" />
+			<Label fx:id="lblNivel" text="Nivel" />
+			<Label fx:id="lblPuntos" text="Puntos: 0" />
+			<Label fx:id="lblPistas" text="Pistas: 0" />
+			<Label fx:id="lblRonda" text="Ronda: 1" />
+
+		</HBox>
+	</top>
+
+	<!-- PERSONAJES -->
+
+	<left>
+		<VBox alignment="CENTER" spacing="10">
+
+			<padding>
+				<Insets top="10" right="10" bottom="10" left="10" />
+			</padding>
+
+			<ImageView fx:id="imgPersonaje1" fitHeight="80"
+				fitWidth="80" />
+			<ImageView fx:id="imgPersonaje2" fitHeight="80"
+				fitWidth="80" />
+			<ImageView fx:id="imgPersonaje3" fitHeight="80"
+				fitWidth="80" />
+			<ImageView fx:id="imgPersonaje4" fitHeight="80"
+				fitWidth="80" />
+			<ImageView fx:id="imgPersonaje5" fitHeight="80"
+				fitWidth="80" />
+			<ImageView fx:id="imgPersonaje6" fitHeight="80"
+				fitWidth="80" />
+
+		</VBox>
+	</left>
+
+	<!-- ARMAS -->
+
+	<right>
+		<VBox alignment="CENTER" spacing="10">
+
+			<padding>
+				<Insets top="10" right="10" bottom="10" left="10" />
+			</padding>
+
+			<ImageView fx:id="imgArma1" fitHeight="80" fitWidth="80" />
+			<ImageView fx:id="imgArma2" fitHeight="80" fitWidth="80" />
+			<ImageView fx:id="imgArma3" fitHeight="80" fitWidth="80" />
+			<ImageView fx:id="imgArma4" fitHeight="80" fitWidth="80" />
+			<ImageView fx:id="imgArma5" fitHeight="80" fitWidth="80" />
+			<ImageView fx:id="imgArma6" fitHeight="80" fitWidth="80" />
+
+		</VBox>
+	</right>
+
+	<!-- MAPA -->
+
+	<center>
+
+		<GridPane alignment="CENTER" hgap="10" vgap="10">
+
+			<Button fx:id="btnSala1" text="Sala 1" prefWidth="150"
+				prefHeight="100" />
+
+			<Button fx:id="btnSala2" text="Sala 2"
+				GridPane.columnIndex="1" prefWidth="150" prefHeight="100" />
+
+			<Button fx:id="btnSala3" text="Sala 3"
+				GridPane.columnIndex="2" prefWidth="150" prefHeight="100" />
+
+			<Button fx:id="btnSala4" text="Sala 4" GridPane.rowIndex="1"
+				prefWidth="150" prefHeight="100" />
+
+			<Button fx:id="btnSala5" text="Sala 5"
+				GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="150"
+				prefHeight="100" />
+
+			<Button fx:id="btnSala6" text="Sala 6"
+				GridPane.columnIndex="2" GridPane.rowIndex="1" prefWidth="150"
+				prefHeight="100" />
+
+		</GridPane>
+
+	</center>
+
+	<!-- ACCIONES -->
+
+	<bottom>
+
+		<VBox alignment="CENTER" spacing="10">
+
+			<padding>
+				<Insets top="10" right="10" bottom="10" left="10" />
+			</padding>
+
+			<HBox alignment="CENTER" spacing="10">
+
+				<ComboBox fx:id="cmbPersonaje" promptText="Personaje" />
+
+				<ComboBox fx:id="cmbArma" promptText="Arma" />
+
+				<ComboBox fx:id="cmbEscenario" promptText="Escenario" />
+
+			</HBox>
+
+			<HBox alignment="CENTER" spacing="10">
+
+				<Button fx:id="btnInterrogatorio" text="Interrogatorio" />
+
+				<Button fx:id="btnAcusacion" text="Acusación" />
+
+				<Button fx:id="btnPista" text="Pista" />
+
+			</HBox>
+
+		</VBox>
+
+	</bottom>
+
+</BorderPane>

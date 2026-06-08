@@ -1,4 +1,4 @@
-package modelo;
+package aplicacion;
 	
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -11,10 +11,12 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Principal.fxml"));
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/vista/Inicio.fxml"));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("/vista/application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.setMaximized(true);
+			primaryStage.setTitle("Cluedo Fantasy");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
