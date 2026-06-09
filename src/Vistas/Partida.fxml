@@ -173,7 +173,7 @@
          <children>
             <ImageView fitHeight="246.0" fitWidth="209.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@mapa%20-%20copia.png" />
+                  <Image url="@../Recursos/imagenes/mapa%20-%20copia.png" />
                </image>
             </ImageView>
             <Button layoutX="65.0" layoutY="16.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="49.0" style="-fx-background-color: transparent;" text="Sala del trono" textAlignment="CENTER" wrapText="true">

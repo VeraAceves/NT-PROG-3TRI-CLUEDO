@@ -1,0 +1,10 @@
+.root {
+    -fx-background-color: #F4F4F4;
+}
+
+.text-field {
+    -fx-border-color: #54B8DB;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(three-pass-box, rgba(84, 184, 219, 0.8), 15, 0.5, 0, 0);
+    -fx-border-radius: 2;
+}
