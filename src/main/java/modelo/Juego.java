@@ -1,14 +1,11 @@
 package modelo;
 
-import java.util.ArrayList;
-import java.util.List;
 import modelo.beans.Partida;
 import modelo.beans.Jugador;
 import modelo.beans.Nivel;
 import modelo.beans.Personaje;
 import modelo.beans.Arma;
 import modelo.beans.Escenario;
-import modelo.enums.Dificultad;
 import modelo.enums.EstadoPartida;
 import modelo.enums.ResultadoPartida;
 
@@ -21,29 +18,59 @@ public class Juego {
 	public Juego() {
 	}
 
-	// Métodos
-	public void iniciarNuevaPartida(Jugador jugador, Nivel nivel) {
-		this.partidaActual = new Partida("PART-" + System.currentTimeMillis(), jugador, nivel);
-		this.partidaActual.iniciarPartida();
+	// Getters y setters
+	public Partida getPartidaActual() {
+		return partidaActual;
 	}
+
+	public void setPartidaActual(Partida partidaActual) {
+		this.partidaActual = partidaActual;
+	}
+
+	// Métodos
+
+	public void iniciarNuevaPartida(Jugador jugador, Nivel nivel) {
+
+		Partida nuevaPartida = new Partida(jugador, nivel);
+		nuevaPartida.iniciarPartida();
+		partidaActual = nuevaPartida;
+		
+	}
+
 
 	public boolean proponerHipotesis(Personaje p, Arma a, Escenario e) {
 		if (partidaActual == null || partidaActual.getEstado() == EstadoPartida.FINALIZADA) {
-			throw new IllegalStateException();
+			throw new IllegalStateException("No hay una partida activa");
+		}
+		if (p == null || a == null || e == null) {
+			throw new IllegalArgumentException("Personaje, arma y escenario no pueden ser null");
 		}
 		return partidaActual.realizarHipotesis(p, a, e);
 	}
 
+	/**
+	 * Lanza la acusación definitiva
+	 * 
+	 * @return true si la acusación es correcta (victoria)
+	 */
 	public boolean lanzarAcusacionDefinitiva(Personaje p, Arma a, Escenario e) {
 		if (partidaActual == null || partidaActual.getEstado() == EstadoPartida.FINALIZADA) {
-			throw new IllegalStateException();
+			throw new IllegalStateException("No hay una partida activa");
+		}
+		if (p == null || a == null || e == null) {
+			throw new IllegalArgumentException("Personaje, arma y escenario no pueden ser null");
 		}
 		return partidaActual.realizarAcusacion(p, a, e);
 	}
 
+	/**
+	 * Solicita la siguiente pista
+	 * 
+	 * @return La pista solicitada
+	 */
 	public String pedirSiguientePista() {
 		if (partidaActual == null || partidaActual.getEstado() == EstadoPartida.FINALIZADA) {
-			throw new IllegalStateException();
+			throw new IllegalStateException("No hay una partida activa");
 		}
 		try {
 			return partidaActual.solicitarPista();
@@ -52,11 +79,84 @@ public class Juego {
 		}
 	}
 
-	public Partida getPartidaActual() {
-		return partidaActual;
+	/**
+	 * Verifica si hay una partida activa
+	 * 
+	 * @return true si hay partida en curso
+	 */
+	public boolean hayPartidaActiva() {
+		return partidaActual != null && partidaActual.getEstado() == EstadoPartida.EN_CURSO;
 	}
 
-	public void setPartidaActual(Partida partidaActual) {
-		this.partidaActual = partidaActual;
+	/**
+	 * Obtiene la puntuación actual
+	 * 
+	 * @return puntos actuales
+	 */
+	public int getPuntuacionActual() {
+		if (partidaActual == null) {
+			return 0;
+		}
+		return partidaActual.getPuntosActuales();
+	}
+
+	/**
+	 * Obtiene la ronda actual
+	 * 
+	 * @return ronda actual
+	 */
+	public int getRondaActual() {
+		if (partidaActual == null) {
+			return 0;
+		}
+		return partidaActual.getRondaActual();
+	}
+
+	/**
+	 * Obtiene las pistas restantes
+	 * 
+	 * @return número de pistas restantes
+	 */
+	public int getPistasRestantes() {
+		if (partidaActual == null) {
+			return 0;
+		}
+		return partidaActual.getPistasRestantes();
+	}
+
+	/**
+	 * Obtiene el resultado de la partida (si ha finalizado)
+	 * 
+	 * @return resultado o null si está en curso
+	 */
+	public ResultadoPartida getResultadoPartida() {
+		if (partidaActual == null) {
+			return null;
+		}
+		return partidaActual.getResultado();
+	}
+
+	/**
+	 * Obtiene el nivel de la partida actual
+	 * 
+	 * @return nivel actual
+	 */
+	public Nivel getNivelActual() {
+		if (partidaActual == null) {
+			return null;
+		}
+		return partidaActual.getNivel();
+	}
+
+	/**
+	 * Obtiene el jugador de la partida actual
+	 * 
+	 * @return jugador actual
+	 */
+	public Jugador getJugadorActual() {
+		if (partidaActual == null) {
+			return null;
+		}
+		return partidaActual.getJugador();
 	}
 }

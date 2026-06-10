@@ -29,6 +29,16 @@ public class Partida {
 		this.estado = EstadoPartida.EN_CURSO;
 		this.resultado = null;
 	}
+	
+	public Partida(Jugador jugador, Nivel nivel) {
+		this.jugador = jugador;
+		this.nivel = nivel;
+		this.rondaActual = 0;
+		this.puntosActuales = nivel.getDificultad().getPuntosIniciales();
+		this.pistasRestantes = nivel.getNumeroPistas();
+		this.estado = EstadoPartida.EN_CURSO;
+		this.resultado = null;
+	}
 
 	// Getters y setters
 	public String getIdPartida() {
