@@ -7,7 +7,7 @@ module CluedoFantasy {
 	requires java.sql;
 	requires java.desktop;
 
+	opens aplicacion to javafx.fxml, javafx.graphics;
 	opens controlador to javafx.fxml;
 
-	exports modelo;
 }

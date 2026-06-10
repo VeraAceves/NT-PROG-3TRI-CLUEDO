@@ -3,7 +3,7 @@ package controlador;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class ConfiguracionPartidaController {
+public class MenuPartidaController {
 	@FXML
 	private Button btnValidarJugador;
 	

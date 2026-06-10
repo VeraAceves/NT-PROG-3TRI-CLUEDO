@@ -1,29 +1,62 @@
 package aplicacion;
-	
+
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
 
-
 public class Main extends Application {
+	private static Stage stage;
+	private static Scene escenaInicio;
+	private static Scene escenaMenuPartida;
+	private static Scene escenaPartida;
+	private static Scene escenaFinalPartida;
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+
 	@Override
 	public void start(Stage primaryStage) {
+
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("/vista/Inicio.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/vista/application.css").toExternalForm());
-			primaryStage.setScene(scene);
+			
+			stage = primaryStage;
+
+			escenaInicio = new Scene(FXMLLoader.load(getClass().getResource("/vista/MenuInicial.fxml")));
+
+			escenaMenuPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/MenuPartida.fxml")));
+
+			escenaPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/Partida.fxml")));
+
+			escenaFinalPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/FinalPartida.fxml")));
+
+			primaryStage.setScene(escenaInicio);
 			primaryStage.setMaximized(true);
 			primaryStage.setTitle("Cluedo Fantasy");
 			primaryStage.show();
-		} catch(Exception e) {
+
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 	}
-	
-	public static void main(String[] args) {
-		launch(args);
+
+	public static void mostrarInicio() {
+		stage.setScene(escenaInicio);
+	}
+
+	public static void mostrarMenuPartida() {
+		stage.setScene(escenaMenuPartida);
+	}
+
+	public static void mostrarPartida() {
+		stage.setScene(escenaPartida);
+	}
+
+	public static void mostrarFinalPartida() {
+		stage.setScene(escenaFinalPartida);
 	}
 }

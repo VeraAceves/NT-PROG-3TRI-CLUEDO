@@ -1,12 +1,13 @@
 package controlador;
 
+import aplicacion.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import modelo.beans.Partida;
 
-public class FinPartidaController {
+public class FinalPartidaController {
 	@FXML
 	private Label lblResultado;
 	
@@ -43,15 +44,6 @@ public class FinPartidaController {
 	
 	@FXML
 	private void volverMenu() {
-		try {
-			Stage stage = (Stage) btnVolverMenu.getScene().getWindow();
-
-			GestorVistas.cambiarVista(
-					"/vista/Inicio.fxml",
-					stage);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Main.mostrarInicio();
 	}
 }
