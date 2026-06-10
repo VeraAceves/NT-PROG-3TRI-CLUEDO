@@ -2,22 +2,19 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-<?import java.net.URL?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
-   
-   <stylesheets>
-      <URL value="@/Vistas/FinalPartida.css" />
-   </stylesheets>
-   
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@FinalPartida.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
-      <GridPane alignment="CENTER" layoutX="78.0" layoutY="116.0" prefHeight="96.0" prefWidth="436.0">
+		
+      <GridPane fx:id="id_tablaHisto" alignment="CENTER" layoutX="78.0" layoutY="96.0" prefHeight="130.0" prefWidth="436.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="140.39996337890625" minWidth="10.0" prefWidth="140.39996337890625" />
@@ -25,100 +22,106 @@
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="102.39996337890625" minWidth="10.0" prefWidth="80.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="54.799993896484374" minHeight="10.0" prefHeight="26.000006103515624" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="62.39999389648438" minHeight="10.0" prefHeight="34.4" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="51.0" minHeight="4.399999999999995" prefHeight="34.40001220703125" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="37.59998779296876" minHeight="0.0" prefHeight="37.59998779296876" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="54.799993896484374" minHeight="10.0" prefHeight="28.200018310546874" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="62.39999389648438" minHeight="10.0" prefHeight="27.00001220703125" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="51.0" minHeight="4.399999999999995" prefHeight="24.599993896484378" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="37.59998779296876" minHeight="0.0" prefHeight="26.200006103515634" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ronda:" GridPane.columnIndex="3">
+            <Text fx:id="id_dRonda_tit" strokeType="OUTSIDE" strokeWidth="0.0" text="Ronda:" GridPane.columnIndex="3">
                <font>
                   <Font name="Constantia" size="15.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Puntos:" GridPane.columnIndex="2">
+            <Text fx:id="id_dPunts_tit" strokeType="OUTSIDE" strokeWidth="0.0" text="Puntos:" GridPane.columnIndex="2">
                <font>
                   <Font name="Constantia" size="15.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:">
+            <Text fx:id="id_dUser_tit" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario:" textAlignment="CENTER">
                <font>
                   <Font name="Constantia" size="15.0" />
                </font>
             </Text>
-            <Label text="nombre" GridPane.rowIndex="1">
+            <Label fx:id="id_dUser_user1" text="nombre" GridPane.rowIndex="1">
                <font>
                   <Font name="Baskervville Regular" size="14.0" />
                </font>
             </Label>
-            <Label text="puntos" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label fx:id="id_dPunts_user1" text="puntos" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font name="Baskervville Regular" size="14.0" />
                </font>
             </Label>
-            <Label text="ronda" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <Label fx:id="id_dRonda_user1" text="ronda" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <font>
                   <Font name="Baskervville Regular" size="14.0" />
                </font>
             </Label>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Estado:" GridPane.columnIndex="1">
+            <Text fx:id="id_dEstado_tit" strokeType="OUTSIDE" strokeWidth="0.0" text="Estado:" GridPane.columnIndex="1">
                <font>
                   <Font name="Constantia" size="15.0" />
                </font>
             </Text>
-            <Label text="estado" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="id_dEstado_user1" text="estado" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="Baskervville Regular" size="14.0" />
                </font>
             </Label>
-            <Label text="nombre" GridPane.rowIndex="2">
+            <Label fx:id="id_dUser_user2" text="nombre" GridPane.rowIndex="2">
                <font>
                   <Font name="Baskervville Regular" size="14.0" />
                </font>
             </Label>
-            <Label text="nombre" GridPane.rowIndex="3">
+            <Label fx:id="id_dUser_user3" text="nombre" GridPane.rowIndex="3">
                <font>
                   <Font name="Baskervville Regular" size="14.0" />
                </font>
             </Label>
-            <Label text="estado" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="id_dEstado_user2" text="estado" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="Baskervville Regular" size="14.0" />
                </font>
             </Label>
-            <Label text="estado" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="id_dEstado_user3" text="estado" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font name="Baskervville Regular" size="14.0" />
                </font>
             </Label>
-            <Label text="puntos" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Label fx:id="id_dPunts_user2" text="puntos" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font name="Baskervville Regular" size="14.0" />
                </font>
             </Label>
-            <Label text="puntos" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Label fx:id="id_dPunts_user3" text="puntos" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font name="Baskervville Regular" size="14.0" />
                </font>
             </Label>
-            <Label text="ronda" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <Label fx:id="id_dRonda_user2" text="ronda" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <font>
                   <Font name="Baskervville Regular" size="14.0" />
                </font>
             </Label>
-            <Label text="ronda" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <Label fx:id="id_dRonda_user3" text="ronda" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <font>
                   <Font name="Baskervville Regular" size="14.0" />
                </font>
             </Label>
          </children>
       </GridPane>
-      <Text layoutX="78.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de la partida:">
+      <Text layoutX="78.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de la partida:" wrappingWidth="136.74444580078125">
          <font>
-            <Font name="Constantia Italic" size="15.0" />
+            <Font name="Constantia Italic" size="16.0" />
          </font>
       </Text>
-      <Button layoutX="157.0" layoutY="270.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="107.0" text="Volver" />
-      <Button layoutX="336.0" layoutY="270.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="107.0" text="Historia" />
+      <Button fx:id="b_volver" layoutX="157.0" layoutY="270.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="107.0" text="Volver">
+         <font>
+            <Font name="Copperplate Gothic Bold" size="14.0" />
+         </font></Button>
+      <Button fx:id="b_historia" layoutX="336.0" layoutY="270.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="107.0" text="Historia">
+         <font>
+            <Font name="Copperplate Gothic Bold" size="14.0" />
+         </font></Button>
    </children>
 </Pane>

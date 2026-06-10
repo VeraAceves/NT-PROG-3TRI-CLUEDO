@@ -1,10 +1,14 @@
+/*Color del fondo-pane*/
 .root {
-    -fx-background-color: #F4F4F4;
+-fx-background-color: linear-gradient(to bottom, #56442B 0%, #D6B789 25%, #D6B789 75%, #56442B 100%);
 }
 
-.text-field {
-    -fx-border-color: #54B8DB;
-    -fx-border-width: 2;
-    -fx-effect: dropshadow(three-pass-box, rgba(84, 184, 219, 0.8), 15, 0.5, 0, 0);
-    -fx-border-radius: 2;
+/*Cuadricula*/
+#id_tablaHisto {
+    -fx-background-color: #CDCDCD;
+}
+
+.button {
+    -fx-background-color: #D0C0A8;
+    -fx-text-fill: #352B21;
 }
