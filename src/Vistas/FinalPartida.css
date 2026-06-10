@@ -1,0 +1,14 @@
+/*Color del fondo-pane*/
+.root {
+-fx-background-color: linear-gradient(to bottom, #56442B 0%, #D6B789 25%, #D6B789 75%, #56442B 100%);
+}
+
+/*Cuadricula*/
+#id_tablaHisto {
+    -fx-background-color: #CDCDCD;
+}
+
+.button {
+    -fx-background-color: #D0C0A8;
+    -fx-text-fill: #352B21;
+}
