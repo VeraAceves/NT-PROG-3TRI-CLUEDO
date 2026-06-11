@@ -1,14 +1,104 @@
-/*Color del fondo-pane*/
-.root {
--fx-background-color: linear-gradient(to bottom, #56442B 0%, #D6B789 25%, #D6B789 75%, #56442B 100%);
+
+
+/*TABLA DE DATOS*/
+/*#id_tablaHisto {
+    -fx-grid-lines-visible: true;
+     -fx-effect: dropshadow(gaussian, #22242A, 5, 0, 3, 5);
+	 -fx-background-radius: 5px;
+	 -fx-border-radius: 5px;
 }
 
-/*Cuadricula*/
-#id_tablaHisto {
-    -fx-background-color: #CDCDCD;
+#id_dUser_tit, #id_dEstado_tit, #id_dPunts_tit, #id_dRonda_tit {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #3E2213 0%, #54311C 40%, #462716 70%, #54311C 100%);
+    -fx-text-fill: #EED9C4;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+}
+
+
+#id_dUser_user1, #id_dEstado_user1, #id_dPunts_user1, #id_dRonda_user1,
+#id_dUser_user3, #id_dEstado_user3, #id_dPunts_user3, #id_dRonda_user3 {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #A88365 0%, #B79579 35%, #9B7557 65%, #B79579 100%);
+    -fx-text-fill: #FFF3E0;
+    -fx-alignment: center;
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+}
+
+#id_dUser_user2, #id_dEstado_user2, #id_dPunts_user2, #id_dRonda_user2 {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #764E33 0%, #895F43 40%, #684127 75%, #895F43 100%);
+    -fx-text-fill: #FFF3E0;
+    -fx-alignment: center;
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+}*/
+
+.root {
+    -fx-background-color: #cc8c58;
 }
 
 .button {
-    -fx-background-color: #D0C0A8;
-    -fx-text-fill: #352B21;
+	-fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #5E3F27 0%, #85613B 25%, #6E4D32 50%, #85613B 75%, #5E3F27 100%);
+	 -fx-background-radius: 8px;
+    -fx-border-color: linear-gradient(to bottom, #D3A84C 0%, #F5D061 25%, #A47A1E 50%, #F5D061 75%, #D3A84C 100%);
+    -fx-border-width: 2px;
+    -fx-border-radius: 6px;
+    -fx-text-fill: linear-gradient(to bottom, #D3A84C 0%, #F5D061 25%, #A47A1E 50%, #F5D061 75%, #D3A84C 100%);
+}
+
+/*boton clickado*/
+.button:pressed {
+    -fx-background-color: linear-gradient(from 0% 100% to 0% 0%, #4D321E 0%, #705130 25%, #593D26 50%, #705130 75%, #4D321E 100%);
+    -fx-border-color: linear-gradient(to bottom, #A47A1E 0%, #D3A84C 25%, #7A5813 50%, #D3A84C 75%, #A47A1E 100%);
+    -fx-text-fill: linear-gradient(to bottom, #BA923B 0%, #D3A84C 50%, #8A6414 100%);
+    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 2);
+}
+
+.button:pressed {
+    -fx-background-color: #2D231E;
+    -fx-border-color: linear-gradient(to top, #A47A1E 0%, #D3A84C 50%, #A47A1E 100%);
+    -fx-padding: 6px 15px 4px 15px;
+}
+
+
+
+#id_tDatos {
+    -fx-fill: #5C3A21;
+}
+
+#id_tablaHisto {
+    -fx-grid-lines-visible: false;
+    -fx-background-image: url("../Recursos/imagenes/madera.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-effect: dropshadow(gaussian, #4d3b2d, 10, 0, 0, 0);
+}
+
+#id_dUser_tit, #id_dEstado_tit, #id_dPunts_tit, #id_dRonda_tit {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(62, 34, 19, 0.85) 0%, rgba(84, 49, 28, 0.75) 40%, rgba(70, 39, 22, 0.85) 70%, rgba(84, 49, 28, 0.75) 100%);
+    -fx-text-fill: #EED9C4;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+}
+
+#id_dUser_user1, #id_dEstado_user1, #id_dPunts_user1, #id_dRonda_user1,
+#id_dUser_user3, #id_dEstado_user3, #id_dPunts_user3, #id_dRonda_user3 {
+   
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(118, 78, 51, 0.5) 0%, rgba(137, 95, 67, 0.5) 40%, rgba(104, 65, 39, 0.5) 75%, rgba(137, 95, 67, 0.5) 100%);
+    -fx-text-fill: #140a01;
+    -fx-alignment: center;
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
+}
+
+#id_dUser_user2, #id_dEstado_user2, #id_dPunts_user2, #id_dRonda_user2 {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(78, 46, 27, 0.5) 0%, rgba(95, 59, 36, 0.5) 40%, rgba(62, 34, 19, 0.5) 75%, rgba(95, 59, 36, 0.5) 100%);
+    -fx-text-fill: #140a01;
+    -fx-alignment: center;
+    -fx-max-width: infinity;
+    -fx-max-height: infinity;
 }

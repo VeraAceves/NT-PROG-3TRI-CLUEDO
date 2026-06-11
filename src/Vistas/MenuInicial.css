@@ -1,0 +1,42 @@
+.root {
+    -fx-background-color: #cc8c58;
+}
+
+/*.button {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #5E3F27 0%, #85613B 25%, #6E4D32 50%, #85613B 75%, #5E3F27 100%);
+    -fx-background-radius: 8px;
+    -fx-border-color: linear-gradient(to bottom, #C29633 0%, #E5BE62 25%, #FFF0A5 50%, #E5BE62 75%, #C29633 100%);
+    -fx-border-width: 2px;
+    -fx-border-radius: 6px;
+    -fx-text-fill: linear-gradient(to bottom, #FFF0A5 0%, #FFFFFF 25%, #E5BE62 50%, #FFFFFF 75%, #FFF0A5 100%);
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(from 0% 100% to 0% 0%, #4D321E 0%, #705130 25%, #593D26 50%, #705130 75%, #4D321E 100%);
+    -fx-border-color: linear-gradient(to bottom, #9E741B 0%, #C29633 25%, #E5BE62 50%, #C29633 75%, #9E741B 100%);
+    -fx-text-fill: linear-gradient(to bottom, #E5BE62 0%, #FFF0A5 25%, #C29633 50%, #FFF0A5 75%, #E5BE62 100%);
+    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 2);
+}*/
+
+ .button {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #2E4B66 0%, #466D94 25%, #375A7F 50%, #466D94 75%, #2E4B66 100%);
+    -fx-background-radius: 8px;
+    -fx-border-color: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #33BFFF 50%, #FFFFFF 75%, #A3E2FF 100%); /**/
+    -fx-border-width: 2px;
+    -fx-border-radius: 6px;
+    -fx-text-fill: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #FFFFFF 50%, #FFFFFF 75%, #A3E2FF 100%); /*#33BFFF*/
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 0.4), 9, 0.3, 1, 0);
+}
+
+
+.button:pressed {
+    -fx-background-color: linear-gradient(from 0% 100% to 0% 0%, #22384D 0%, #395B7D 25%, #2E4B66 50%, #395B7D 75%, #22384D 100%);
+    -fx-border-color: linear-gradient(to bottom, #0088CC 0%, #00A8FF 25%, #52C1FF 50%, #00A8FF 75%, #0088CC 100%);
+    -fx-text-fill: linear-gradient(to bottom, #33BFFF 0%, #A3E2FF 25%, #0099E6 50%, #A3E2FF 75%, #33BFFF 100%);
+    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.5), 5, 0.0, 0, 2);
+}
+
+#t_tituloJuego{
+	-fx-text-fill: #000000;
+	-fx-effect: dropshadow(three-pass-box, #00A8FF, 15, 0.6, 0, 0);
+}

@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@MenuPartida.css">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@MenuPartida.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER" layoutX="103.0" layoutY="32.0" prefHeight="31.0" prefWidth="394.0" spacing="20.0">
          <children>
@@ -20,7 +20,7 @@
                   <Font name="Constantia" size="16.0" />
                </font>
             </Text>
-            <TextField prefHeight="26.0" prefWidth="191.0" />
+            <TextField fx:id="tf_nomUser" prefHeight="26.0" prefWidth="191.0" />
          </children>
       </HBox>
       <VBox layoutX="36.0" layoutY="88.0" prefHeight="247.0" prefWidth="498.0" spacing="5.0">
@@ -76,27 +76,27 @@
             </HBox>
          </children>
       </VBox>
-      <Button alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="36.0" layoutY="104.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 1" textFill="WHITE">
+      <Button fx:id="b_nivel1" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="36.0" layoutY="104.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 1" textFill="WHITE">
          <font>
             <Font name="Copperplate Gothic Bold" size="18.0" />
          </font>
       </Button>
-      <Button alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="226.0" layoutY="104.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 2" textFill="WHITE">
+      <Button fx:id="b_nivel2" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="226.0" layoutY="104.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 2" textFill="WHITE">
          <font>
             <Font name="Copperplate Gothic Bold" size="18.0" />
          </font>
       </Button>
-      <Button alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="36.0" layoutY="261.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 4" textFill="WHITE">
+      <Button fx:id="b_nivel4" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="36.0" layoutY="261.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 4" textFill="WHITE">
          <font>
             <Font name="Copperplate Gothic Bold" size="18.0" />
          </font>
       </Button>
-      <Button alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="226.0" layoutY="261.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 5" textFill="WHITE">
+      <Button fx:id="b_nivel5" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="226.0" layoutY="261.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 5" textFill="WHITE">
          <font>
             <Font name="Copperplate Gothic Bold" size="18.0" />
          </font>
       </Button>
-      <Button alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="415.0" layoutY="104.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 3" textFill="WHITE">
+      <Button fx:id="b_nivel3" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="415.0" layoutY="104.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 3" textFill="WHITE">
          <font>
             <Font name="Copperplate Gothic Bold" size="18.0" />
          </font>
