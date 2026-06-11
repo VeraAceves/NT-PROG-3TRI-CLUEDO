@@ -8,6 +8,7 @@ module CluedoFantasy {
 	requires java.desktop;
 	requires org.mongodb.driver.sync.client;
 	requires org.mongodb.bson;
+	requires org.mongodb.driver.core;
 
 	opens aplicacion to javafx.fxml, javafx.graphics;
 	opens controlador to javafx.fxml;

@@ -1,10 +1,12 @@
 package controlador;
 
+import Persistencia.PartidaDAO;
 import aplicacion.Main;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import modelo.Juego;
+import modelo.beans.Partida;
 
 public class InicioController {
 	@FXML
@@ -15,6 +17,8 @@ public class InicioController {
 
 	@FXML
 	private Button btnSalir;
+
+	private PartidaDAO partidaDAO = new PartidaDAO();
 
 	@FXML
 	private void initialize() {
@@ -28,7 +32,24 @@ public class InicioController {
 
 	@FXML
 	private void cargarPartida() {
-		Main.mostrarPartida();
+
+		try {
+
+			Partida partida = partidaDAO.obtenerUltimaPartida();
+
+			if (partida == null) {
+				System.out.println("No existe ninguna partida guardada");
+				return;
+			}
+
+			Juego juego = Main.getJuego();
+			juego.setPartidaActual(partida);
+
+			Main.mostrarPartida();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML

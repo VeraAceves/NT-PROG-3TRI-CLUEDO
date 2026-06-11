@@ -1,18 +1,14 @@
 package modelo;
 
-import modelo.beans.Partida;
-import modelo.beans.Jugador;
-import modelo.beans.Nivel;
-import modelo.beans.Personaje;
-import modelo.beans.Arma;
-import modelo.beans.Escenario;
-import modelo.enums.EstadoPartida;
-import modelo.enums.ResultadoPartida;
+import Persistencia.*;
+import modelo.beans.*;
+import modelo.enums.*;
 
 public class Juego {
 
 	// Atributos
 	private Partida partidaActual;
+	private NivelDAO nivelDAO = new NivelDAO();
 
 	// Constructores
 	public Juego() {
@@ -34,18 +30,23 @@ public class Juego {
 		Partida nuevaPartida = new Partida(jugador, nivel);
 		nuevaPartida.iniciarPartida();
 		partidaActual = nuevaPartida;
-		
+
 	}
 
+	public void iniciarNuevaPartida(Jugador jugador, String idNivel) {
 
-	public boolean proponerHipotesis(Personaje p, Arma a, Escenario e) {
-		if (partidaActual == null || partidaActual.getEstado() == EstadoPartida.FINALIZADA) {
-			throw new IllegalStateException("No hay una partida activa");
-		}
-		if (p == null || a == null || e == null) {
-			throw new IllegalArgumentException("Personaje, arma y escenario no pueden ser null");
-		}
-		return partidaActual.realizarHipotesis(p, a, e);
+		Nivel nivel = nivelDAO.obtenerNivelPorId(idNivel);
+
+		iniciarNuevaPartida(jugador, nivel);
+	}
+
+	public boolean realizarHipotesis(Personaje p, Arma a, Escenario e) {
+
+	    if (partidaActual == null || partidaActual.getEstado() == EstadoPartida.FINALIZADA) {
+	        throw new IllegalStateException("No hay una partida activa");
+	    }
+
+	    return partidaActual.realizarHipotesis(p, a, e);
 	}
 
 	/**

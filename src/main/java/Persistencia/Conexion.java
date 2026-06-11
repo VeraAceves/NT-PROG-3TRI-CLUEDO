@@ -1,5 +1,7 @@
 package Persistencia;
 
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -8,40 +10,35 @@ import javafx.concurrent.Task;
 import javafx.application.Platform;
 
 public class Conexion {
-	public void cargarDatosDesdeMongo() {
-		// 1. Crear una tarea en segundo plano
-		Task<String> dbTask = new Task<String>() {
-			@Override
-			protected String call() throws Exception {
-				// Aquí estamos en un hilo secundario. ¡Seguro para consultar la DB!
-				MongoDatabase db = MongoManager.getInstance().getDatabase();
-				MongoCollection<Document> collection = db.getCollection("usuarios");
+	private static MongoClient mongoClient = null;
+	private static MongoDatabase database = null;
 
-				// Ejemplo: Buscar el primer usuario
-				Document primerUsuario = collection.find().first();
+	private static final String url = "brukcueto_db_user:1234@cluster0.npiuhb0.mongodb.net/?appName=Cluster0";
+	private static final String nombreDataBase = "CluedoFx";
 
-				if (primerUsuario != null) {
-					return primerUsuario.getString("nombre"); // Devuelve el nombre
-				}
-				return "Usuario no encontrado";
+	// Constructor
+	private Conexion() {
+	}
+
+	public static MongoDatabase getDatabase() {
+		if (mongoClient == null) {
+			try {
+				mongoClient = MongoClients.create(url);
+				database = mongoClient.getDatabase(nombreDataBase);
+				System.out.println("Conexión exitosa a la base de datos: " + nombreDataBase);
+			} catch (Exception e) {
+				System.err.println("Error al conectar a MongoDB: " + e.getMessage());
 			}
-		};
+		}
+		return database;
+	}
 
-		// 2. ¿Qué hacer cuando la tarea termine con éxito?
-		dbTask.setOnSucceeded(event -> {
-			// Aquí VOLVEMOS automáticamente al hilo de JavaFX
-			String nombreObtenido = dbTask.getValue();
-			// labelNombre.setText(nombreObtenido); // Actualizas tu UI aquí
-			System.out.println("El nombre es: " + nombreObtenido);
-		});
-
-		// 3. ¿Qué hacer si hay un error de conexión?
-		dbTask.setOnFailed(event -> {
-			Throwable error = dbTask.getException();
-			System.err.println("Error conectando a Mongo: " + error.getMessage());
-		});
-
-		// 4. Iniciar el hilo
-		new Thread(dbTask).start();
+	public static void cerrarConexion() {
+		if (mongoClient != null) {
+			mongoClient.close();
+			mongoClient = null;
+			database = null;
+			System.out.println("Conexión a MongoDB cerrada.");
+		}
 	}
 }

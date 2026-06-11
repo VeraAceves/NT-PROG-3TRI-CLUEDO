@@ -14,6 +14,9 @@ public class Partida {
 	private int pistasRestantes;
 	private EstadoPartida estado;
 	private ResultadoPartida resultado;
+	private boolean ultimoAcertoPersonaje;
+	private boolean ultimoAcertoArma;
+	private boolean ultimoAcertoEscenario;
 
 	// Constructores
 	public Partida() {
