@@ -1,7 +1,6 @@
 package aplicacion;
 
 import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import modelo.Juego;
@@ -16,26 +15,19 @@ public class Main extends Application {
 	private static Scene escenaFinalPartida;
 	private static Juego juego = new Juego();
 
-
-
 	public static void main(String[] args) {
 		launch(args);
 	}
 
 	@Override
 	public void start(Stage primaryStage) {
-
 		try {
-			
 			stage = primaryStage;
 
 			escenaInicio = new Scene(FXMLLoader.load(getClass().getResource("/vista/MenuInicial.fxml")));
-
 			escenaMenuPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/MenuPartida.fxml")));
-
-			escenaPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/Partida.fxml")));
-
-			escenaFinalPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/FinalPartida.fxml")));
+			//escenaPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/Partida.fxml")));
+			//escenaFinalPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/FinalPartida.fxml")));
 
 			primaryStage.setScene(escenaInicio);
 			primaryStage.setMaximized(true);
@@ -45,7 +37,6 @@ public class Main extends Application {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public static void mostrarInicio() {
@@ -63,7 +54,8 @@ public class Main extends Application {
 	public static void mostrarFinalPartida() {
 		stage.setScene(escenaFinalPartida);
 	}
+
 	public static Juego getJuego() {
-	    return juego;
+		return juego;
 	}
 }

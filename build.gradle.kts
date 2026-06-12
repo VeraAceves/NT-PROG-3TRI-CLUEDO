@@ -9,10 +9,16 @@ version = "1.0"
 
 javafx {
     version = "21"
-    modules("javafx.controls", "javafx.fxml")
+    modules(
+        "javafx.base",
+        "javafx.graphics",
+        "javafx.controls",
+        "javafx.fxml"
+    )
 }
 
 application {
+    mainModule = "CluedoFantasy"
     mainClass = "aplicacion.Main"
 }
 

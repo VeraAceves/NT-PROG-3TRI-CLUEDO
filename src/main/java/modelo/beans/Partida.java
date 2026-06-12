@@ -32,7 +32,7 @@ public class Partida {
 		this.estado = EstadoPartida.EN_CURSO;
 		this.resultado = null;
 	}
-	
+
 	public Partida(Jugador jugador, Nivel nivel) {
 		this.jugador = jugador;
 		this.nivel = nivel;
@@ -108,6 +108,30 @@ public class Partida {
 		this.resultado = resultado;
 	}
 
+	public boolean isUltimoAcertoPersonaje() {
+		return ultimoAcertoPersonaje;
+	}
+
+	public void setUltimoAcertoPersonaje(boolean ultimoAcertoPersonaje) {
+		this.ultimoAcertoPersonaje = ultimoAcertoPersonaje;
+	}
+
+	public boolean isUltimoAcertoArma() {
+		return ultimoAcertoArma;
+	}
+
+	public void setUltimoAcertoArma(boolean ultimoAcertoArma) {
+		this.ultimoAcertoArma = ultimoAcertoArma;
+	}
+
+	public boolean isUltimoAcertoEscenario() {
+		return ultimoAcertoEscenario;
+	}
+
+	public void setUltimoAcertoEscenario(boolean ultimoAcertoEscenario) {
+		this.ultimoAcertoEscenario = ultimoAcertoEscenario;
+	}
+
 	// toString
 	@Override
 	public String toString() {
@@ -127,12 +151,16 @@ public class Partida {
 
 	public boolean realizarHipotesis(Personaje personaje, Arma arma, Escenario escenario) {
 
-		boolean acierto = nivel.personajeCorrecto(personaje) && nivel.armaCorrecta(arma)
-				&& nivel.escenarioCorrecto(escenario);
+		ultimoAcertoPersonaje = nivel.personajeCorrecto(personaje);
+		ultimoAcertoArma = nivel.armaCorrecta(arma);
+		ultimoAcertoEscenario = nivel.escenarioCorrecto(escenario);
+
+		boolean acierto = ultimoAcertoPersonaje && ultimoAcertoArma && ultimoAcertoEscenario;
 
 		if (!acierto) {
 			restarPuntos(10);
 			rondaActual++;
+
 			if (puntosActuales <= 0) {
 				resultado = ResultadoPartida.DERROTA;
 				finalizarPartida();
@@ -174,5 +202,4 @@ public class Partida {
 	public void finalizarPartida() {
 		this.estado = EstadoPartida.FINALIZADA;
 	}
-
 }

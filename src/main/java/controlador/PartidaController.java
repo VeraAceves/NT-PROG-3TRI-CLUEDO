@@ -142,4 +142,15 @@ public class PartidaController {
 		aplicarEstilo(lblArma, partida.isUltimoAcertoArma());
 		aplicarEstilo(lblLugar, partida.isUltimoAcertoEscenario());
 	}
+
+	private void aplicarEstilo(Label label, boolean esAcertado) {
+		// Solo cambia las clases CSS, no los estilos directamente
+		label.getStyleClass().removeAll("label-acertado", "label-normal");
+
+		if (esAcertado) {
+			label.getStyleClass().add("label-acertado");
+		} else {
+			label.getStyleClass().add("label-normal");
+		}
+	}
 }
