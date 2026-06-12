@@ -48,7 +48,7 @@
     -fx-text-fill: linear-gradient(to bottom, #D3A84C 0%, #F5D061 25%, #A47A1E 50%, #F5D061 75%, #D3A84C 100%);
 }
 
-/*boton clickado*/
+
 .button:pressed {
     -fx-background-color: linear-gradient(from 0% 100% to 0% 0%, #4D321E 0%, #705130 25%, #593D26 50%, #705130 75%, #4D321E 100%);
     -fx-border-color: linear-gradient(to bottom, #A47A1E 0%, #D3A84C 25%, #7A5813 50%, #D3A84C 75%, #A47A1E 100%);
