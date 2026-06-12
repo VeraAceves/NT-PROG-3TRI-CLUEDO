@@ -1,0 +1,53 @@
+.root {
+	-fx-background-color:radial-gradient(
+		center 50% 50%,             
+		        radius 60%,                 /* Reducimos el radio para que la penumbra se coma los bordes */
+		        transparent 0%,             /* El centro sigue limpio para que se vea la piedra real */
+		        rgba(0, 0, 0, 0.40) 25%,    /* Empieza a oscurecer casi al instante */
+		        rgba(0, 0, 0, 0.90) 65%,    /* Penumbra muy densa a mitad de camino */
+		        rgba(0, 0, 0, 0.98) 85%,    /* Oscuridad prácticamente total antes de llegar al borde */
+		        #000000 100%                /* Esquinas negro puro */
+		    );
+}
+
+
+
+#t_nombreUsu {
+	-fx-fill: #F2F2F2; 
+	    
+	    /* Efecto esculpido profundo:
+	       1ª sombra (Negra, arriba/izquierda): Hace el efecto de hendidura profunda en la roca.
+	       2ª sombra (Blanca limpia, abajo/derecha): Es el reflejo de la luz en el borde del relieve. */
+	    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 1.0), 6, 0.0, 2, 2)
+	                dropshadow(three-pass-box, rgba(255, 255, 255, 0.4), 1, 0.0, 2, 2);
+}
+
+
+ #t_dificil, #t_facil {
+	-fx-fill: #e0dad5; 
+	    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 1.0), 3, 0.0, 1, 1)
+	                dropshadow(three-pass-box, rgba(255, 255, 255, 0.35), 1, 0.0, 1.5, 1.5);
+	                
+	    -fx-cursor: hand;
+}
+
+#tf_nomUser {
+    /* 1. ¡Punto y coma añadido aquí al final! */
+    -fx-background-color: #F2F2F2; 
+    
+    /* 2. Le quitamos los bordes nativos de JavaFX para que no estropeen la sombra */
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+    
+    /* 3. Tu efecto de sombra con el punto y coma final */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 0.4), 11, 0.3, 2, 1);
+}
+
+.image-view {
+	-fx-effect: dropshadow(three-pass-box, #1D1E20, 10, 0.0, 4, 3)
+	} 
+	
+#b_nivel1, #b_nivel2, #b_nivel3, #b_nivel4,	#b_nivel5{
+	-fx-text-fill: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #FFFFFF 50%, #FFFFFF 75%, #A3E2FF 100%); /*#33BFFF*/
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 0.4), 14, 0.7, 2, 1);
+}

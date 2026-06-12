@@ -13,11 +13,16 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@MenuPartida.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <ImageView fitHeight="410.0" fitWidth="725.0" layoutX="-12.0" opacity="0.57" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Recursos/imagenes/Piedra.jpg" />
+         </image>
+      </ImageView>
       <HBox alignment="CENTER" layoutX="103.0" layoutY="32.0" prefHeight="31.0" prefWidth="394.0" spacing="20.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de usuario:" textAlignment="CENTER">
+            <Text fx:id="t_nombreUsu" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de usuario:" textAlignment="CENTER">
                <font>
-                  <Font name="Constantia" size="16.0" />
+                  <Font name="Constantia Bold" size="18.0" />
                </font>
             </Text>
             <TextField fx:id="tf_nomUser" prefHeight="26.0" prefWidth="191.0" />
@@ -25,9 +30,9 @@
       </HBox>
       <VBox layoutX="36.0" layoutY="88.0" prefHeight="247.0" prefWidth="498.0" spacing="5.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Facil:">
+            <Text fx:id="t_facil" strokeType="OUTSIDE" strokeWidth="0.0" text="Facil:">
                <font>
-                  <Font name="Constantia Italic" size="15.0" />
+                  <Font name="Constantia Bold Italic" size="15.0" />
                </font>
             </Text>
             <HBox prefHeight="98.0" prefWidth="512.0" spacing="40.0">
@@ -52,7 +57,7 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dificil:">
+            <Text fx:id="t_dificil" strokeType="OUTSIDE" strokeWidth="0.0" text="Dificil:">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
@@ -76,12 +81,12 @@
             </HBox>
          </children>
       </VBox>
-      <Button fx:id="b_nivel1" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="36.0" layoutY="104.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 1" textFill="WHITE">
+      <Button fx:id="b_nivel1" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="36.0" layoutY="108.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 1" textFill="WHITE">
          <font>
             <Font name="Copperplate Gothic Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="b_nivel2" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="226.0" layoutY="104.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 2" textFill="WHITE">
+      <Button fx:id="b_nivel2" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="226.0" layoutY="108.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 2" textFill="WHITE">
          <font>
             <Font name="Copperplate Gothic Bold" size="18.0" />
          </font>
@@ -96,7 +101,7 @@
             <Font name="Copperplate Gothic Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="b_nivel3" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="415.0" layoutY="104.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 3" textFill="WHITE">
+      <Button fx:id="b_nivel3" alignment="BOTTOM_LEFT" contentDisplay="TOP" layoutX="415.0" layoutY="108.0" mnemonicParsing="false" prefHeight="106.0" prefWidth="149.0" style="-fx-background-color: transparent;" text="Nivel 3" textFill="WHITE">
          <font>
             <Font name="Copperplate Gothic Bold" size="18.0" />
          </font>
