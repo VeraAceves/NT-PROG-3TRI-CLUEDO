@@ -14,10 +14,7 @@
 
 #t_nombreUsu {
 	-fx-fill: #F2F2F2; 
-	    
-	    /* Efecto esculpido profundo:
-	       1ª sombra (Negra, arriba/izquierda): Hace el efecto de hendidura profunda en la roca.
-	       2ª sombra (Blanca limpia, abajo/derecha): Es el reflejo de la luz en el borde del relieve. */
+	  
 	    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 1.0), 6, 0.0, 2, 2)
 	                dropshadow(three-pass-box, rgba(255, 255, 255, 0.4), 1, 0.0, 2, 2);
 }
@@ -32,22 +29,36 @@
 }
 
 #tf_nomUser {
-    /* 1. ¡Punto y coma añadido aquí al final! */
+   
     -fx-background-color: #F2F2F2; 
-    
-    /* 2. Le quitamos los bordes nativos de JavaFX para que no estropeen la sombra */
     -fx-background-insets: 0;
     -fx-background-radius: 4;
-    
-    /* 3. Tu efecto de sombra con el punto y coma final */
     -fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 0.4), 11, 0.3, 2, 1);
 }
 
+/* Sombra oscura base para las imágenes */
 .image-view {
-	-fx-effect: dropshadow(three-pass-box, #1D1E20, 10, 0.0, 4, 3)
-	} 
+	-fx-effect: dropshadow(three-pass-box, #1D1E20, 10, 0.0, 4, 3);
+} 
 	
-#b_nivel1, #b_nivel2, #b_nivel3, #b_nivel4,	#b_nivel5{
-	-fx-text-fill: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #FFFFFF 50%, #FFFFFF 75%, #A3E2FF 100%); /*#33BFFF*/
-	-fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 0.4), 14, 0.7, 2, 1);
+/* 🔘 ESTADO NORMAL DEL BOTÓN */
+#b_nivel1, #b_nivel2, #b_nivel3, #b_nivel4,	#b_nivel5 {
+	-fx-text-fill: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #FFFFFF 50%, #FFFFFF 75%, #A3E2FF 100%);
+	-fx-background-color: transparent; /* Sigue siendo transparente al inicio */
+	-fx-border-color: transparent;     /* El borde está oculto para que no moleste */
+	-fx-border-width: 3px;
+	-fx-cursor: hand;
+}
+
+/* 🔵 AL PASAR EL RATÓN (HOVER): Se ilumina el contorno suavemente */
+#b_nivel1:hover, #b_nivel2:hover, #b_nivel3:hover, #b_nivel4:hover,	#b_nivel5:hover {
+    -fx-border-color: rgba(0, 168, 255, 0.5); /* Añade un borde azul fino */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 0.6), 15, 0.4, 0, 0); /* La estela azul rodea el botón entero */
+}
+
+/* 🔴 AL PRESIONAR (PRESSED): Iluminación intensa en el borde e interior */
+#b_nivel1:pressed, #b_nivel2:pressed, #b_nivel3:pressed, #b_nivel4:pressed, #b_nivel5:pressed {
+    -fx-border-color: #00a8ff; /* Borde cian sólido e intenso */
+    -fx-background-color: rgba(0, 168, 255, 0.2); /* Tinte azul muy suave sobre la foto al pulsar */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 0.95), 25, 0.6, 0, 0); /* Súper estela brillante exterior */
 }

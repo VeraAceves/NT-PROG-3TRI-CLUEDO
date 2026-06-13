@@ -1,104 +1,107 @@
-
-
-/*TABLA DE DATOS*/
-/*#id_tablaHisto {
-    -fx-grid-lines-visible: true;
-     -fx-effect: dropshadow(gaussian, #22242A, 5, 0, 3, 5);
-	 -fx-background-radius: 5px;
-	 -fx-border-radius: 5px;
-}
-
-#id_dUser_tit, #id_dEstado_tit, #id_dPunts_tit, #id_dRonda_tit {
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #3E2213 0%, #54311C 40%, #462716 70%, #54311C 100%);
-    -fx-text-fill: #EED9C4;
-    -fx-font-weight: bold;
-    -fx-alignment: center;
-    -fx-max-width: infinity;
-    -fx-max-height: infinity;
-}
-
-
-#id_dUser_user1, #id_dEstado_user1, #id_dPunts_user1, #id_dRonda_user1,
-#id_dUser_user3, #id_dEstado_user3, #id_dPunts_user3, #id_dRonda_user3 {
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #A88365 0%, #B79579 35%, #9B7557 65%, #B79579 100%);
-    -fx-text-fill: #FFF3E0;
-    -fx-alignment: center;
-    -fx-max-width: infinity;
-    -fx-max-height: infinity;
-}
-
-#id_dUser_user2, #id_dEstado_user2, #id_dPunts_user2, #id_dRonda_user2 {
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #764E33 0%, #895F43 40%, #684127 75%, #895F43 100%);
-    -fx-text-fill: #FFF3E0;
-    -fx-alignment: center;
-    -fx-max-width: infinity;
-    -fx-max-height: infinity;
-}*/
-
 .root {
-    -fx-background-color: #171717;
+    -fx-background-color: radial-gradient(center 50% 50%, radius 75%, #577394 0%, #3a5575 15%, #293c52 45%, #0f1721 70%, #060a0f 100%);
 }
 
-.button {
-	-fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #5E3F27 0%, #85613B 25%, #6E4D32 50%, #85613B 75%, #5E3F27 100%);
-	 -fx-background-radius: 8px;
-    -fx-border-color: linear-gradient(to bottom, #D3A84C 0%, #F5D061 25%, #A47A1E 50%, #F5D061 75%, #D3A84C 100%);
+ .button {
+    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #2E4B66 0%, #466D94 25%, #375A7F 50%, #466D94 75%, #2E4B66 100%);
+    -fx-background-radius: 8px;
+    -fx-border-color: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #33BFFF 50%, #FFFFFF 75%, #A3E2FF 100%); /**/
     -fx-border-width: 2px;
     -fx-border-radius: 6px;
-    -fx-text-fill: linear-gradient(to bottom, #D3A84C 0%, #F5D061 25%, #A47A1E 50%, #F5D061 75%, #D3A84C 100%);
-}
-
-
-.button:pressed {
-    -fx-background-color: linear-gradient(from 0% 100% to 0% 0%, #4D321E 0%, #705130 25%, #593D26 50%, #705130 75%, #4D321E 100%);
-    -fx-border-color: linear-gradient(to bottom, #A47A1E 0%, #D3A84C 25%, #7A5813 50%, #D3A84C 75%, #A47A1E 100%);
-    -fx-text-fill: linear-gradient(to bottom, #BA923B 0%, #D3A84C 50%, #8A6414 100%);
-    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 2);
+    -fx-text-fill: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #FFFFFF 50%, #FFFFFF 75%, #A3E2FF 100%); /*#33BFFF*/
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 0.4), 9, 0.3, 1, 0);
 }
 
 .button:pressed {
-    -fx-background-color: #2D231E;
-    -fx-border-color: linear-gradient(to top, #A47A1E 0%, #D3A84C 50%, #A47A1E 100%);
-    -fx-padding: 6px 15px 4px 15px;
+    -fx-background-color: linear-gradient(from 0% 100% to 0% 0%, #22384D 0%, #395B7D 25%, #2E4B66 50%, #395B7D 75%, #22384D 100%);
+    -fx-border-color: linear-gradient(to bottom, #0088CC 0%, #00A8FF 25%, #52C1FF 50%, #00A8FF 75%, #0088CC 100%);
+    -fx-text-fill: linear-gradient(to bottom, #33BFFF 0%, #A3E2FF 25%, #0099E6 50%, #A3E2FF 75%, #33BFFF 100%);
+    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.5), 5, 0.0, 0, 2);
 }
 
+.button:hover {
+   -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #365877 0%, #527fae 25%, #426b96 50%, #527fae 75%, #365877 100%);
+    -fx-background-radius: 8px;
+    -fx-border-color: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #33BFFF 50%, #FFFFFF 75%, #A3E2FF 100%); /**/
+    -fx-border-width: 2px;
+    -fx-border-radius: 6px;
+    -fx-text-fill: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #FFFFFF 50%, #FFFFFF 75%, #A3E2FF 100%); /*#33BFFF*/    
+    -fx-effect: dropshadow(three-pass-box, #00aaff, 18, 0.5, 0, 0);
 
+}
 
+#b_volver, #b_historia {
+    -fx-font-family: "Copperplate Gothic Bold";
+    -fx-font-size: 20px;
+}
+
+/* TEXTO DATOS DE LA PARTIDA: Ajustado a negro */
 #id_tDatos {
-    -fx-fill: #5C3A21;
+    -fx-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.3), 4, 0, 0, 1);
 }
+
+/* ==========================================================================
+   TABLA: TEXTURA DE MADERA VISIBLE CON TINTE AZUL CLARO
+   ========================================================================== */
 
 #id_tablaHisto {
-    -fx-grid-lines-visible: false;
-    -fx-background-image: url("../Recursos/imagenes/madera.jpg");
+    -fx-background-color: #dbe9f6; 
+    -fx-background-image: url("../imagenes/madera.jpg");
     -fx-background-size: cover;
     -fx-background-position: center;
-    -fx-effect: dropshadow(gaussian, #4d3b2d, 10, 0, 0, 0);
+    -fx-grid-lines-visible: false; 
+    
+    /* Bordes rectos */
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+    
+    /* Sombra de alto contraste */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.95), 25, 0, 0, 6);
+    -fx-border-color: #2a3d4c;
+    -fx-border-width: 2px;
 }
 
+/* CABECERA (Títulos se quedan intactos en blanco) */
 #id_dUser_tit, #id_dEstado_tit, #id_dPunts_tit, #id_dRonda_tit {
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(62, 34, 19, 0.85) 0%, rgba(84, 49, 28, 0.75) 40%, rgba(70, 39, 22, 0.85) 70%, rgba(84, 49, 28, 0.75) 100%);
-    -fx-text-fill: #EED9C4;
+    -fx-background-color: rgba(35, 55, 64, 0.75); 
+    -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
     -fx-alignment: center;
     -fx-max-width: infinity;
     -fx-max-height: infinity;
+    
+    /* Líneas de la cuadrícula oscuras */
+    -fx-border-color: #1a272e;
+    -fx-border-width: 2px 1px 3px 1px;
 }
 
+/* FILAS IMPARES: Texto cambiado a azul oscuro */
 #id_dUser_user1, #id_dEstado_user1, #id_dPunts_user1, #id_dRonda_user1,
 #id_dUser_user3, #id_dEstado_user3, #id_dPunts_user3, #id_dRonda_user3 {
-   
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(118, 78, 51, 0.5) 0%, rgba(137, 95, 67, 0.5) 40%, rgba(104, 65, 39, 0.5) 75%, rgba(137, 95, 67, 0.5) 100%);
-    -fx-text-fill: #140a01;
+    -fx-background-color: rgba(194, 218, 240, 0.25);
+    -fx-text-fill: #111b24; 
+    -fx-font-weight: bold;
     -fx-alignment: center;
     -fx-max-width: infinity;
     -fx-max-height: infinity;
+    
+    /* Cuadrícula manual marcada */
+    -fx-border-color: rgba(28, 43, 56, 0.6);
+    -fx-border-width: 1px;
 }
 
+/* FILAS PARES: Texto cambiado a azul oscuro */
 #id_dUser_user2, #id_dEstado_user2, #id_dPunts_user2, #id_dRonda_user2 {
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(78, 46, 27, 0.5) 0%, rgba(95, 59, 36, 0.5) 40%, rgba(62, 34, 19, 0.5) 75%, rgba(95, 59, 36, 0.5) 100%);
-    -fx-text-fill: #140a01;
+    -fx-background-color: rgba(219, 233, 246, 0.40);
+    -fx-text-fill: #111b24;
+    -fx-font-weight: bold;
     -fx-alignment: center;
     -fx-max-width: infinity;
     -fx-max-height: infinity;
+    
+    /* Cuadrícula manual marcada */
+    -fx-border-color: rgba(28, 43, 56, 0.6);
+    -fx-border-width: 1px;
 }
