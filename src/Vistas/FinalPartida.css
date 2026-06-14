@@ -35,16 +35,14 @@
     -fx-font-size: 20px;
 }
 
-/* TEXTO DATOS DE LA PARTIDA: Ajustado a negro */
+/* TEXTO DATOS DE LA PARTIDA*/
 #id_tDatos {
     -fx-fill: #000000;
     -fx-font-weight: bold;
     -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.3), 4, 0, 0, 1);
 }
 
-/* ==========================================================================
-   TABLA: TEXTURA DE MADERA VISIBLE CON TINTE AZUL CLARO
-   ========================================================================== */
+/*TABLA*/
 
 #id_tablaHisto {
     -fx-background-color: #dbe9f6; 
@@ -56,14 +54,13 @@
     /* Bordes rectos */
     -fx-background-radius: 0px;
     -fx-border-radius: 0px;
-    
-    /* Sombra de alto contraste */
+  
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.95), 25, 0, 0, 6);
     -fx-border-color: #2a3d4c;
     -fx-border-width: 2px;
 }
 
-/* CABECERA (Títulos se quedan intactos en blanco) */
+/* CABECERA*/
 #id_dUser_tit, #id_dEstado_tit, #id_dPunts_tit, #id_dRonda_tit {
     -fx-background-color: rgba(35, 55, 64, 0.75); 
     -fx-text-fill: #ffffff;
@@ -72,12 +69,12 @@
     -fx-max-width: infinity;
     -fx-max-height: infinity;
     
-    /* Líneas de la cuadrícula oscuras */
+    /* Líneas de la cuadrícula*/
     -fx-border-color: #1a272e;
     -fx-border-width: 2px 1px 3px 1px;
 }
 
-/* FILAS IMPARES: Texto cambiado a azul oscuro */
+/*FILAS IMPARES*/
 #id_dUser_user1, #id_dEstado_user1, #id_dPunts_user1, #id_dRonda_user1,
 #id_dUser_user3, #id_dEstado_user3, #id_dPunts_user3, #id_dRonda_user3 {
     -fx-background-color: rgba(194, 218, 240, 0.25);
@@ -87,12 +84,12 @@
     -fx-max-width: infinity;
     -fx-max-height: infinity;
     
-    /* Cuadrícula manual marcada */
+    
     -fx-border-color: rgba(28, 43, 56, 0.6);
     -fx-border-width: 1px;
 }
 
-/* FILAS PARES: Texto cambiado a azul oscuro */
+/* FILAS PARES*/
 #id_dUser_user2, #id_dEstado_user2, #id_dPunts_user2, #id_dRonda_user2 {
     -fx-background-color: rgba(219, 233, 246, 0.40);
     -fx-text-fill: #111b24;
@@ -101,7 +98,7 @@
     -fx-max-width: infinity;
     -fx-max-height: infinity;
     
-    /* Cuadrícula manual marcada */
+ 
     -fx-border-color: rgba(28, 43, 56, 0.6);
     -fx-border-width: 1px;
 }
