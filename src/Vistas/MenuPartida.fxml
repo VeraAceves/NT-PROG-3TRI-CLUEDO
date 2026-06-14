@@ -147,6 +147,11 @@
                   
                </children>
             </VBox>
+            <Button fx:id="b_volver" mnemonicParsing="false" prefHeight="55.0" prefWidth="158.0" text="VOLVER" textAlignment="RIGHT">
+               <font>
+                  <Font name="Copperplate Gothic Bold" size="20.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
    </children>

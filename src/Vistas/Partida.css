@@ -1,0 +1,42 @@
+/*.button:hover {
+    -fx-border-color: rgba(0, 168, 255, 0.5);  Añade un borde azul fino 
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 0.6), 15, 0.4, 0, 0);  La estela azul rodea el botón entero
+}
+
+.button:pressed {
+    -fx-border-color: #00a8ff;  Borde cian sólido e intenso 
+    -fx-background-color: rgba(0, 168, 255, 0.2);  Tinte azul muy suave sobre la foto al pulsar 
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 0.95), 25, 0.6, 0, 0);  Súper estela brillante exterior 
+}*/
+
+.button:hover {
+    /* Borde azul más visible y definido */
+    -fx-border-color: rgba(0, 168, 255, 0.9); 
+    
+    /* ESTELA HOVER: Opacidad al 95%, radio de 25 y esparcimiento subido a 0.65 para que brille con fuerza */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 1), 35, 0.8, 0, 0); 
+}
+
+.button:pressed {
+    /* Borde cian/turquesa fosforito ultra brillante */
+    -fx-border-color: #00ffff; 
+    
+    /* ESTELA PRESSED: Color cian eléctrico puro (rgba(0, 255, 255, 1)) para el efecto neón fosforito */
+    -fx-effect: dropshadow(three-pass-box, rgba(63, 215, 252, 1), 42, 0.85, 0, 0); 
+    
+    /* TINTE FOSFORITO: Filtro cian translúcido más alto (0.60) que tiñe y "enciende" la foto */
+    -fx-background-color: rgba(63, 215, 252, 0.60); 
+}
+
+#b_despensa:hover, #b_archivo:hover, #b_trono:hover, #b_forja:hover, #b_invernadero:hover, #b_dormitorio:hover {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(three-pass-box, rgba(63, 215, 252, 1), 6, 0.2, 0, 0);
+}
+
+#b_despensa:pressed, #b_archivo:pressed, #b_trono:pressed, #b_forja:pressed, #b_invernadero:pressed, #b_dormitorio:pressed {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent; 
+	-fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 1), 8, 0.5, 0, 0);
+}
+
