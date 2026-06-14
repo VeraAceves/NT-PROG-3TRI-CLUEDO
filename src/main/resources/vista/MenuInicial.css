@@ -1,0 +1,233 @@
+.root {
+    -fx-background-color: #cc8c58;
+}
+
+/* =========================
+   BOTONES GENERALES
+   ========================= */
+
+.button {
+    -fx-background-color: linear-gradient(from 0.0% 0.0% to 0.0% 100.0%,
+        #2E4B66 0.0%,
+        #466D94 25.0%,
+        #375A7F 50.0%,
+        #466D94 75.0%,
+        #2E4B66 100.0%);
+
+    -fx-background-radius: 8.0px;
+
+    -fx-border-color: linear-gradient(to bottom,
+        #A3E2FF 0.0%,
+        #FFFFFF 25.0%,
+        #33BFFF 50.0%,
+        #FFFFFF 75.0%,
+        #A3E2FF 100.0%);
+
+    -fx-border-width: 2.0px;
+    -fx-border-radius: 6.0px;
+
+    -fx-text-fill: linear-gradient(to bottom,
+        #A3E2FF 0.0%,
+        #FFFFFF 25.0%,
+        #FFFFFF 50.0%,
+        #FFFFFF 75.0%,
+        #A3E2FF 100.0%);
+
+    -fx-effect: dropshadow(
+        three-pass-box,
+        rgba(0.0,168.0,255.0,0.4),
+        9.0,
+        0.3,
+        1.0,
+        0.0
+    );
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(from 0.0% 0.0% to 0.0% 100.0%,
+        #365877 0.0%,
+        #527fae 25.0%,
+        #426b96 50.0%,
+        #527fae 75.0%,
+        #365877 100.0%);
+
+    -fx-background-radius: 8.0px;
+
+    -fx-border-color: linear-gradient(to bottom,
+        #A3E2FF 0.0%,
+        #FFFFFF 25.0%,
+        #33BFFF 50.0%,
+        #FFFFFF 75.0%,
+        #A3E2FF 100.0%);
+
+    -fx-border-width: 2.0px;
+    -fx-border-radius: 6.0px;
+
+    -fx-text-fill: linear-gradient(to bottom,
+        #A3E2FF 0.0%,
+        #FFFFFF 25.0%,
+        #FFFFFF 50.0%,
+        #FFFFFF 75.0%,
+        #A3E2FF 100.0%);
+
+    -fx-effect: dropshadow(
+        three-pass-box,
+        #00aaff,
+        18.0,
+        0.5,
+        0.0,
+        0.0
+    );
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(from 0.0% 100.0% to 0.0% 0.0%,
+        #22384D 0.0%,
+        #395B7D 25.0%,
+        #2E4B66 50.0%,
+        #395B7D 75.0%,
+        #22384D 100.0%);
+
+    -fx-border-color: linear-gradient(to bottom,
+        #0088CC 0.0%,
+        #00A8FF 25.0%,
+        #52C1FF 50.0%,
+        #00A8FF 75.0%,
+        #0088CC 100.0%);
+
+    -fx-text-fill: linear-gradient(to bottom,
+        #33BFFF 0.0%,
+        #A3E2FF 25.0%,
+        #0099E6 50.0%,
+        #A3E2FF 75.0%,
+        #33BFFF 100.0%);
+
+    -fx-effect: innershadow(
+        three-pass-box,
+        rgba(0.0,0.0,0.0,0.5),
+        5.0,
+        0.0,
+        0.0,
+        2.0
+    );
+}
+
+/* =========================
+   TÍTULO
+   ========================= */
+
+#t_tituloJuego {
+    -fx-text-fill: #000000;
+    -fx-effect: dropshadow(three-pass-box, #00A8FF, 15.0, 0.6, 0.0, 0.0);
+}
+
+/* =========================
+   ELEMENTOS DEL SEGUNDO CSS
+   ========================= */
+
+#t_nombreUsu {
+    -fx-fill: #F2F2F2;
+
+    -fx-effect:
+        dropshadow(three-pass-box, rgba(0.0,0.0,0.0,1.0), 6.0, 0.0, 2.0, 2.0)
+        dropshadow(three-pass-box, rgba(255.0,255.0,255.0,0.4), 1.0, 0.0, 2.0, 2.0);
+}
+
+#t_dificil,
+#t_facil {
+    -fx-fill: #e0dad5;
+
+    -fx-effect:
+        dropshadow(three-pass-box, rgba(0.0,0.0,0.0,1.0), 3.0, 0.0, 1.0, 1.0)
+        dropshadow(three-pass-box, rgba(255.0,255.0,255.0,0.35), 1.0, 0.0, 1.5, 1.5);
+
+    -fx-cursor: hand;
+}
+
+#tf_nomUser {
+    -fx-background-color: #F2F2F2;
+    -fx-background-insets: 0.0;
+    -fx-background-radius: 4.0;
+
+    -fx-effect: dropshadow(
+        three-pass-box,
+        rgba(0.0,168.0,255.0,0.4),
+        11.0,
+        0.3,
+        2.0,
+        1.0
+    );
+}
+
+.image-view {
+    -fx-effect: dropshadow(
+        three-pass-box,
+        #1D1E20,
+        10.0,
+        0.0,
+        4.0,
+        3.0
+    );
+}
+
+/* =========================
+   BOTONES DE NIVEL
+   ========================= */
+
+#b_nivel1,
+#b_nivel2,
+#b_nivel3,
+#b_nivel4,
+#b_nivel5 {
+
+    -fx-text-fill: linear-gradient(
+        to bottom,
+        #A3E2FF 0.0%,
+        #FFFFFF 25.0%,
+        #FFFFFF 50.0%,
+        #FFFFFF 75.0%,
+        #A3E2FF 100.0%
+    );
+
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 3.0px;
+    -fx-cursor: hand;
+}
+
+#b_nivel1:hover,
+#b_nivel2:hover,
+#b_nivel3:hover,
+#b_nivel4:hover,
+#b_nivel5:hover {
+
+    -fx-border-color: rgba(0.0,168.0,255.0,0.5);
+
+    -fx-effect: dropshadow(
+        three-pass-box,
+        rgba(0.0,168.0,255.0,0.6),
+        15.0,
+        0.4,
+        0.0,
+        0.0
+    );
+}
+
+#b_nivel1:pressed,
+#b_nivel2:pressed,
+#b_nivel3:pressed,
+#b_nivel4:pressed,
+#b_nivel5:pressed {
+
+    -fx-border-color: #00a8ff;
+    -fx-background-color: rgba(0.0,168.0,255.0,0.2);
+
+    -fx-effect: dropshadow(
+        three-pass-box,
+        rgba(0.0,168.0,255.0,0.95),
+        25.0,
+        0.6,
+        0.0,
+        0.0
+    );
+}

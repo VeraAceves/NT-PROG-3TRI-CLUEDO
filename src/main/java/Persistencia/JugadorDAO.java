@@ -6,64 +6,55 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.UpdateOptions;
 import org.bson.Document;
 
-import modelo.beans.*;
+import modelo.beans.Jugador;
 
 public class JugadorDAO {
 
-    private final MongoCollection<Document> coleccion;
+	private final MongoCollection<Document> coleccion;
 
-    public JugadorDAO() {
-        MongoDatabase db = Conexion.getDatabase();
-        this.coleccion = db.getCollection("Jugador");
-    }
+	public JugadorDAO() {
+		MongoDatabase db = Conexion.getDatabase();
+		this.coleccion = db.getCollection("Jugador");
+	}
 
-    // =============================================================
-    // GUARDAR / ACTUALIZAR JUGADOR (Registro)
-    // =============================================================
-    public void guardarJugador(Jugador jugador) {
-        
-        // Aprovechamos tu método de validación antes de tocar la base de datos
-        if (!jugador.nombreValido()) {
-            System.out.println("Error: No se puede guardar en BD un jugador con nombre vacío o nulo.");
-            return;
-        }
+	public void guardarJugador(Jugador jugador) {
 
-        Document docJugador = new Document("idJugador", jugador.getIdJugador())
-                .append("nombre", jugador.getNombre());
+		if (!jugador.nombreValido()) {
+			throw new IllegalArgumentException("Nombre de jugador no válido");
+		}
 
-        // Operación Upsert: Si el idJugador ya existe, lo actualiza. Si no, lo inserta.
-        coleccion.updateOne(
-                Filters.eq("idJugador", jugador.getIdJugador()), 
-                new Document("$set", docJugador), 
-                new UpdateOptions().upsert(true)
-        );
-        
-        System.out.println("Jugador guardado exitosamente en MongoDB.");
-    }
+		Document doc = new Document("nombre", jugador.getNombre());
 
-    // =============================================================
-    // OBTENER JUGADOR (Para iniciar sesión o recuperar perfil)
-    // =============================================================
-    public Jugador obtenerJugador(String idJugador) {
-        
-        Document doc = coleccion.find(Filters.eq("idJugador", idJugador)).first();
-        
-        if (doc != null) {
-            // Reconstruimos el objeto Jugador con los datos de Atlas
-            return new Jugador(
-                    doc.getString("idJugador"),
-                    doc.getString("nombre")
-            );
-        }
-        
-        System.out.println("No se encontró ningún jugador con el ID proporcionado.");
-        return null;
-    }
-    
-    
-    //Metodo nuevo!!!
-    
-    public boolean existeJugador(String nombre) {
-        return coleccion.find(Filters.eq("nombre", nombre)).first() != null;
-    }
+		if (jugador.getIdJugador() != null) {
+
+			coleccion.updateOne(Filters.eq("_id", jugador.getIdJugador()), new Document("$set", doc),
+					new UpdateOptions().upsert(true));
+
+		} else {
+
+			doc.append("_id", java.util.UUID.randomUUID().toString());
+			coleccion.insertOne(doc);
+
+			jugador.setIdJugador(doc.getString("_id"));
+		}
+	}
+
+	public Jugador obtenerJugador(String idJugador) {
+
+		Document doc = coleccion.find(Filters.eq("_id", idJugador)).first();
+
+		if (doc == null) {
+			return null;
+		}
+
+		Jugador j = new Jugador();
+		j.setIdJugador(doc.getString("_id"));
+		j.setNombre(doc.getString("nombre"));
+
+		return j;
+	}
+
+	public boolean existeJugador(String nombre) {
+		return coleccion.find(Filters.eq("nombre", nombre)).first() != null;
+	}
 }

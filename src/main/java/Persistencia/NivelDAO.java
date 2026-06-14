@@ -22,9 +22,6 @@ public class NivelDAO {
 		this.coleccion = db.getCollection("Nivel");
 	}
 
-	// =============================================================
-	// OBTENER NIVEL (Cargar la configuración de un caso)
-	// =============================================================
 	public Nivel obtenerNivelPorId(String idNivel) {
 		Document doc = coleccion.find(Filters.eq("idNivel", idNivel)).first();
 
@@ -65,21 +62,58 @@ public class NivelDAO {
 
 		// 6. Obtener la lista de pistas
 		List<String> pistas = doc.getList("pistas", String.class);
+		// 6.5 PERSONAJES
+		List<Personaje> personajes = new ArrayList<>();
+		List<Document> docsPersonajes = doc.getList("personajes", Document.class);
+
+		if (docsPersonajes != null) {
+			for (Document d : docsPersonajes) {
+				personajes.add(
+						new Personaje(d.getString("idPersonaje"), d.getString("nombre"), d.getString("descripcion")));
+			}
+		}
+
+		// 6.6 ARMAS
+		List<Arma> armas = new ArrayList<>();
+		List<Document> docsArmas = doc.getList("armas", Document.class);
+
+		if (docsArmas != null) {
+			for (Document d : docsArmas) {
+				armas.add(new Arma(d.getString("idArma"), d.getString("nombre"), d.getString("descripcion")));
+			}
+		}
+
+		// 6.7 ESCENARIOS
+		List<Escenario> escenarios = new ArrayList<>();
+		List<Document> docsEscenarios = doc.getList("escenarios", Document.class);
+
+		if (docsEscenarios != null) {
+			for (Document d : docsEscenarios) {
+				escenarios.add(
+						new Escenario(d.getString("idEscenario"), d.getString("nombre"), d.getString("descripcion")));
+			}
+		}
 
 		// 7. Extraer la pista actual (inicia en 0 por defecto si no existe en la BD)
 		int pistaActual = doc.getInteger("pistaActual") != null ? doc.getInteger("pistaActual") : 0;
 
 		// 8. Reconstruir y retornar el objeto Nivel con su constructor completo
-		return new Nivel(doc.getString("idNivel"), dificultad, asesino, escenario, arma, doc.getString("descripcion"),
-				pistas, pistaActual);
+		Nivel nivel = new Nivel(doc.getString("idNivel"), dificultad, asesino, escenario, arma,
+				doc.getString("descripcion"), pistas, pistaActual);
+
+		nivel.setPersonajes(personajes);
+		nivel.setArmas(armas);
+		nivel.setEscenarios(escenarios);
+
+		return nivel;
 	}
 
-	// =============================================================
-	// GUARDAR NIVEL (Para poblar tu base de datos desde código)
-	// =============================================================
 	public void guardarNivel(Nivel nivel) {
 
-		// Mapeo del Asesino
+		if (nivel.getIdNivel() == null || nivel.getIdNivel().isEmpty()) {
+			nivel.setIdNivel("NIVEL_" + java.util.UUID.randomUUID().toString());
+		}
+
 		Document docAsesino = new Document();
 		if (nivel.getAsesino() != null) {
 			docAsesino.append("idPersonaje", nivel.getAsesino().getIdPersonaje())
@@ -87,7 +121,6 @@ public class NivelDAO {
 					.append("descripcion", nivel.getAsesino().getDescripcion());
 		}
 
-		// Mapeo del Escenario
 		Document docEscenario = new Document();
 		if (nivel.getEscenarioCrimen() != null) {
 			docEscenario.append("idEscenario", nivel.getEscenarioCrimen().getIdEscenario())
@@ -95,7 +128,6 @@ public class NivelDAO {
 					.append("descripcion", nivel.getEscenarioCrimen().getDescripcion());
 		}
 
-		// Mapeo del Arma
 		Document docArma = new Document();
 		if (nivel.getArmaCrimen() != null) {
 			docArma.append("idArma", nivel.getArmaCrimen().getIdArma())
@@ -103,26 +135,21 @@ public class NivelDAO {
 					.append("descripcion", nivel.getArmaCrimen().getDescripcion());
 		}
 
-		// Construcción del documento Nivel
 		Document docNivel = new Document("idNivel", nivel.getIdNivel())
 				.append("dificultad", nivel.getDificultad() != null ? nivel.getDificultad().name() : null)
 				.append("asesino", docAsesino).append("escenarioCrimen", docEscenario).append("armaCrimen", docArma)
 				.append("descripcion", nivel.getDescripcion()).append("pistas", nivel.getPistas())
-				.append("pistaActual", 0); // Siempre reiniciamos la lectura de pistas al guardar un nivel base
+				.append("pistaActual", nivel.getPistaActual());
 
 		coleccion.updateOne(Filters.eq("idNivel", nivel.getIdNivel()), new Document("$set", docNivel),
 				new UpdateOptions().upsert(true));
-
-		System.out.println("Nivel guardado correctamente.");
 	}
 
-	// MEtodos nuevo!!!
 	public List<Nivel> obtenerTodosLosNiveles() {
 
 		List<Nivel> lista = new ArrayList<>();
 
 		for (Document doc : coleccion.find()) {
-
 			lista.add(obtenerNivelPorId(doc.getString("idNivel")));
 		}
 
@@ -134,7 +161,7 @@ public class NivelDAO {
 		Document doc = coleccion.find(Filters.eq("idNivel", idNivel)).first();
 
 		if (doc == null) {
-			return "No hay crónica disponible.";
+			throw new IllegalArgumentException("Nivel no encontrado: " + idNivel);
 		}
 
 		String descripcion = doc.getString("descripcion");
@@ -142,7 +169,9 @@ public class NivelDAO {
 
 		StringBuilder cronica = new StringBuilder();
 
-		cronica.append(descripcion != null ? descripcion : "").append("\n\n");
+		if (descripcion != null) {
+			cronica.append(descripcion).append("\n\n");
+		}
 
 		if (pistas != null) {
 			for (String pista : pistas) {

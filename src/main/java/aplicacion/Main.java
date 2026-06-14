@@ -1,6 +1,8 @@
 package aplicacion;
 
 import java.io.IOException;
+
+import Persistencia.PartidaDAO;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import modelo.Juego;
@@ -14,6 +16,7 @@ public class Main extends Application {
 	private static Scene escenaPartida;
 	private static Scene escenaFinalPartida;
 	private static Juego juego = new Juego();
+	private static PartidaDAO partidaDAO = new PartidaDAO();
 
 	public static void main(String[] args) {
 		launch(args);
@@ -26,8 +29,8 @@ public class Main extends Application {
 
 			escenaInicio = new Scene(FXMLLoader.load(getClass().getResource("/vista/MenuInicial.fxml")));
 			escenaMenuPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/MenuPartida.fxml")));
-			//escenaPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/Partida.fxml")));
-			//escenaFinalPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/FinalPartida.fxml")));
+			escenaPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/Partida.fxml")));
+			escenaFinalPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/FinalPartida.fxml")));
 
 			primaryStage.setScene(escenaInicio);
 			primaryStage.setMaximized(true);
@@ -55,7 +58,15 @@ public class Main extends Application {
 		stage.setScene(escenaFinalPartida);
 	}
 
+	public static void reiniciarJuego() {
+		juego = new Juego();
+	}
+
 	public static Juego getJuego() {
 		return juego;
+	}
+
+	public static PartidaDAO getPartidaDAO() {
+		return partidaDAO;
 	}
 }

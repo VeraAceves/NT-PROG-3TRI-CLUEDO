@@ -1,18 +1,24 @@
 package controlador;
 
+import java.util.List;
+
+import Persistencia.NivelDAO;
+import Persistencia.PartidaDAO;
 import aplicacion.Main;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
+import modelo.Juego;
 import modelo.beans.Partida;
-import Persistencia.NivelDAO;
-import Persistencia.PartidaDAO;
-
-import java.util.List;
 
 public class FinalPartidaController {
+
 	@FXML
 	private VBox pnlHistoria;
 
@@ -23,92 +29,95 @@ public class FinalPartidaController {
 	private TextArea txtHistoria;
 
 	@FXML
+	private TableView<Partida> tablaHistorial;
+
+	@FXML
+	private TableColumn<Partida, String> colUsuario;
+
+	@FXML
+	private TableColumn<Partida, String> colResultado;
+
+	@FXML
+	private TableColumn<Partida, Integer> colPuntos;
+
+	@FXML
+	private TableColumn<Partida, String> colNivel;
+
+	@FXML
 	private Button b_volver;
 
 	@FXML
 	private Button b_historia;
-
 	@FXML
-	private Label id_dUser_user1;
-
-	@FXML
-	private Label id_dUser_user2;
-
-	@FXML
-	private Label id_dUser_user3;
-
-	@FXML
-	private Label id_dEstado_user1;
-
-	@FXML
-	private Label id_dEstado_user2;
-
-	@FXML
-	private Label id_dEstado_user3;
-
-	@FXML
-	private Label id_dPunts_user1;
-
-	@FXML
-	private Label id_dPunts_user2;
-
-	@FXML
-	private Label id_dPunts_user3;
-
-	@FXML
-	private Label id_dRonda_user1;
-
-	@FXML
-	private Label id_dRonda_user2;
-
-	@FXML
-	private Label id_dRonda_user3;
+	private Label lblResultado;
 
 	private PartidaDAO partidaDAO;
-	private List<Partida> historial;
+
+	private NivelDAO nivelDAO;
+
+	private ObservableList<Partida> datosTabla = FXCollections.observableArrayList();
 
 	@FXML
 	private void initialize() {
 
 		partidaDAO = new PartidaDAO();
+		nivelDAO = new NivelDAO();
 
-		String idJugador = Main.getJuego().getJugadorActual().getIdJugador();
+		pnlHistoria.setVisible(false);
+		pnlHistoria.setManaged(false);
 
-		historial = partidaDAO.obtenerHistorial(idJugador);
-
-		cargarTabla();
+		configurarColumnas();
 	}
 
-	private void cargarTabla() {
+	public void cargarDatos() {
 
-		if (historial == null || historial.isEmpty()) {
+		Juego juego = Main.getJuego();
+
+		if (juego == null || juego.getPartidaActual() == null)
+			return;
+
+		Partida partidaActual = juego.getPartidaActual();
+
+		if (partidaActual.getJugador() == null)
+			return;
+
+		String idJugador = partidaActual.getJugador().getIdJugador();
+
+		List<Partida> historial = partidaDAO.obtenerHistorial(idJugador);
+
+		datosTabla.setAll(historial);
+		tablaHistorial.setItems(datosTabla);
+
+		cargarResultado();
+	}
+
+	private void cargarResultado() {
+
+		Juego juego = Main.getJuego();
+
+		if (juego == null || juego.getPartidaActual() == null) {
+			lblResultado.setText("No hay partida actual");
 			return;
 		}
 
-		// Fila 1
-		if (historial.size() > 0) {
-			cargarFila(historial.get(0), id_dUser_user1, id_dEstado_user1, id_dPunts_user1, id_dRonda_user1);
-		}
+		Partida p = juego.getPartidaActual();
 
-		// Fila 2
-		if (historial.size() > 1) {
-			cargarFila(historial.get(1), id_dUser_user2, id_dEstado_user2, id_dPunts_user2, id_dRonda_user2);
-		}
-
-		// Fila 3
-		if (historial.size() > 2) {
-			cargarFila(historial.get(2), id_dUser_user3, id_dEstado_user3, id_dPunts_user3, id_dRonda_user3);
-		}
+		lblResultado.setText(p.getResultado() != null ? p.getResultado().toString() : "EN_CURSO");
 	}
 
-	private void cargarFila(Partida p, Label user, Label estado, Label puntos, Label ronda) {
+	private void configurarColumnas() {
 
-		user.setText(p.getJugador() != null ? p.getJugador().getNombre() : "-");
+		colUsuario.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(
+				data.getValue().getJugador() != null ? data.getValue().getJugador().getNombre() : "-"));
 
-		estado.setText(p.getEstado() != null ? p.getEstado().toString() : "-");
+		colResultado.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(
+				data.getValue().getResultado() != null ? data.getValue().getResultado().toString() : "EN_CURSO"));
 
-		puntos.setText(String.valueOf(p.getPuntosActuales()));
-		ronda.setText(String.valueOf(p.getRondaActual()));
+		colPuntos.setCellValueFactory(
+				data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getPuntosActuales()));
+
+		colNivel.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(
+				data.getValue().getNivel() != null ? data.getValue().getNivel().getIdNivel() : "-"));
 	}
 
 	@FXML
@@ -120,17 +129,18 @@ public class FinalPartidaController {
 
 			if (partida == null || partida.getNivel() == null) {
 				txtHistoria.setText("No hay historia disponible");
+			} else {
+
+				String cronica = nivelDAO.obtenerCronicaCompleta(partida.getNivel().getIdNivel());
+
+				lblTituloHistoria.setText("Nivel " + partida.getNivel().getIdNivel());
+				txtHistoria.setText(cronica);
 			}
-
-			NivelDAO nivelDAO = new NivelDAO();
-
-			String cronica = nivelDAO.obtenerCronicaCompleta(partida.getNivel().getIdNivel());
-
-			lblTituloHistoria.setText("Nivel " + partida.getNivel().getIdNivel());
-			txtHistoria.setText(cronica);
 
 			pnlHistoria.setVisible(true);
 			pnlHistoria.setManaged(true);
+
+			pnlHistoria.toFront();
 
 		} catch (Exception e) {
 
@@ -138,6 +148,8 @@ public class FinalPartidaController {
 
 			pnlHistoria.setVisible(true);
 			pnlHistoria.setManaged(true);
+
+			pnlHistoria.toFront();
 		}
 	}
 

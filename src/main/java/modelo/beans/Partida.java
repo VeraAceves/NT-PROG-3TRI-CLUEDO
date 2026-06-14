@@ -17,6 +17,8 @@ public class Partida {
 	private boolean ultimoAcertoPersonaje;
 	private boolean ultimoAcertoArma;
 	private boolean ultimoAcertoEscenario;
+	private static final int PENALIZACION_ERROR = 10;
+	private static final int PENALIZACION_PISTA = 10;
 
 	// Constructores
 	public Partida() {
@@ -26,7 +28,7 @@ public class Partida {
 		this.idPartida = idPartida;
 		this.jugador = jugador;
 		this.nivel = nivel;
-		this.rondaActual = 0;
+		this.rondaActual = 1;
 		this.puntosActuales = nivel.getDificultad().getPuntosIniciales();
 		this.pistasRestantes = nivel.getNumeroPistas();
 		this.estado = EstadoPartida.EN_CURSO;
@@ -36,7 +38,7 @@ public class Partida {
 	public Partida(Jugador jugador, Nivel nivel) {
 		this.jugador = jugador;
 		this.nivel = nivel;
-		this.rondaActual = 0;
+		this.rondaActual = 1;
 		this.puntosActuales = nivel.getDificultad().getPuntosIniciales();
 		this.pistasRestantes = nivel.getNumeroPistas();
 		this.estado = EstadoPartida.EN_CURSO;
@@ -108,6 +110,14 @@ public class Partida {
 		this.resultado = resultado;
 	}
 
+	public static int getPenalizacionError() {
+		return PENALIZACION_ERROR;
+	}
+
+	public static int getPenalizacionPista() {
+		return PENALIZACION_PISTA;
+	}
+
 	public boolean isUltimoAcertoPersonaje() {
 		return ultimoAcertoPersonaje;
 	}
@@ -147,24 +157,27 @@ public class Partida {
 		this.puntosActuales = nivel.getDificultad().getPuntosIniciales();
 		this.pistasRestantes = nivel.getNumeroPistas();
 		this.resultado = null;
+		resetearAciertos();
 	}
 
-	public boolean realizarHipotesis(Personaje personaje, Arma arma, Escenario escenario) {
+	public boolean realizarInterrogatorio(Personaje personaje, Arma arma, Escenario escenario) {
 
-		ultimoAcertoPersonaje = nivel.personajeCorrecto(personaje);
-		ultimoAcertoArma = nivel.armaCorrecta(arma);
-		ultimoAcertoEscenario = nivel.escenarioCorrecto(escenario);
+		if (estado == EstadoPartida.FINALIZADA) {
+			return false;
+		}
 
-		boolean acierto = ultimoAcertoPersonaje && ultimoAcertoArma && ultimoAcertoEscenario;
+		boolean acierto = comprobarSolucion(personaje, arma, escenario);
+
+		rondaActual++;
 
 		if (!acierto) {
-			restarPuntos(10);
-			rondaActual++;
+			restarPuntos(PENALIZACION_ERROR);
+		}
 
-			if (puntosActuales <= 0) {
-				resultado = ResultadoPartida.DERROTA;
-				finalizarPartida();
-			}
+		if (puntosActuales <= 0 || rondaActual >= nivel.getDificultad().getNumeroRondas()) {
+
+			resultado = ResultadoPartida.DERROTA;
+			finalizarPartida();
 		}
 
 		return acierto;
@@ -172,31 +185,45 @@ public class Partida {
 
 	public boolean realizarAcusacion(Personaje personaje, Arma arma, Escenario escenario) {
 
-		boolean acierto = nivel.personajeCorrecto(personaje) && nivel.armaCorrecta(arma)
-				&& nivel.escenarioCorrecto(escenario);
-
-		if (acierto) {
-			resultado = ResultadoPartida.VICTORIA;
-		} else {
-			resultado = ResultadoPartida.DERROTA;
+		if (estado == EstadoPartida.FINALIZADA) {
+			return false;
 		}
 
+		boolean acierto = comprobarSolucion(personaje, arma, escenario);
+
+		resultado = acierto ? ResultadoPartida.VICTORIA : ResultadoPartida.DERROTA;
+
 		finalizarPartida();
+
 		return acierto;
+	}
+
+	public boolean comprobarSolucion(Personaje p, Arma a, Escenario e) {
+		return nivel.personajeCorrecto(p) && nivel.armaCorrecta(a) && nivel.escenarioCorrecto(e);
 	}
 
 	public String solicitarPista() {
 
+		if (pistasRestantes <= 0 || estado == EstadoPartida.FINALIZADA) {
+			return null;
+		}
+
 		String pista = nivel.obtenerSiguientePista();
 
 		pistasRestantes--;
-		restarPuntos(10);
+		restarPuntos(PENALIZACION_PISTA);
 
 		return pista;
 	}
 
 	public void restarPuntos(int puntos) {
-		this.puntosActuales -= puntos;
+		this.puntosActuales = Math.max(0, this.puntosActuales - puntos);
+	}
+
+	private void resetearAciertos() {
+		this.ultimoAcertoPersonaje = false;
+		this.ultimoAcertoArma = false;
+		this.ultimoAcertoEscenario = false;
 	}
 
 	public void finalizarPartida() {

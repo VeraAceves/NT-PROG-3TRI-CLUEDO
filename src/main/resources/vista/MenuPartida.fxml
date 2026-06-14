@@ -6,131 +6,211 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Label?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-	prefWidth="600.0" xmlns="http://javafx.com/javafx/26"
-	xmlns:fx="http://javafx.com/fxml/1" stylesheets="@MenuPartida.css">
+<StackPane fx:id="raizMenuPartida" prefHeight="720.0"
+	prefWidth="1280.0" stylesheets="@MenuPartida.css"
+	xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controlador.MenuPartidaController">
+
 	<children>
-		<HBox alignment="CENTER" layoutX="103.0" layoutY="32.0"
-			prefHeight="31.0" prefWidth="394.0" spacing="20.0">
+
+		<ImageView fitHeight="${raizMenuPartida.height}"
+			fitWidth="${raizMenuPartida.width}" opacity="0.6" pickOnBounds="true"
+			preserveRatio="false">
+
+			<image>
+				<Image url="@recursos/imagenes/Piedra.jpg" />
+			</image>
+
+		</ImageView>
+
+		<VBox alignment="CENTER" spacing="35.0">
+
+			<padding>
+				<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+			</padding>
+
 			<children>
-				<Text strokeType="OUTSIDE" strokeWidth="0.0"
-					text="Nombre de usuario:" textAlignment="CENTER">
-					<font>
-						<Font name="Constantia" size="16.0" />
-					</font>
-				</Text>
-				<TextField prefHeight="26.0" prefWidth="191.0" />
-			</children>
-		</HBox>
-		<VBox layoutX="36.0" layoutY="88.0" prefHeight="247.0"
-			prefWidth="498.0" spacing="5.0">
-			<children>
-				<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Facil:">
-					<font>
-						<Font name="Constantia Italic" size="15.0" />
-					</font>
-				</Text>
-				<HBox prefHeight="98.0" prefWidth="512.0" spacing="40.0">
+
+				<!-- USUARIO -->
+				<HBox alignment="CENTER" spacing="20.0">
+					<Label fx:id="lblEstado" text="" />
+
 					<children>
-						<ImageView fitHeight="110.0" fitWidth="149.0"
-							pickOnBounds="true" preserveRatio="true">
-							<image>
-								<Image url="@../Recursos/imagenes/nivel%201.png" />
-							</image>
-						</ImageView>
-						<ImageView fitHeight="110.0" fitWidth="149.0"
-							pickOnBounds="true" preserveRatio="true">
-							<image>
-								<Image url="@../Recursos/imagenes/nivel%202.png" />
-							</image>
-						</ImageView>
-						<ImageView fitHeight="110.0" fitWidth="149.0"
-							pickOnBounds="true" preserveRatio="true">
-							<image>
-								<Image url="@../Recursos/imagenes/nivel%203.png" />
-							</image>
-						</ImageView>
+
+						<Text fx:id="t_nombreUsu" text="Nombre de usuario:">
+							<font>
+								<Font name="Constantia Bold" size="26.0" />
+							</font>
+						</Text>
+
+						<TextField fx:id="tf_nomUser" prefHeight="45.0"
+							prefWidth="320.0" style="-fx-font-size: 18px;" />
+
+						<Button fx:id="btnValidarJugador" text="VALIDAR"
+							onAction="#validarNombre" />
+
 					</children>
-					<VBox.margin>
-						<Insets />
-					</VBox.margin>
+
 				</HBox>
-				<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dificil:">
-					<VBox.margin>
-						<Insets top="20.0" />
-					</VBox.margin>
-					<font>
-						<Font name="Constantia Italic" size="16.0" />
-					</font>
-				</Text>
-				<HBox prefHeight="100.0" prefWidth="200.0" spacing="40.0">
+
+				<!-- NIVELES FÁCILES -->
+				<VBox alignment="CENTER_LEFT" spacing="10.0">
+
 					<children>
-						<ImageView fitHeight="110.0" fitWidth="149.0"
-							pickOnBounds="true" preserveRatio="true">
-							<image>
-								<Image url="@../Recursos/imagenes/nivel%204.png" />
-							</image>
-						</ImageView>
-						<ImageView fitHeight="110.0" fitWidth="149.0"
-							pickOnBounds="true" preserveRatio="true">
-							<image>
-								<Image url="@../Recursos/imagenes/nivel%205.png" />
-							</image>
-						</ImageView>
+
+						<Text fx:id="t_facil" text="Fácil:">
+							<font>
+								<Font name="Constantia Italic" size="30.0" />
+							</font>
+						</Text>
+
+						<HBox spacing="30.0">
+
+							<children>
+
+								<StackPane>
+
+									<children>
+
+										<ImageView fx:id="im_nivel1" fitHeight="210.0"
+											fitWidth="290.0" pickOnBounds="true" preserveRatio="false">
+											<image>
+												<Image url="@recursos/imagenes/nivel%201.png" />
+											</image>
+										</ImageView>
+
+										<Button fx:id="b_nivel1" text="Nivel 1"
+											onAction="#seleccionarNivel"
+											style="-fx-background-color: transparent;" prefHeight="210.0"
+											prefWidth="290.0" />
+
+									</children>
+
+								</StackPane>
+
+								<StackPane>
+
+									<children>
+
+										<ImageView fx:id="im_nivel2" fitHeight="210.0"
+											fitWidth="290.0" pickOnBounds="true" preserveRatio="false">
+											<image>
+												<Image url="@recursos/imagenes/nivel%202.png" />
+											</image>
+										</ImageView>
+
+										<Button fx:id="b_nivel2" text="Nivel 2"
+											onAction="#seleccionarNivel"
+											style="-fx-background-color: transparent;" prefHeight="210.0"
+											prefWidth="290.0" />
+
+									</children>
+
+								</StackPane>
+
+								<StackPane>
+
+									<children>
+
+										<ImageView fx:id="im_nivel3" fitHeight="210.0"
+											fitWidth="290.0" pickOnBounds="true" preserveRatio="false">
+											<image>
+												<Image url="@recursos/imagenes/nivel%203.png" />
+											</image>
+										</ImageView>
+
+										<Button fx:id="b_nivel3" text="Nivel 3"
+											onAction="#seleccionarNivel"
+											style="-fx-background-color: transparent;" prefHeight="210.0"
+											prefWidth="290.0" />
+
+									</children>
+
+								</StackPane>
+
+							</children>
+
+						</HBox>
+
+						<!-- DIFÍCIL -->
+						<Text fx:id="t_dificil" text="Difícil:">
+							<font>
+								<Font name="Constantia Italic" size="30.0" />
+							</font>
+						</Text>
+
+						<HBox spacing="30.0">
+
+							<children>
+
+								<StackPane>
+
+									<children>
+
+										<ImageView fx:id="im_nivel4" fitHeight="210.0"
+											fitWidth="290.0" pickOnBounds="true" preserveRatio="false">
+											<image>
+												<Image url="@recursos/imagenes/nivel%204.png" />
+											</image>
+										</ImageView>
+
+										<Button fx:id="b_nivel4" text="Nivel 4"
+											onAction="#seleccionarNivel"
+											style="-fx-background-color: transparent;" prefHeight="210.0"
+											prefWidth="290.0" />
+
+									</children>
+
+								</StackPane>
+
+								<StackPane>
+
+									<children>
+
+										<ImageView fx:id="im_nivel5" fitHeight="210.0"
+											fitWidth="290.0" pickOnBounds="true" preserveRatio="false">
+											<image>
+												<Image url="@recursos/imagenes/nivel%205.png" />
+											</image>
+										</ImageView>
+
+										<Button fx:id="b_nivel5" text="Nivel 5"
+											onAction="#seleccionarNivel"
+											style="-fx-background-color: transparent;" prefHeight="210.0"
+											prefWidth="290.0" />
+
+									</children>
+
+								</StackPane>
+
+							</children>
+
+						</HBox>
+
 					</children>
-				</HBox>
+
+				</VBox>
+
+				<!-- VOLVER -->
+				<Button fx:id="b_volver" text="VOLVER" onAction="#volverMenu"
+					prefHeight="55.0" prefWidth="158.0" textAlignment="RIGHT">
+
+					<font>
+						<Font name="Copperplate Gothic Bold" size="20.0" />
+					</font>
+
+				</Button>
+
 			</children>
+
 		</VBox>
-		<Button alignment="BOTTOM_LEFT" contentDisplay="TOP"
-			layoutX="36.0" layoutY="104.0" mnemonicParsing="false"
-			prefHeight="106.0" prefWidth="149.0"
-			style="-fx-background-color: transparent;" text="Nivel 1"
-			textFill="WHITE">
-			<font>
-				<Font name="Copperplate Gothic Bold" size="18.0" />
-			</font>
-		</Button>
-		<Button alignment="BOTTOM_LEFT" contentDisplay="TOP"
-			layoutX="226.0" layoutY="104.0" mnemonicParsing="false"
-			prefHeight="106.0" prefWidth="149.0"
-			style="-fx-background-color: transparent;" text="Nivel 2"
-			textFill="WHITE">
-			<font>
-				<Font name="Copperplate Gothic Bold" size="18.0" />
-			</font>
-		</Button>
-		<Button alignment="BOTTOM_LEFT" contentDisplay="TOP"
-			layoutX="36.0" layoutY="261.0" mnemonicParsing="false"
-			prefHeight="106.0" prefWidth="149.0"
-			style="-fx-background-color: transparent;" text="Nivel 4"
-			textFill="WHITE">
-			<font>
-				<Font name="Copperplate Gothic Bold" size="18.0" />
-			</font>
-		</Button>
-		<Button alignment="BOTTOM_LEFT" contentDisplay="TOP"
-			layoutX="226.0" layoutY="261.0" mnemonicParsing="false"
-			prefHeight="106.0" prefWidth="149.0"
-			style="-fx-background-color: transparent;" text="Nivel 5"
-			textFill="WHITE">
-			<font>
-				<Font name="Copperplate Gothic Bold" size="18.0" />
-			</font>
-		</Button>
-		<Button alignment="BOTTOM_LEFT" contentDisplay="TOP"
-			layoutX="415.0" layoutY="104.0" mnemonicParsing="false"
-			prefHeight="106.0" prefWidth="149.0"
-			style="-fx-background-color: transparent;" text="Nivel 3"
-			textFill="WHITE">
-			<font>
-				<Font name="Copperplate Gothic Bold" size="18.0" />
-			</font>
-		</Button>
+
 	</children>
-</Pane>
+
+</StackPane>

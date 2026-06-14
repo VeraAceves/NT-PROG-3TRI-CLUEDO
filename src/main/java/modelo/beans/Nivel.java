@@ -15,6 +15,9 @@ public class Nivel {
 	private String descripcion;
 	private List<String> pistas;
 	private int pistaActual;
+	private List<Personaje> personajes;
+	private List<Arma> armas;
+	private List<Escenario> escenarios;
 
 	// Constructores
 	public Nivel() {
@@ -87,6 +90,38 @@ public class Nivel {
 		this.pistas = pistas;
 	}
 
+	public int getPistaActual() {
+		return pistaActual;
+	}
+
+	public void setPistaActual(int pistaActual) {
+		this.pistaActual = pistaActual;
+	}
+
+	public List<Personaje> getPersonajes() {
+		return personajes;
+	}
+
+	public void setPersonajes(List<Personaje> personajes) {
+		this.personajes = personajes;
+	}
+
+	public List<Arma> getArmas() {
+		return armas;
+	}
+
+	public void setArmas(List<Arma> armas) {
+		this.armas = armas;
+	}
+
+	public List<Escenario> getEscenarios() {
+		return escenarios;
+	}
+
+	public void setEscenarios(List<Escenario> escenarios) {
+		this.escenarios = escenarios;
+	}
+
 	// toString
 	@Override
 	public String toString() {
@@ -111,11 +146,11 @@ public class Nivel {
 	public String obtenerSiguientePista() {
 
 		if (pistas.isEmpty()) {
-			throw new IllegalStateException("No hay pistas en este nivel.");
+			return null;
 		}
 
 		if (pistaActual >= pistas.size()) {
-			throw new IndexOutOfBoundsException("No quedan más pistas.");
+			return null;
 		}
 
 		return pistas.get(pistaActual++);

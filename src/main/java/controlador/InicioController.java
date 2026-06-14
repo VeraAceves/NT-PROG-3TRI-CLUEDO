@@ -5,6 +5,9 @@ import aplicacion.Main;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import modelo.Juego;
 import modelo.beans.Partida;
 
@@ -18,7 +21,11 @@ public class InicioController {
 	@FXML
 	private Button btnSalir;
 
-	private PartidaDAO partidaDAO = new PartidaDAO();
+	@FXML
+	private ImageView imagenFondo;
+
+	@FXML
+	private StackPane raizMenu;
 
 	@FXML
 	private void initialize() {
@@ -35,10 +42,11 @@ public class InicioController {
 
 		try {
 
-			Partida partida = partidaDAO.obtenerUltimaPartida();
+			Partida partida = Main.getPartidaDAO().obtenerUltimaPartida();
 
 			if (partida == null) {
-				System.out.println("No existe ninguna partida guardada");
+				btnCargar.setText("No hay partidas guardadas");
+				btnCargar.setDisable(true);
 				return;
 			}
 

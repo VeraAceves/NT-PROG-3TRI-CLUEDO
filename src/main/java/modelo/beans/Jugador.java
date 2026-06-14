@@ -9,6 +9,10 @@ public class Jugador {
 	// Constructores
 	public Jugador() {
 	}
+	
+	public Jugador(String nombre) {
+	    this.nombre = nombre;
+	}
 
 	public Jugador(String idJugador, String nombre) {
 		this.idJugador = idJugador;
