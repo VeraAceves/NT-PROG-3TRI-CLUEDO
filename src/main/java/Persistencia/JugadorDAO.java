@@ -58,5 +58,11 @@ public class JugadorDAO {
         
         System.out.println("No se encontró ningún jugador con el ID proporcionado.");
         return null;
+        
     }
+//Metodo nuevo!!!
+    
+    public boolean existeJugador(String nombre) {
+        return coleccion.find(Filters.eq("nombre", nombre)).first() != null;
+}
 }

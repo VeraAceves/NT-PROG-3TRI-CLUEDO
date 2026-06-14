@@ -12,7 +12,7 @@ public class Conexion {
     private static MongoDatabase database = null;
     
     
-    private static final String url = "brukcueto_db_user:1234@cluster0.npiuhb0.mongodb.net/?appName=Cluster0";
+    private static final String url = "mongodb+srv://brukcueto_db_user:1234@cluster0.npiuhb0.mongodb.net/?appName=Cluster0";
     private static final String nombreDataBase = "CluedoFx";
 
     // Constructor 

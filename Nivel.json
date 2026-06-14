@@ -1,0 +1,126 @@
+[
+  {
+    "idNivel": "NIVEL_01",
+    "dificultad": "FACIL",
+    "asesino": {
+      "idPersonaje": "P_ENANA",
+      "nombre": "Enana",
+      "descripcion": "Una robusta guerrera de las profundidades."
+    },
+    "escenarioCrimen": {
+      "idEscenario": "E_ARCHIVO",
+      "nombre": "Archivo",
+      "descripcion": "Lugar donde se guardan los tratados y documentos históricos."
+    },
+    "armaCrimen": {
+      "idArma": "A_CANDELABRO",
+      "nombre": "Candelabro",
+      "descripcion": "Un pesado candelabro de bronce macizo."
+    },
+    "descripcion": "Alrededor de las seis de la mañana, las primeras luces del alba atravesaban los vitrales del castillo mientras el servicio despertaba. Cuando el Intendente Valerius Vane flotó hacia el vestíbulo principal, divisó una silueta inmóvil junto a los pilares perteneciente a Grom el Limpiador. Barnaby el Monje afirmó haber visto al orco con vida la noche anterior barriendo esa misma estancia.",
+    "pistas": [
+      "Al examinar el cuerpo de Grom con los conocimientos forenses de Beatrice, se determina que el orco no presenta heridas abiertas ni marcas de estocadas, pero sí un severo traumatismo en la base del cráneo provocado por un objeto romo de gran densidad.",
+      "Cerca de la escena donde se cometió el crimen, Beatrice encuentra y recoge un largo cabello brillante que destaca sobre la piedra. Tras analizarlo bajo la luz, se confirma que es de un color rubio natural impecable.",
+      "Al examinar los registros de la guardia sobre los movimientos nocturnos, se confirma que el agresor nunca llegó a cruzar las puertas hacia el primer piso ni los jardines exteriores."
+    ],
+    "pistaActual": 0
+  },
+  {
+    "idNivel": "NIVEL_02",
+    "dificultad": "FACIL",
+    "asesino": {
+      "idPersonaje": "P_MAGO",
+      "nombre": "Mago",
+      "descripcion": "Un erudito de las artes arcanas con un pasado misterioso."
+    },
+    "escenarioCrimen": {
+      "idEscenario": "E_FORJA",
+      "nombre": "Forja",
+      "descripcion": "La ardiente sala donde se reparan las armas de la guardia."
+    },
+    "armaCrimen": {
+      "idArma": "A_CALIZ",
+      "nombre": "Cáliz",
+      "descripcion": "Un cáliz ceremonial que alguna vez contuvo vino, y ahora algo peor."
+    },
+    "descripcion": "A las 8 es la hora de cambio de turno de los caballeros, y fue a esa hora que la capitana Freya encontró a la siguiente víctima. Al volver de su puesto en las almenas, la capitana divisó una silueta sobre el césped: era el cuerpo de Zephyr, el elfo alado encargado del correo real. Janus la Custodia dijo que las puertas principales no se habían vuelto a abrir.",
+    "pistas": [
+      "A pesar de que el cuerpo de Zephyr fue hallado a la intemperie, Beatrice nota que sus labios muestran un leve tinte violáceo y sus ojos están dilatados, síntomas inequívocos de una alteración química.",
+      "Al inspeccionar con lupa la ropa de Zephyr, se encuentra una fibra capilar de un tono castaño oscuro y apagada sobre la solapa de su ropa.",
+      "Revisando los diferentes pasillos del castillo se encuentran marcas de arrastre que ascienden del sótano, en donde solo están la estancia de la despensa y la forja."
+    ],
+    "pistaActual": 0
+  },
+  {
+    "idNivel": "NIVEL_03",
+    "dificultad": "FACIL",
+    "asesino": {
+      "idPersonaje": "P_NINFA",
+      "nombre": "Ninfa",
+      "descripcion": "Un espíritu ligado a la naturaleza y a las corrientes de agua."
+    },
+    "escenarioCrimen": {
+      "idEscenario": "E_INVERNADERO",
+      "nombre": "Invernadero",
+      "descripcion": "Un refugio de cristal repleto de flora exótica y mágica."
+    },
+    "armaCrimen": {
+      "idArma": "A_ATIZADOR",
+      "nombre": "Atizador",
+      "descripcion": "Una barra de hierro forjado usada habitualmente para remover las brasas."
+    },
+    "descripcion": "Sobre las 11 de la mañana, Saphara, la dríade del Gran Patio, descubrió el siguiente asesinato. Se disponía a comprobar el estado del roble milenario cuando divisó una silueta dentro de una de las fuentes de lágrimas del jardín. Era el cuerpo de Lord Cassian. Saphara aseguraba ser la única que estuvo en el patio toda la mañana.",
+    "pistas": [
+        "AÚN NO TENEMOS PISTAS"
+    ],
+    "pistaActual": 0
+  },
+  {
+    "idNivel": "NIVEL_04",
+    "dificultad": "DIFICIL",
+    "asesino": {
+      "idPersonaje": "P_ELFO",
+      "nombre": "Elfo",
+      "descripcion": "Un ágil habitante de los bosques de la alta corte."
+    },
+    "escenarioCrimen": {
+      "idEscenario": "E_DESPENSA",
+      "nombre": "Despensa",
+      "descripcion": "Lugar fresco en el sótano donde se almacenan víveres y especias."
+    },
+    "armaCrimen": {
+      "idArma": "A_LOTO_NEGRO",
+      "nombre": "Loto negro",
+      "descripcion": "Una flor extremadamente tóxica cuyo polen es letal."
+    },
+    "descripcion": "A las 4 de la tarde los caballeros se disponían a empezar con su entrenamiento. Cuando Elián el escudero fue a buscar el equipo de práctica al almacén se encontró el cuerpo de Faelar, el misterioso mercader. Sir Tristán mandó a buscar por la zona, pero los caballeros no encontraron nada ni a nadie cerca de la escena.",
+    "pistas": [
+      "AÚN NO TENEMOS PISTAS"
+    ],
+    "pistaActual": 0
+  },
+  {
+    "idNivel": "NIVEL_05",
+    "dificultad": "DIFICIL",
+    "asesino": {
+      "idPersonaje": "P_HADA",
+      "nombre": "Hada",
+      "descripcion": "Una criatura alada de pequeño tamaño pero con un gran poder mágico."
+    },
+    "escenarioCrimen": {
+      "idEscenario": "E_DORMITORIO",
+      "nombre": "Dormitorio",
+      "descripcion": "Las estancias de descanso en la zona superior del castillo."
+    },
+    "armaCrimen": {
+      "idArma": "A_BACULO",
+      "nombre": "Báculo",
+      "descripcion": "Un pesado bastón de madera imbuido con cristales arcanos."
+    },
+    "descripcion": "Hacia las 7 de la tarde se estaba preparando el catering de la cena. Pip el Pinche se encontró a Maese Robert, jefe de cocina, tendido al final de las escaleras que daban al sótano, como si lo hubiesen lanzado desde el primer peldaño. Nadie vio a Maese Robert pasar por ahí, pero sí escucharon un fuerte estruendo.",
+    "pistas": [
+    "AÚN NO TENEMOS PISTAS"
+    ],
+    "pistaActual": 0
+  }
+]

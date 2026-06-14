@@ -129,4 +129,14 @@ public class PartidaDAO {
 
         return partida;
     }
+      //MEtodo nuevooo!!!!
+    	public Partida obtenerUltimaPartida() {
+
+    		Document doc = coleccion.find().sort(new Document("_id", -1)).first();
+
+    		if (doc == null)
+    			return null;
+
+    		return mapearDocumentoAPartida(doc);
+    }
 }

@@ -5,6 +5,8 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.UpdateOptions;
 import org.bson.Document;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import beans.Nivel;
@@ -138,5 +140,42 @@ public class NivelDAO {
         );
         
         System.out.println("Nivel guardado correctamente.");
+    }
+        
+     // MEtodos nuevo!!!
+    	public List<Nivel> obtenerTodosLosNiveles() {
+
+    		List<Nivel> lista = new ArrayList<>();
+
+    		for (Document doc : coleccion.find()) {
+
+    			lista.add(obtenerNivelPorId(doc.getString("idNivel")));
+    		}
+
+    		return lista;
+    	}
+
+    	public String obtenerCronicaCompleta(String idNivel) {
+
+    		Document doc = coleccion.find(Filters.eq("idNivel", idNivel)).first();
+
+    		if (doc == null) {
+    			return "No hay crónica disponible.";
+    		}
+
+    		String descripcion = doc.getString("descripcion");
+    		List<String> pistas = doc.getList("pistas", String.class);
+
+    		StringBuilder cronica = new StringBuilder();
+
+    		cronica.append(descripcion != null ? descripcion : "").append("\n\n");
+
+    		if (pistas != null) {
+    			for (String pista : pistas) {
+    				cronica.append("- ").append(pista).append("\n");
+    			}
+    		}
+
+    		return cronica.toString();
     }
 }
