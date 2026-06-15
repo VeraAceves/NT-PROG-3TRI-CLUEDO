@@ -56,6 +56,23 @@ El proyecto sigue una estructura tipo MVC:
 ---
 
 ## Ejecución del proyecto
+## Tabla de pruebas
+| ID   | Módulo       | Caso de prueba           | Entrada                                       | Resultado esperado                             | Resultado obtenido |
+| ---- | ------------ | ------------------------ | --------------------------------------------- | ---------------------------------------------- | ------------------ |
+| TP01 | Inicio       | Crear nueva partida      | Nombre de jugador válido + nivel seleccionado | Se crea partida y se abre la pantalla de juego | Correcto           | 
+| TP02 | Inicio       | Nombre vacío             | "" (vacío)                                    | Mensaje de error “Debes introducir un nombre”  | Correcto           | 
+| TP03 | Inicio       | Nombre inválido          | "   "                                         | Mensaje de error de validación                 | Correcto           | 
+| TP04 | Partida      | Interrogar sin selección | null/null/null                                | No permite acción                              | Correcto           | 
+| TP05 | Partida      | Interrogar correcto      | Personaje + arma + escenario                  | Avanza ronda y actualiza puntos                | Correcto           |
+| TP06 | Partida      | Interrogar incorrecto    | combinación incorrecta                        | Resta puntos y avanza ronda                    | Correcto           | 
+| TP07 | Partida      | Solicitar pista          | índice válido                                 | Muestra pista y resta puntos                   | Correcto           | 
+| TP08 | Partida      | Solicitar pista repetida | misma pista dos veces                         | No permite repetir pista                       | Correcto           | 
+| TP09 | Partida      | Acusar correcto          | combinación correcta                          | Finaliza partida con VICTORIA                  | Correcto           | 
+| TP10 | Partida      | Acusar incorrecto        | combinación incorrecta                        | Finaliza partida con DERROTA                   | Correcto           | 
+| TP11 | Persistencia | Guardar partida          | partida en curso                              | Se guarda en base de datos                     | Correcto           | 
+| TP12 | Persistencia | Cargar partida           | última partida guardada                       | Se carga correctamente                         | Correcto           |
+| TP13 | UI           | Cambiar escena           | navegación menú → partida                     | Cambia escena sin errores                      | Correcto           | 
+| TP14 | Final        | Mostrar resultado        | partida finalizada                            | Muestra victoria/derrota                       | Correcto           | 
 
 ### Requisitos
 - JDK 17 o superior
