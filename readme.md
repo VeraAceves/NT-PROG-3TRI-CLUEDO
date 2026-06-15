@@ -1,7 +1,7 @@
 # Cluedo Fantasy
 
 Cluedo Fantasy es un videojuego tipo aventura/investigación desarrollado en JavaFX, donde el jugador debe resolver un asesinato dentro del Castillo de Valenwood interrogando personajes, analizando pistas y realizando acusaciones.
-
+Repositorio en github: https://github.com/VeraAceves/NT-PROG-3TRI-CLUEDO
 ---
 
 ## Características principales
