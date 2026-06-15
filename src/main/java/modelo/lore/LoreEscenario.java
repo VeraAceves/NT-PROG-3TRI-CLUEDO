@@ -2,11 +2,17 @@ package modelo.lore;
 
 import java.util.Map;
 
+/**
+ * Contiene la información narrativa (lore) asociada a los escenarios del juego.
+ */
 public class LoreEscenario {
 
 	private final String nombre;
 	private final String descripcion;
 
+	/**
+	 * Constructor del lore de un escenario.
+	 */
 	public LoreEscenario(String nombre, String descripcion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -20,6 +26,9 @@ public class LoreEscenario {
 		return descripcion;
 	}
 
+	/**
+	 * Mapa estático que asocia el nombre del escenario con su lore.
+	 */
 	private static final Map<String, LoreEscenario> LORE = Map.of(
 
 			"Dormitorio Principal",
@@ -54,6 +63,9 @@ public class LoreEscenario {
 					"Invernadero cubierto de niebla húmeda ideal para botánica mágica. "
 							+ "El suelo está lleno de macetas exóticas y jaulas con raíces vivas."));
 
+	/**
+	 * Devuelve el lore asociado a un escenario por su nombre.
+	 */
 	public static LoreEscenario get(String nombre) {
 		return LORE.get(nombre);
 	}

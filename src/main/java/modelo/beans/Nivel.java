@@ -5,6 +5,11 @@ import java.util.List;
 
 import modelo.enums.Dificultad;
 
+/**
+ * Representa un nivel del juego. Contiene la solución del caso (asesino, arma y
+ * escenario), así como la lista de pistas y los elementos disponibles en el
+ * nivel.
+ */
 public class Nivel {
 
 	// Atributos
@@ -21,13 +26,20 @@ public class Nivel {
 	private List<Escenario> escenarios;
 
 	// Constructores
+
+	/**
+	 * Constructor vacío. Inicializa las listas para evitar NullPointerException.
+	 */
 	public Nivel() {
-	    this.personajes = new ArrayList<>();
-	    this.armas = new ArrayList<>();
-	    this.escenarios = new ArrayList<>();
-	    this.pistas = new ArrayList<>();
+		this.personajes = new ArrayList<>();
+		this.armas = new ArrayList<>();
+		this.escenarios = new ArrayList<>();
+		this.pistas = new ArrayList<>();
 	}
 
+	/**
+	 * Constructor con datos básicos del nivel.
+	 */
 	public Nivel(String idNivel, Dificultad dificultad, Personaje asesino, Escenario escenarioCrimen, Arma armaCrimen,
 			String descripcion, List<String> pistas, int pistaActual) {
 
@@ -41,6 +53,9 @@ public class Nivel {
 		this.pistaActual = pistaActual;
 	}
 
+	/**
+	 * Constructor completo con todos los elementos del nivel.
+	 */
 	public Nivel(String idNivel, Dificultad dificultad, Personaje asesino, Escenario escenarioCrimen, Arma armaCrimen,
 			String descripcion, List<String> pistas, int pistaActual, List<Personaje> personajes, List<Arma> armas,
 			List<Escenario> escenarios) {
@@ -145,7 +160,9 @@ public class Nivel {
 		this.escenarios = escenarios;
 	}
 
-	// toString
+	/**
+	 * Representación textual del nivel.
+	 */
 	@Override
 	public String toString() {
 		return "Nivel \nIdNivel: " + idNivel + "\nDificultad: " + dificultad + "\nAsesino: " + asesino
@@ -154,18 +171,31 @@ public class Nivel {
 	}
 
 	// Métodos propios
+
+	/**
+	 * Comprueba si el personaje es el asesino del nivel.
+	 */
 	public boolean personajeCorrecto(Personaje personaje) {
 		return asesino.getIdPersonaje().equals(personaje.getIdPersonaje());
 	}
 
+	/**
+	 * Comprueba si el arma es la correcta del nivel.
+	 */
 	public boolean armaCorrecta(Arma arma) {
 		return armaCrimen.getIdArma().equals(arma.getIdArma());
 	}
 
+	/**
+	 * Comprueba si el escenario es el correcto del nivel.
+	 */
 	public boolean escenarioCorrecto(Escenario escenario) {
 		return escenarioCrimen.getIdEscenario().equals(escenario.getIdEscenario());
 	}
 
+	/**
+	 * Devuelve la siguiente pista disponible.
+	 */
 	public String obtenerSiguientePista() {
 
 		if (pistas.isEmpty()) {
@@ -179,8 +209,10 @@ public class Nivel {
 		return pistas.get(pistaActual++);
 	}
 
+	/**
+	 * Devuelve el número total de pistas del nivel.
+	 */
 	public int getNumeroPistas() {
 		return pistas.size();
 	}
-
 }

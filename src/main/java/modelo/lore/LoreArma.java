@@ -2,11 +2,17 @@ package modelo.lore;
 
 import java.util.Map;
 
+/**
+ * Contiene la información narrativa (lore) asociada a las armas del juego.
+ */
 public class LoreArma {
 
 	private final String nombre;
 	private final String descripcion;
 
+	/**
+	 * Constructor del lore de un arma.
+	 */
 	public LoreArma(String nombre, String descripcion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -20,6 +26,9 @@ public class LoreArma {
 		return descripcion;
 	}
 
+	/**
+	 * Mapa estático que asocia el nombre del arma con su lore.
+	 */
 	private static final Map<String, LoreArma> LORE = Map.of(
 
 			"Candelabro de oro élfico",
@@ -55,6 +64,9 @@ public class LoreArma {
 					"Copa real de plata con un interior tratado con metal alquímico. Este revestimiento místico tiene la propiedad de alterar cualquier sustancia vertida en ella "
 							+ "según los deseos de su portador, transformando un brindis común en una trampa indetectable y de efectos fulminantes."));
 
+	/**
+	 * Devuelve el lore asociado a un arma por su nombre.
+	 */
 	public static LoreArma get(String nombre) {
 		return LORE.get(nombre);
 	}

@@ -3,6 +3,10 @@ package modelo.beans;
 import modelo.enums.EstadoPartida;
 import modelo.enums.ResultadoPartida;
 
+/**
+ * Representa una partida del juego. Gestiona el estado de la partida,
+ * puntuación, rondas, pistas y lógica básica de victoria/derrota.
+ */
 public class Partida {
 
 	// Atributos
@@ -18,13 +22,25 @@ public class Partida {
 	private boolean ultimoAcertoArma;
 	private boolean ultimoAcertoEscenario;
 	private boolean[] pistasSolicitadas;
+
 	private static final int PENALIZACION_ERROR = 10;
 	private static final int PENALIZACION_PISTA = 10;
 
 	// Constructores
+
+	/**
+	 * Constructor vacío.
+	 */
 	public Partida() {
 	}
 
+	/**
+	 * Constructor con ID, jugador y nivel.
+	 *
+	 * @param idPartida identificador de la partida
+	 * @param jugador   jugador asociado
+	 * @param nivel     nivel de la partida
+	 */
 	public Partida(String idPartida, Jugador jugador, Nivel nivel) {
 		this.idPartida = java.util.UUID.randomUUID().toString();
 		this.jugador = jugador;
@@ -36,6 +52,12 @@ public class Partida {
 		this.resultado = null;
 	}
 
+	/**
+	 * Constructor con jugador y nivel.
+	 *
+	 * @param jugador jugador de la partida
+	 * @param nivel   nivel de la partida
+	 */
 	public Partida(Jugador jugador, Nivel nivel) {
 		this.jugador = jugador;
 		this.nivel = nivel;
@@ -47,6 +69,10 @@ public class Partida {
 	}
 
 	// Getters y setters
+
+	/**
+	 * Devuelve el identificador de la partida.
+	 */
 	public String getIdPartida() {
 		return idPartida;
 	}
@@ -143,7 +169,9 @@ public class Partida {
 		this.ultimoAcertoEscenario = ultimoAcertoEscenario;
 	}
 
-	// toString
+	/**
+	 * Representación textual de la partida.
+	 */
 	@Override
 	public String toString() {
 		return "Partida \nId: " + idPartida + "\nJugador: " + jugador + "\nNivel: " + nivel + "\nRonda actual: "
@@ -152,6 +180,10 @@ public class Partida {
 	}
 
 	// Métodos propios
+
+	/**
+	 * Inicializa la partida reiniciando valores.
+	 */
 	public void iniciarPartida() {
 		this.rondaActual = 1;
 		this.estado = EstadoPartida.EN_CURSO;
@@ -162,6 +194,9 @@ public class Partida {
 		resetearAciertos();
 	}
 
+	/**
+	 * Realiza un interrogatorio al jugador.
+	 */
 	public boolean realizarInterrogatorio(Personaje personaje, Arma arma, Escenario escenario) {
 
 		if (estado == EstadoPartida.FINALIZADA) {
@@ -188,6 +223,9 @@ public class Partida {
 		return acierto;
 	}
 
+	/**
+	 * Realiza una acusación final.
+	 */
 	public boolean realizarAcusacion(Personaje personaje, Arma arma, Escenario escenario) {
 
 		if (estado == EstadoPartida.FINALIZADA) {
@@ -203,24 +241,35 @@ public class Partida {
 		return acierto;
 	}
 
+	/**
+	 * Comprueba si la solución es correcta.
+	 */
 	public boolean comprobarSolucion(Personaje p, Arma a, Escenario e) {
 		return nivel.personajeCorrecto(p) && nivel.armaCorrecta(a) && nivel.escenarioCorrecto(e);
 	}
 
+	/**
+	 * Solicita una pista del nivel.
+	 */
 	public String solicitarPista(int indice) {
+
 		if (estado == EstadoPartida.FINALIZADA) {
 			return null;
 		}
+
 		if (indice < 0 || indice >= nivel.getNumeroPistas()) {
 			return null;
 		}
+
 		if (pistasSolicitadas[indice]) {
 			return null;
 		}
+
 		String pista = nivel.getPistas().get(indice);
 		pistasSolicitadas[indice] = true;
 		pistasRestantes--;
 		restarPuntos(PENALIZACION_PISTA);
+
 		return pista;
 	}
 
@@ -229,16 +278,25 @@ public class Partida {
 				&& pistasSolicitadas[indice];
 	}
 
+	/**
+	 * Reduce la puntuación de la partida.
+	 */
 	public void restarPuntos(int puntos) {
 		this.puntosActuales = Math.max(0, this.puntosActuales - puntos);
 	}
 
+	/**
+	 * Reinicia los aciertos del último turno.
+	 */
 	private void resetearAciertos() {
 		this.ultimoAcertoPersonaje = false;
 		this.ultimoAcertoArma = false;
 		this.ultimoAcertoEscenario = false;
 	}
 
+	/**
+	 * Finaliza la partida.
+	 */
 	public void finalizarPartida() {
 		this.estado = EstadoPartida.FINALIZADA;
 	}

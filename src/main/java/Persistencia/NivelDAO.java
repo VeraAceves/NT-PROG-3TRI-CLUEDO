@@ -14,15 +14,30 @@ import com.mongodb.client.model.UpdateOptions;
 import modelo.beans.*;
 import modelo.enums.*;
 
+/**
+ * Carga la solución del caso, las pistas y la historia introductoria desde la
+ * colección "Nivel".
+ */
 public class NivelDAO {
 
 	private final MongoCollection<Document> coleccion;
 
+	/**
+	 * Constructor que enlaza con la colección "Nivel" de la base de datos.
+	 */
 	public NivelDAO() {
 		MongoDatabase db = Conexion.getDatabase();
 		this.coleccion = db.getCollection("Nivel");
 	}
 
+	/**
+	 * Rescata toda la configuración de un nivel (incluyendo los subdocumentos de la
+	 * solución) y reconstruye el objeto Java complejo. * @param idNivel El código
+	 * del nivel a cargar (ej. "NIVEL_01").
+	 * 
+	 * @return El objeto Nivel preparado para iniciar una partida, o null si no se
+	 *         encuentra.
+	 */
 	public Nivel obtenerNivelPorId(String idNivel) {
 
 		Document doc = coleccion.find(Filters.eq("idNivel", idNivel)).first();
@@ -31,9 +46,6 @@ public class NivelDAO {
 			return null;
 		}
 
-		// =========================
-		// SOLUCIÓN (asesino/arma/escenario)
-		// =========================
 		Document docAsesino = doc.get("asesino", Document.class);
 		Document docEscenario = doc.get("escenarioCrimen", Document.class);
 		Document docArma = doc.get("armaCrimen", Document.class);
@@ -52,23 +64,16 @@ public class NivelDAO {
 				? new Arma(docArma.getString("idArma"), docArma.getString("nombre"), docArma.getString("descripcion"))
 				: null;
 
-		// =========================
-		// ENUM
-		// =========================
 		Dificultad dificultad = null;
 		String dif = doc.getString("dificultad");
 		if (dif != null) {
 			dificultad = Dificultad.valueOf(dif);
 		}
 
-		// =========================
-		// LISTAS SEGURAS (NUNCA NULL)
-		// =========================
 		List<String> pistas = doc.getList("pistas", String.class);
 		if (pistas == null)
 			pistas = new ArrayList<>();
 
-		// personajes jugables
 		List<Personaje> personajes = new ArrayList<>();
 		List<Document> docsPersonajes = doc.getList("personajes", Document.class);
 		if (docsPersonajes != null) {
@@ -78,7 +83,6 @@ public class NivelDAO {
 			}
 		}
 
-		// armas jugables
 		List<Arma> armas = new ArrayList<>();
 		List<Document> docsArmas = doc.getList("armas", Document.class);
 		if (docsArmas != null) {
@@ -87,7 +91,6 @@ public class NivelDAO {
 			}
 		}
 
-		// escenarios jugables
 		List<Escenario> escenarios = new ArrayList<>();
 		List<Document> docsEscenarios = doc.getList("escenarios", Document.class);
 		if (docsEscenarios != null) {
@@ -97,20 +100,19 @@ public class NivelDAO {
 			}
 		}
 
-		// =========================
-		// pista actual segura
-		// =========================
 		int pistaActual = doc.getInteger("pistaActual", 0);
 
-		// =========================
-		// NUNCA devolver listas null
-		// =========================
 		Nivel nivel = new Nivel(doc.getString("idNivel"), dificultad, asesino, escenario, arma,
 				doc.getString("descripcion"), pistas, pistaActual, personajes, armas, escenarios);
 
 		return nivel;
 	}
 
+	/**
+	 * Inserta un nuevo nivel o actualiza uno existente en la base de datos.
+	 * Convierte los objetos Java de la solución en subdocumentos BSON. * @param
+	 * nivel El objeto Nivel que se desea persistir en MongoDB.
+	 */
 	public void guardarNivel(Nivel nivel) {
 
 		if (nivel.getIdNivel() == null || nivel.getIdNivel().isEmpty()) {
@@ -149,6 +151,10 @@ public class NivelDAO {
 				new UpdateOptions().upsert(true));
 	}
 
+	/**
+	 * Obtiene una lista con todos los niveles disponibles en el juego. * @return
+	 * Una lista (List) de objetos Nivel.
+	 */
 	public List<Nivel> obtenerTodosLosNiveles() {
 
 		List<Nivel> lista = new ArrayList<>();
@@ -163,6 +169,14 @@ public class NivelDAO {
 		return lista;
 	}
 
+	/**
+	 * Genera un texto con la descripción introductoria del nivel y todas sus
+	 * pistas. Útil para mostrar un resumen al jugador. * @param idNivel El código
+	 * del nivel a consultar.
+	 * 
+	 * @return Un String formateado con la historia y la lista de pistas, o un
+	 *         mensaje de error si no existe.
+	 */
 	public String obtenerCronicaCompleta(String idNivel) {
 
 		Document doc = coleccion.find(Filters.eq("idNivel", idNivel)).first();

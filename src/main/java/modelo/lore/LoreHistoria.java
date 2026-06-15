@@ -1,5 +1,8 @@
 package modelo.lore;
 
+/**
+ * Contiene la narrativa general del juego.
+ */
 public class LoreHistoria {
 
 	private static final String TEXTO = "El Castillo de Valenwood, un santuario neutral conocido en todas las tierras como \"La Mesa del Bosque\", "
@@ -8,6 +11,9 @@ public class LoreHistoria {
 			+ "Sin embargo, al despuntar el alba comenzó la tragedia. Una serie de asesinatos empezaron a suceder dentro del castillo...\n\n"
 			+ "La Dama Beatrice deberá resolver el misterio antes de que ocurra una nueva desgracia.";
 
+	/**
+	 * Devuelve la historia principal del juego.
+	 */
 	public static String get() {
 		return TEXTO;
 	}

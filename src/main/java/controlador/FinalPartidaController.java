@@ -17,6 +17,11 @@ import javafx.scene.layout.VBox;
 import modelo.Juego;
 import modelo.beans.Partida;
 
+/**
+ * Controlador de la pantalla final de partida. Muestra el resultado de la
+ * partida actual, el historial de partidas del jugador y la historia asociada
+ * al nivel.
+ */
 public class FinalPartidaController {
 
 	@FXML
@@ -48,6 +53,7 @@ public class FinalPartidaController {
 
 	@FXML
 	private Button b_historia;
+
 	@FXML
 	private Label lblResultado;
 
@@ -57,6 +63,10 @@ public class FinalPartidaController {
 
 	private ObservableList<Partida> datosTabla = FXCollections.observableArrayList();
 
+	/**
+	 * Inicializa los componentes de la vista. Configura las columnas de la tabla y
+	 * oculta el panel de historia.
+	 */
 	@FXML
 	private void initialize() {
 
@@ -69,6 +79,9 @@ public class FinalPartidaController {
 		configurarColumnas();
 	}
 
+	/**
+	 * Carga los datos de la partida actual y el historial del jugador.
+	 */
 	public void cargarDatos() {
 
 		Juego juego = Main.getJuego();
@@ -91,6 +104,9 @@ public class FinalPartidaController {
 		cargarResultado();
 	}
 
+	/**
+	 * Muestra el resultado de la partida actual.
+	 */
 	private void cargarResultado() {
 
 		Juego juego = Main.getJuego();
@@ -105,6 +121,9 @@ public class FinalPartidaController {
 		lblResultado.setText(p.getResultado() != null ? p.getResultado().toString() : "EN_CURSO");
 	}
 
+	/**
+	 * Configura las columnas de la tabla de historial.
+	 */
 	private void configurarColumnas() {
 
 		colUsuario.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(
@@ -120,6 +139,9 @@ public class FinalPartidaController {
 				data.getValue().getNivel() != null ? data.getValue().getNivel().getIdNivel() : "-"));
 	}
 
+	/**
+	 * Muestra la historia correspondiente al nivel jugado.
+	 */
 	@FXML
 	private void mostrarHistoria() {
 
@@ -153,12 +175,18 @@ public class FinalPartidaController {
 		}
 	}
 
+	/**
+	 * Oculta el panel de historia.
+	 */
 	@FXML
 	private void cerrarHistoria() {
 		pnlHistoria.setVisible(false);
 		pnlHistoria.setManaged(false);
 	}
 
+	/**
+	 * Regresa a la pantalla inicial de la aplicación.
+	 */
 	@FXML
 	private void volverMenu() {
 		Main.mostrarInicio();

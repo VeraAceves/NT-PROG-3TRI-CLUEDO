@@ -12,6 +12,10 @@ import modelo.Juego;
 import modelo.beans.Jugador;
 import modelo.beans.Nivel;
 
+/**
+ * Controlador de la pantalla de creación de partida. Permite validar y guardar
+ * un jugador, seleccionar un nivel e iniciar una nueva partida.
+ */
 public class MenuPartidaController {
 
 	@FXML
@@ -19,12 +23,16 @@ public class MenuPartidaController {
 
 	@FXML
 	private Button b_nivel1;
+
 	@FXML
 	private Button b_nivel2;
+
 	@FXML
 	private Button b_nivel3;
+
 	@FXML
 	private Button b_nivel4;
+
 	@FXML
 	private Button b_nivel5;
 
@@ -39,12 +47,20 @@ public class MenuPartidaController {
 	private Jugador jugadorValidado;
 	private String idNivelSeleccionado;
 
+	/**
+	 * Inicializa los componentes de la vista. Los niveles permanecen deshabilitados
+	 * hasta validar un jugador.
+	 */
 	@FXML
 	private void initialize() {
 
 		deshabilitarNiveles(true);
 	}
 
+	/**
+	 * Valida el nombre introducido por el usuario. Si es válido, habilita la
+	 * selección de niveles.
+	 */
 	@FXML
 	private void validarNombre() {
 
@@ -70,6 +86,9 @@ public class MenuPartidaController {
 		deshabilitarNiveles(false);
 	}
 
+	/**
+	 * Guarda el jugador validado en la base de datos.
+	 */
 	@FXML
 	private void guardarJugador() {
 
@@ -89,6 +108,11 @@ public class MenuPartidaController {
 		}
 	}
 
+	/**
+	 * Gestiona la selección de un nivel e inicia la creación de la partida.
+	 *
+	 * @param event evento generado al pulsar un botón de nivel
+	 */
 	@FXML
 	private void seleccionarNivel(ActionEvent event) {
 
@@ -123,7 +147,11 @@ public class MenuPartidaController {
 		iniciarPartida();
 	}
 
+	/**
+	 * Inicia una nueva partida con el jugador y nivel seleccionados.
+	 */
 	private void iniciarPartida() {
+
 		if (jugadorValidado == null || idNivelSeleccionado == null) {
 			lblEstado.setText("Faltan datos para iniciar la partida");
 			return;
@@ -147,16 +175,26 @@ public class MenuPartidaController {
 			lblEstado.setText("ERROR: El nivel no tiene definida la solución (asesino, arma o escenario).");
 			return;
 		}
+
 		Juego juego = Main.getJuego();
 		juego.iniciarNuevaPartida(jugadorValidado, nivel);
+
 		Main.mostrarPartida();
 	}
 
+	/**
+	 * Regresa a la pantalla inicial.
+	 */
 	@FXML
 	private void volverMenu() {
 		Main.mostrarInicio();
 	}
 
+	/**
+	 * Habilita o deshabilita los botones de selección de nivel.
+	 *
+	 * @param estado true para deshabilitar, false para habilitar
+	 */
 	private void deshabilitarNiveles(boolean estado) {
 		b_nivel1.setDisable(estado);
 		b_nivel2.setDisable(estado);

@@ -2,11 +2,17 @@ package modelo.lore;
 
 import java.util.Map;
 
+/**
+ * Contiene la información narrativa (lore) asociada a cada personaje.
+ */
 public class LorePersonaje {
 
 	private final String nombre;
 	private final String descripcion;
 
+	/**
+	 * Constructor del lore de un personaje.
+	 */
 	public LorePersonaje(String nombre, String descripcion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -20,6 +26,9 @@ public class LorePersonaje {
 		return descripcion;
 	}
 
+	/**
+	 * Mapa estático que asocia el nombre del personaje con su lore.
+	 */
 	private static final Map<String, LorePersonaje> LORE = Map.of("Estigia", new LorePersonaje("Estigia, la Ninfa",
 			"Representante de la raza feérica. Diplomática que viste con ropas que se asemejan a cascadas de agua dulce. "
 					+ "Su castaño cabello ondulado, del que se asoman dos orejas con forma de aleta, "
@@ -51,6 +60,9 @@ public class LorePersonaje {
 					"Maestre de ceremonias. Cabello pelirrojo y túnicas púrpuras. "
 							+ "Carismático, embaucador y manipulador social."));
 
+	/**
+	 * Devuelve el lore asociado a un personaje por su nombre.
+	 */
 	public static LorePersonaje get(String nombre) {
 		return LORE.get(nombre);
 	}
