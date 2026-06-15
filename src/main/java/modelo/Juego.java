@@ -3,6 +3,7 @@ package modelo;
 import Persistencia.*;
 import modelo.beans.*;
 import modelo.enums.*;
+import modelo.factory.*;
 
 public class Juego {
 
@@ -34,6 +35,13 @@ public class Juego {
 		this.nivelDAO = nivelDAO;
 	}
 
+	public void inicializarNivel(Nivel nivel) {
+
+		nivel.setPersonajes(PersonajeFactory.crear());
+		nivel.setArmas(ArmaFactory.crear());
+		nivel.setEscenarios(EscenarioFactory.crear());
+	}
+
 	public void iniciarNuevaPartida(Jugador jugador, Nivel nivel) {
 
 		if (nivel == null) {
@@ -62,9 +70,9 @@ public class Juego {
 		return getPartidaActiva().realizarInterrogatorio(p, a, e);
 	}
 
-	public boolean realizarAcusacion(Personaje p, Arma a, Escenario e) {
+	public void realizarAcusacion(Personaje p, Arma a, Escenario e) {
 		validarParametros(p, a, e);
-		return getPartidaActiva().realizarAcusacion(p, a, e);
+		getPartidaActiva().realizarAcusacion(p, a, e);
 	}
 
 	public String obtenerDescripcionNivel() {

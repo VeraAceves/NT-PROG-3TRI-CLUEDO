@@ -13,55 +13,55 @@
 
  /* ESTELA HOVER: Opacidad, 4 opcion despues RGB) radio, esparcimiento,X , Y */
  .button:hover {
-     -fx-border-color: rgba(0, 168, 255, 0.9); 
-     -fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 1), 35, 0.8, 0, 0); 
+     -fx-border-color: rgba(0.0, 168.0, 255.0, 0.9); 
+     -fx-effect: dropshadow(three-pass-box, rgba(0.0, 168.0, 255.0, 1.0), 35.0, 0.8, 0.0, 0.0); 
  }
 
 .button:pressed {
     -fx-border-color: #00ffff; 
-    -fx-effect: dropshadow(three-pass-box, rgba(63, 215, 252, 1), 42, 0.85, 0, 0); 
-    -fx-background-color: rgba(63, 215, 252, 0.60); 
+    -fx-effect: dropshadow(three-pass-box, rgba(63.0, 215.0, 252.0, 1.0), 42.0, 0.85, 0.0, 0.0); 
+    -fx-background-color: rgba(63.0, 215.0, 252.0, 0.6); 
 }
 
 
 /*BOTONES PARTIDA GUARDAR/SALIR*/
 #b_guardar, #b_guardarSalir, #b_salir {
-    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #2E4B66 0%, #466D94 25%, #375A7F 50%, #466D94 75%, #2E4B66 100%);
-    -fx-background-radius: 8px;
-    -fx-border-color: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #33BFFF 50%, #FFFFFF 75%, #A3E2FF 100%); /**/
-    -fx-border-width: 2px;
-    -fx-border-radius: 6px;
-    -fx-text-fill: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #FFFFFF 50%, #FFFFFF 75%, #A3E2FF 100%); /*#33BFFF*/
-	-fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 0.4), 9, 0.3, 1, 0);
+    -fx-background-color: linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, #2E4B66 0.0%, #466D94 25.0%, #375A7F 50.0%, #466D94 75.0%, #2E4B66 100.0%);
+    -fx-background-radius: 8.0px;
+    -fx-border-color: linear-gradient(to bottom, #A3E2FF 0.0%, #FFFFFF 25.0%, #33BFFF 50.0%, #FFFFFF 75.0%, #A3E2FF 100.0%); /**/
+    -fx-border-width: 2.0px;
+    -fx-border-radius: 6.0px;
+    -fx-text-fill: linear-gradient(to bottom, #A3E2FF 0.0%, #FFFFFF 25.0%, #FFFFFF 50.0%, #FFFFFF 75.0%, #A3E2FF 100.0%); /*#33BFFF*/
+	-fx-effect: dropshadow(three-pass-box, rgba(0.0, 168.0, 255.0, 0.4), 9.0, 0.3, 1.0, 0.0);
 }
 
 #b_guardar:hover, #b_guardarSalir:hover, #b_salir:hover {
-   -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #365877 0%, #527fae 25%, #426b96 50%, #527fae 75%, #365877 100%);
-    -fx-background-radius: 8px;
-    -fx-border-color: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #33BFFF 50%, #FFFFFF 75%, #A3E2FF 100%); /**/
-    -fx-border-width: 2px;
-    -fx-border-radius: 6px;
-    -fx-text-fill: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #FFFFFF 50%, #FFFFFF 75%, #A3E2FF 100%); /*#33BFFF*/    
-    -fx-effect: dropshadow(three-pass-box, #00aaff, 11, 0.5, 0, 0);
+   -fx-background-color: linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, #365877 0.0%, #527fae 25.0%, #426b96 50.0%, #527fae 75.0%, #365877 100.0%);
+    -fx-background-radius: 8.0px;
+    -fx-border-color: linear-gradient(to bottom, #A3E2FF 0.0%, #FFFFFF 25.0%, #33BFFF 50.0%, #FFFFFF 75.0%, #A3E2FF 100.0%); /**/
+    -fx-border-width: 2.0px;
+    -fx-border-radius: 6.0px;
+    -fx-text-fill: linear-gradient(to bottom, #A3E2FF 0.0%, #FFFFFF 25.0%, #FFFFFF 50.0%, #FFFFFF 75.0%, #A3E2FF 100.0%); /*#33BFFF*/    
+    -fx-effect: dropshadow(three-pass-box, #00aaff, 11.0, 0.5, 0.0, 0.0);
 }
 
 #b_guardar:pressed, #b_guardarSalir:pressed, #b_salir:pressed {
-    -fx-background-color: linear-gradient(from 0% 100% to 0% 0%, #22384D 0%, #395B7D 25%, #2E4B66 50%, #395B7D 75%, #22384D 100%);
-    -fx-border-color: linear-gradient(to bottom, #0088CC 0%, #00A8FF 25%, #52C1FF 50%, #00A8FF 75%, #0088CC 100%);
-    -fx-text-fill: linear-gradient(to bottom, #33BFFF 0%, #A3E2FF 25%, #0099E6 50%, #A3E2FF 75%, #33BFFF 100%);
-    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.5), 6, 0.3, 0, 0);
+    -fx-background-color: linear-gradient(from 0.0% 100.0% to 0.0% 0.0%, #22384D 0.0%, #395B7D 25.0%, #2E4B66 50.0%, #395B7D 75.0%, #22384D 100.0%);
+    -fx-border-color: linear-gradient(to bottom, #0088CC 0.0%, #00A8FF 25.0%, #52C1FF 50.0%, #00A8FF 75.0%, #0088CC 100.0%);
+    -fx-text-fill: linear-gradient(to bottom, #33BFFF 0.0%, #A3E2FF 25.0%, #0099E6 50.0%, #A3E2FF 75.0%, #33BFFF 100.0%);
+    -fx-effect: innershadow(three-pass-box, rgba(0.0, 0.0, 0.0, 0.5), 6.0, 0.3, 0.0, 0.0);
 }
 
 /*BOTONES DECIDIR ACUSAR*/
  .button:hover {
-     -fx-border-color: rgba(0, 168, 255, 0.9); 
-     -fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 1), 35, 0.8, 0, 0); 
+     -fx-border-color: rgba(0.0, 168.0, 255.0, 0.9); 
+     -fx-effect: dropshadow(three-pass-box, rgba(0.0, 168.0, 255.0, 1.0), 35.0, 0.8, 0.0, 0.0); 
  }
 
 .button:pressed {
     -fx-border-color: #00ffff; 
-    -fx-effect: dropshadow(three-pass-box, rgba(63, 215, 252, 1), 42, 0.85, 0, 0); 
-    -fx-background-color: rgba(63, 215, 252, 0.60); 
+    -fx-effect: dropshadow(three-pass-box, rgba(63.0, 215.0, 252.0, 1.0), 42.0, 0.85, 0.0, 0.0); 
+    -fx-background-color: rgba(63.0, 215.0, 252.0, 0.6); 
 }
 
 
@@ -69,13 +69,13 @@
 #b_despensa:hover, #b_archivo:hover, #b_trono:hover, #b_forja:hover, #b_invernadero:hover, #b_dormitorio:hover {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
-    -fx-effect: dropshadow(three-pass-box, rgba(63, 215, 252, 1), 6, 0.2, 0, 0);
+    -fx-effect: dropshadow(three-pass-box, rgba(63.0, 215.0, 252.0, 1.0), 6.0, 0.2, 0.0, 0.0);
 }
 
 #b_despensa:pressed, #b_archivo:pressed, #b_trono:pressed, #b_forja:pressed, #b_invernadero:pressed, #b_dormitorio:pressed {
     -fx-background-color: transparent;
     -fx-border-color: transparent; 
-	-fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 1), 8, 0.5, 0, 0);
+	-fx-effect: dropshadow(three-pass-box, rgba(0.0, 168.0, 255.0, 1.0), 8.0, 0.5, 0.0, 0.0);
 }
 
 
@@ -87,76 +87,83 @@
    ========================================== */
 
 #b_deducir, #b_acusar {
-    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #4a321a 0%, #704d2b 25%, #5c3e21 50%, #704d2b 75%, #4a321a 100%);
-    -fx-background-radius: 8px;
-    -fx-border-color: linear-gradient(to bottom, #ffe082 0%, #ffffff 25%, #ffb300 50%, #ffffff 75%, #ffe082 100%);
-    -fx-border-width: 2px;
-    -fx-border-radius: 6px;
-    -fx-text-fill: linear-gradient(to bottom, #ffe082 0%, #ffffff 25%, #ffffff 50%, #ffffff 75%, #ffe082 100%);
-    -fx-effect: dropshadow(three-pass-box, rgba(255, 179, 0, 0.4), 9, 0.3, 1, 0);
+    -fx-background-color: linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, #4a321a 0.0%, #704d2b 25.0%, #5c3e21 50.0%, #704d2b 75.0%, #4a321a 100.0%);
+    -fx-background-radius: 8.0px;
+    -fx-border-color: linear-gradient(to bottom, #ffe082 0.0%, #ffffff 25.0%, #ffb300 50.0%, #ffffff 75.0%, #ffe082 100.0%);
+    -fx-border-width: 2.0px;
+    -fx-border-radius: 6.0px;
+    -fx-text-fill: linear-gradient(to bottom, #ffe082 0.0%, #ffffff 25.0%, #ffffff 50.0%, #ffffff 75.0%, #ffe082 100.0%);
+    -fx-effect: dropshadow(three-pass-box, rgba(255.0, 179.0, 0.0, 0.4), 9.0, 0.3, 1.0, 0.0);
 }
 
 #b_deducir:hover, #b_acusar:hover {
-    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #5c3e21 0%, #855c34 25%, #704d2b 50%, #855c34 75%, #5c3e21 100%);
-    -fx-background-radius: 8px;
-    -fx-border-color: linear-gradient(to bottom, #ffe082 0%, #ffffff 25%, #ffb300 50%, #ffffff 75%, #ffe082 100%);
-    -fx-border-width: 2px;
-    -fx-border-radius: 6px;
-    -fx-text-fill: linear-gradient(to bottom, #ffe082 0%, #ffffff 25%, #ffffff 50%, #ffffff 75%, #ffe082 100%);
-    -fx-effect: dropshadow(three-pass-box, #ffb300, 11, 0.5, 0, 0);
+    -fx-background-color: linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, #5c3e21 0.0%, #855c34 25.0%, #704d2b 50.0%, #855c34 75.0%, #5c3e21 100.0%);
+    -fx-background-radius: 8.0px;
+    -fx-border-color: linear-gradient(to bottom, #ffe082 0.0%, #ffffff 25.0%, #ffb300 50.0%, #ffffff 75.0%, #ffe082 100.0%);
+    -fx-border-width: 2.0px;
+    -fx-border-radius: 6.0px;
+    -fx-text-fill: linear-gradient(to bottom, #ffe082 0.0%, #ffffff 25.0%, #ffffff 50.0%, #ffffff 75.0%, #ffe082 100.0%);
+    -fx-effect: dropshadow(three-pass-box, #ffb300, 11.0, 0.5, 0.0, 0.0);
 }
 
 #b_deducir:pressed, #b_acusar:pressed {
-    -fx-background-color: linear-gradient(from 0% 100% to 0% 0%, #362413 0%, #52371d 25%, #4a321a 50%, #52371d 75%, #362413 100%);
-    -fx-border-color: linear-gradient(to bottom, #b38000 0%, #ffb300 25%, #ffd54f 50%, #ffb300 75%, #b38000 100%);
-    -fx-text-fill: linear-gradient(to bottom, #ffb300 0%, #ffe082 25%, #e6a100 50%, #ffe082 75%, #ffb300 100%);
-    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.6), 6, 0.3, 0, 0);
+    -fx-background-color: linear-gradient(from 0.0% 100.0% to 0.0% 0.0%, #362413 0.0%, #52371d 25.0%, #4a321a 50.0%, #52371d 75.0%, #362413 100.0%);
+    -fx-border-color: linear-gradient(to bottom, #b38000 0.0%, #ffb300 25.0%, #ffd54f 50.0%, #ffb300 75.0%, #b38000 100.0%);
+    -fx-text-fill: linear-gradient(to bottom, #ffb300 0.0%, #ffe082 25.0%, #e6a100 50.0%, #ffe082 75.0%, #ffb300 100.0%);
+    -fx-effect: innershadow(three-pass-box, rgba(0.0, 0.0, 0.0, 0.6), 6.0, 0.3, 0.0, 0.0);
 }
 
 
 /*BOTONES DE PISTAS*/
 
 #b_pista1, #b_pista2, #b_pista3 {
-    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #2E4B66 0%, #466D94 25%, #375A7F 50%, #466D94 75%, #2E4B66 100%);
-    -fx-background-radius: 8px;
-    -fx-border-color: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #33BFFF 50%, #FFFFFF 75%, #A3E2FF 100%);
-    -fx-border-width: 2px;
-    -fx-border-radius: 6px;
-    -fx-text-fill: linear-gradient(to bottom, #e6e6e6 0%, #ffffff 25%, #f2f2f2 50%, #ffffff 75%, #e6e6e6 100%);
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 168, 255, 0.4), 9, 0.3, 1, 0);
+    -fx-background-color: linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, #2E4B66 0.0%, #466D94 25.0%, #375A7F 50.0%, #466D94 75.0%, #2E4B66 100.0%);
+    -fx-background-radius: 8.0px;
+    -fx-border-color: linear-gradient(to bottom, #A3E2FF 0.0%, #FFFFFF 25.0%, #33BFFF 50.0%, #FFFFFF 75.0%, #A3E2FF 100.0%);
+    -fx-border-width: 2.0px;
+    -fx-border-radius: 6.0px;
+    -fx-text-fill: linear-gradient(to bottom, #e6e6e6 0.0%, #ffffff 25.0%, #f2f2f2 50.0%, #ffffff 75.0%, #e6e6e6 100.0%);
+    -fx-effect: dropshadow(three-pass-box, rgba(0.0, 168.0, 255.0, 0.4), 9.0, 0.3, 1.0, 0.0);
 }
 
 #b_pista1:hover, #b_pista2:hover, #b_pista3:hover {
-    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #365877 0%, #527fae 25%, #426b96 50%, #527fae 75%, #365877 100%);
-    -fx-background-radius: 8px;
-    -fx-border-color: linear-gradient(to bottom, #A3E2FF 0%, #FFFFFF 25%, #33BFFF 50%, #FFFFFF 75%, #A3E2FF 100%);
-    -fx-border-width: 2px;
-    -fx-border-radius: 6px;
-    -fx-text-fill: linear-gradient(to bottom, #ffffff 0%, #ffffff 25%, #ffffff 50%, #ffffff 75%, #ffffff 100%);
-    -fx-effect: dropshadow(three-pass-box, #00aaff, 11, 0.5, 0, 0);
+    -fx-background-color: linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, #365877 0.0%, #527fae 25.0%, #426b96 50.0%, #527fae 75.0%, #365877 100.0%);
+    -fx-background-radius: 8.0px;
+    -fx-border-color: linear-gradient(to bottom, #A3E2FF 0.0%, #FFFFFF 25.0%, #33BFFF 50.0%, #FFFFFF 75.0%, #A3E2FF 100.0%);
+    -fx-border-width: 2.0px;
+    -fx-border-radius: 6.0px;
+    -fx-text-fill: linear-gradient(to bottom, #ffffff 0.0%, #ffffff 25.0%, #ffffff 50.0%, #ffffff 75.0%, #ffffff 100.0%);
+    -fx-effect: dropshadow(three-pass-box, #00aaff, 11.0, 0.5, 0.0, 0.0);
 }
 
 #b_pista1:pressed, #b_pista2:pressed, #b_pista3:pressed {
-    -fx-background-color: linear-gradient(from 0% 100% to 0% 0%, #22384D 0%, #395B7D 25%, #2E4B66 50%, #395B7D 75%, #22384D 100%);
-    -fx-border-color: linear-gradient(to bottom, #0088CC 0%, #00A8FF 25%, #52C1FF 50%, #00A8FF 75%, #0088CC 100%);
-    -fx-border-width: 2px;
-    -fx-border-radius: 6px;
-    -fx-text-fill: linear-gradient(to bottom, #cccccc 0%, #e6e6e6 25%, #d9d9d9 50%, #e6e6e6 75%, #cccccc 100%);
-    -fx-effect: innershadow(three-pass-box, rgba(0, 0, 0, 0.4), 6, 0.3, 0, 0);
+    -fx-background-color: linear-gradient(from 0.0% 100.0% to 0.0% 0.0%, #22384D 0.0%, #395B7D 25.0%, #2E4B66 50.0%, #395B7D 75.0%, #22384D 100.0%);
+    -fx-border-color: linear-gradient(to bottom, #0088CC 0.0%, #00A8FF 25.0%, #52C1FF 50.0%, #00A8FF 75.0%, #0088CC 100.0%);
+    -fx-border-width: 2.0px;
+    -fx-border-radius: 6.0px;
+    -fx-text-fill: linear-gradient(to bottom, #cccccc 0.0%, #e6e6e6 25.0%, #d9d9d9 50.0%, #e6e6e6 75.0%, #cccccc 100.0%);
+    -fx-effect: innershadow(three-pass-box, rgba(0.0, 0.0, 0.0, 0.4), 6.0, 0.3, 0.0, 0.0);
 }
 
 
 /*COLOR TABLA DATOS*/
 #hbox_datosPartida {
-    -fx-background-color: linear-gradient(from 0% 0% to 0% 100%, #cbbba0 0%, #e3d5be 25%, #d6c7ae 50%, #e3d5be 75%, #cbbba0 100%);
+    -fx-background-color: linear-gradient(from 0.0% 0.0% to 0.0% 100.0%, #cbbba0 0.0%, #e3d5be 25.0%, #d6c7ae 50.0%, #e3d5be 75.0%, #cbbba0 100.0%);
 }
 
 
-/*CAMBIO DE COLOR ACERTADO-EQUIVOCADO*/
-.label-acertado {
-    -fx-text-fill: #27ae60;
+.btn-normal {
+    -fx-opacity: 1.0;
 }
 
-.label-normal {
-    -fx-text-fill: #c0392b;
+.btn-usado {
+    -fx-opacity: 0.4;
+}
+
+.btn-acierto {
+    -fx-background-color: #4CAF50;
+}
+
+.btn-error {
+    -fx-background-color: #E53935;
 }

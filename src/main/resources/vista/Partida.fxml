@@ -16,646 +16,675 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="raizPartida" maxWidth="Infinity"
-	maxHeight="Infinity" stylesheets="@Partida.css"
-	xmlns:fx="http://javafx.com/fxml/1"
+<StackPane xmlns:fx="http://javafx.com/fxml/1"
+	maxWidth="Infinity" maxHeight="Infinity"
 	fx:controller="controlador.PartidaController">
-	<left>
-		<VBox alignment="TOP_CENTER" prefWidth="320.0" spacing="12.0"
-			style="-fx-background-image: url('@recursos/imagenes/madera.jpg'); -fx-background-size: cover;"
-			BorderPane.alignment="TOP_CENTER">
-			<children>
-				<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sospechosos"
-					textAlignment="CENTER" wrappingWidth="180.0">
-					<font>
-						<Font name="Constantia Bold Italic" size="19.0" />
-					</font>
-				</Text>
-				<GridPane hgap="12.0" vgap="12.0">
-					<columnConstraints>
-						<ColumnConstraints halignment="CENTER"
-							hgrow="SOMETIMES" minWidth="10.0" prefWidth="126.0" />
-						<ColumnConstraints halignment="CENTER"
-							hgrow="SOMETIMES" minWidth="10.0" prefWidth="126.0" />
-					</columnConstraints>
-					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="168.0"
-							valignment="CENTER" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="168.0"
-							valignment="CENTER" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="168.0"
-							valignment="CENTER" vgrow="SOMETIMES" />
-					</rowConstraints>
-					<children>
-						<StackPane prefHeight="168.0" prefWidth="126.0"
-							GridPane.columnIndex="0" GridPane.rowIndex="0">
-							<children>
-								<ImageView fitHeight="168.0" fitWidth="126.0"
-									pickOnBounds="true" preserveRatio="false">
-									<image>
-										<Image url="@recursos/imagenes/Erion.png" />
-									</image>
-								</ImageView>
-								<Button fx:id="b_erion" onMouseEntered="#hoverPersonaje"
-									onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarPersonaje" mnemonicParsing="false"
-									prefHeight="168.0" prefWidth="126.0"
-									style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
-									text="Erion">
-									<font>
-										<Font name="Constantia" size="12.0" />
-									</font>
-								</Button>
-							</children>
-						</StackPane>
-						<StackPane prefHeight="168.0" prefWidth="126.0"
-							GridPane.columnIndex="1" GridPane.rowIndex="0">
-							<children>
-								<ImageView fitHeight="168.0" fitWidth="126.0"
-									pickOnBounds="true" preserveRatio="false">
-									<image>
-										<Image url="@recursos/imagenes/Etharel.png" />
-									</image>
-								</ImageView>
-								<Button fx:id="b_etharel" mnemonicParsing="false"
-									prefHeight="168.0" prefWidth="126.0"
-									style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
-									text="Etharel" onMouseEntered="#hoverPersonaje"
-									onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarPersonaje">
-									<font>
-										<Font name="Constantia" size="12.0" />
-									</font>
-								</Button>
-							</children>
-						</StackPane>
-						<StackPane prefHeight="168.0" prefWidth="126.0"
-							GridPane.columnIndex="0" GridPane.rowIndex="1">
-							<children>
-								<ImageView fitHeight="168.0" fitWidth="126.0"
-									pickOnBounds="true" preserveRatio="false">
-									<image>
-										<Image url="@recursos/imagenes/Estigia.png" />
-									</image>
-								</ImageView>
-								<Button mnemonicParsing="false" prefHeight="168.0"
-									prefWidth="126.0"
-									style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
-									fx:id="b_estigia" text="Estigia"
-									onMouseEntered="#hoverPersonaje"
-									onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarPersonaje">
-									<font>
-										<Font name="Constantia" size="12.0" />
-									</font>
-								</Button>
-							</children>
-						</StackPane>
-						<StackPane prefHeight="168.0" prefWidth="126.0"
-							GridPane.columnIndex="1" GridPane.rowIndex="1">
-							<children>
-								<ImageView fitHeight="168.0" fitWidth="126.0"
-									pickOnBounds="true" preserveRatio="false">
-									<image>
-										<Image url="@recursos/imagenes/Lucette.png" />
-									</image>
-								</ImageView>
-								<Button mnemonicParsing="false" prefHeight="168.0"
-									prefWidth="126.0"
-									style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
-									fx:id="b_lucette" text="Lucette"
-									onMouseEntered="#hoverPersonaje"
-									onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarPersonaje">
-									<font>
-										<Font name="Constantia" size="12.0" />
-									</font>
-								</Button>
-							</children>
-						</StackPane>
-						<StackPane prefHeight="168.0" prefWidth="126.0"
-							GridPane.columnIndex="0" GridPane.rowIndex="2">
-							<children>
-								<ImageView fitHeight="168.0" fitWidth="126.0"
-									pickOnBounds="true" preserveRatio="false">
-									<image>
-										<Image url="@recursos/imagenes/Dis.png" />
-									</image>
-								</ImageView>
-								<Button mnemonicParsing="false" prefHeight="168.0"
-									prefWidth="126.0"
-									style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
-									fx:id="b_dis" text="Dis" onMouseEntered="#hoverPersonaje"
-									onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarPersonaje">
-									<font>
-										<Font name="Constantia" size="12.0" />
-									</font>
-								</Button>
-							</children>
-						</StackPane>
-						<StackPane prefHeight="168.0" prefWidth="126.0"
-							GridPane.columnIndex="1" GridPane.rowIndex="2">
-							<children>
-								<ImageView fitHeight="168.0" fitWidth="126.0"
-									pickOnBounds="true" preserveRatio="false">
-									<image>
-										<Image url="@recursos/imagenes/Alastar.png" />
-									</image>
-								</ImageView>
-								<Button mnemonicParsing="false" prefHeight="168.0"
-									prefWidth="126.0"
-									style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
-									fx:id="b_alastar" text="Alastar"
-									onMouseEntered="#hoverPersonaje"
-									onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarPersonaje">
-									<font>
-										<Font name="Constantia" size="12.0" />
-									</font>
-								</Button>
-							</children>
-						</StackPane>
-					</children>
-				</GridPane>
-			</children>
-			<padding>
-				<Insets left="20.0" right="20.0" top="32.0" />
-			</padding>
-		</VBox>
-	</left>
-	<center>
-		<StackPane alignment="CENTER" maxWidth="Infinity"
-			maxHeight="Infinity"
-			style="-fx-background-image: url('@recursos/imagenes/Piedra.jpg'); -fx-background-size: cover; -fx-border-color: #5c3a21; -fx-border-width: 0 5 0 5; -fx-border-style: solid;"
-			BorderPane.alignment="CENTER">
-			<children>
-				<VBox alignment="CENTER" spacing="15.0">
-					<children>
-						<HBox alignment="CENTER" spacing="15.0">
-							<children>
-								<Button fx:id="b_guardar" onAction="#guardarPartida"
-									mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0"
-									text="Guardar">
-									<font>
-										<Font name="Copperplate Gothic Bold" size="12.0" />
-									</font>
-								</Button>
-								<Button fx:id="b_guardarSalir" onAction="#guardarYSalir"
-									mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0"
-									text="Guardar y Salir">
-									<font>
-										<Font name="Copperplate Gothic Bold" size="12.0" />
-									</font>
-								</Button>
-								<Button fx:id="b_salir" onAction="#salirMenu"
-									mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0"
-									text="Salir">
-									<font>
-										<Font name="Copperplate Gothic Bold" size="12.0" />
-									</font>
-								</Button>
-							</children>
-						</HBox>
-						<Pane maxHeight="-Infinity" maxWidth="-Infinity"
-							prefHeight="490.0" prefWidth="420.0">
-							<children>
-								<ImageView fitHeight="490.0" fitWidth="420.0"
-									pickOnBounds="true">
-									<image>
-										<Image url="@recursos/imagenes/mapa - copia.png" />
-									</image>
-								</ImageView>
-								<Button fx:id="b_trono" onMouseEntered="#hoverEscenario"
-									onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarEscenario" layoutX="131.0" layoutY="30.0"
-									mnemonicParsing="false" prefHeight="175.0" prefWidth="104.0"
-									style="-fx-background-color: transparent;"
-									text="Sala del trono" textAlignment="CENTER" wrapText="true">
-									<font>
-										<Font name="Copperplate Gothic Bold" size="12.0" />
-									</font>
-								</Button>
-								<Button fx:id="b_archivo"
-									onMouseEntered="#hoverEscenario"
-									onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarEscenario" layoutX="282.0"
-									layoutY="210.0" mnemonicParsing="false" prefHeight="196.0"
-									prefWidth="103.0" style="-fx-background-color: transparent;"
-									text="Archivo de Runas" textAlignment="CENTER" wrapText="true">
-									<font>
-										<Font name="Copperplate Gothic Bold" size="12.0" />
-									</font>
-								</Button>
-								<Button fx:id="b_dormitorio"
-									onMouseEntered="#hoverEscenario"
-									onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarEscenario" layoutX="241.0"
-									layoutY="116.0" mnemonicParsing="false" prefHeight="90.0"
-									prefWidth="148.0" style="-fx-background-color: transparent;"
-									text="Dormitorio Principal" textAlignment="CENTER"
-									wrapText="true">
-									<font>
-										<Font name="Copperplate Gothic Bold" size="12.0" />
-									</font>
-								</Button>
-								<Button fx:id="b_forja" onMouseEntered="#hoverEscenario"
-									onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarEscenario" layoutX="32.0" layoutY="119.0"
-									mnemonicParsing="false" prefHeight="103.0" prefWidth="96.0"
-									style="-fx-background-color: transparent;"
-									text="Forja de Honor" textAlignment="CENTER" wrapText="true">
-									<font>
-										<Font name="Copperplate Gothic Bold" size="12.0" />
-									</font>
-								</Button>
-								<Button fx:id="b_despensa"
-									onMouseEntered="#hoverEscenario"
-									onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarEscenario" layoutX="32.0" layoutY="252.0"
-									mnemonicParsing="false" prefHeight="99.0" prefWidth="98.0"
-									style="-fx-background-color: transparent;" text="Despensa Real"
-									textAlignment="CENTER" wrapText="true">
-									<font>
-										<Font name="Copperplate Gothic Bold" size="12.0" />
-									</font>
-								</Button>
-								<Text layoutX="45.0" layoutY="429.0" rotate="-33.1"
-									strokeType="OUTSIDE" strokeWidth="0.0" text="Invernadero">
-									<font>
-										<Font name="Copperplate Gothic Bold" size="12.0" />
-									</font>
-								</Text>
-								<Button fx:id="b_invernadero"
-									onMouseEntered="#hoverEscenario"
-									onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarEscenario" layoutX="36.0" layoutY="389.0"
-									mnemonicParsing="false" prefHeight="78.0" prefWidth="105.0"
-									style="-fx-background-color: transparent;"
-									textAlignment="CENTER" wrapText="true">
-									<font>
-										<Font name="Copperplate Gothic Bold" size="12.0" />
-									</font>
-								</Button>
-							</children>
-						</Pane>
-						<Pane fx:id="pnlPista" visible="false" managed="false"
-							prefWidth="400" prefHeight="200"
-							style="-fx-background-color: rgba(0,0,0,0.7); -fx-background-radius: 10;">
-							<children>
-								<Label fx:id="lblDescripcionFlotante" />
-								<Label fx:id="lblTextoPista" text="Pista..." layoutX="50"
-									layoutY="80" style="-fx-text-fill: white; -fx-font-size: 16px;" />
-							</children>
-						</Pane>
-					</children>
-				</VBox>
-			</children>
-		</StackPane>
-	</center>
-	<right>
-		<VBox alignment="TOP_CENTER" prefWidth="320.0" spacing="12.0"
-			style="-fx-background-image: url('@recursos/imagenes/madera.jpg'); -fx-background-size: cover;"
-			BorderPane.alignment="TOP_CENTER">
-			<children>
-				<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Armas"
-					textAlignment="CENTER" wrappingWidth="180.0">
-					<font>
-						<Font name="Constantia Bold Italic" size="19.0" />
-					</font>
-				</Text>
-				<GridPane hgap="12.0" prefHeight="516.0" prefWidth="307.0"
-					vgap="12.0">
-					<columnConstraints>
-						<ColumnConstraints halignment="CENTER"
-							hgrow="SOMETIMES" minWidth="10.0" prefWidth="126.0" />
-						<ColumnConstraints halignment="CENTER"
-							hgrow="SOMETIMES" minWidth="10.0" prefWidth="126.0" />
-					</columnConstraints>
-					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="168.0"
-							valignment="CENTER" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="168.0"
-							valignment="CENTER" vgrow="SOMETIMES" />
-						<RowConstraints minHeight="10.0" prefHeight="168.0"
-							valignment="CENTER" vgrow="SOMETIMES" />
-					</rowConstraints>
-					<children>
-						<StackPane prefHeight="168.0" prefWidth="126.0"
-							GridPane.columnIndex="0" GridPane.rowIndex="0">
-							<children>
-								<ImageView fitHeight="168.0" fitWidth="126.0"
-									pickOnBounds="true" preserveRatio="false">
-									<image>
-										<Image url="@recursos/imagenes/Atizador.png" />
-									</image>
-								</ImageView>
-								<Button mnemonicParsing="false" prefHeight="168.0"
-									prefWidth="126.0"
-									style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
-									fx:id="b_atizador" text="Atizador" onMouseEntered="#hoverArma"
-									onMouseExited="#ocultarDescripcion" onAction="#seleccionarArma"
-									textAlignment="CENTER" wrapText="true">
-									<font>
-										<Font name="Constantia" size="12.0" />
-									</font>
-								</Button>
-							</children>
-						</StackPane>
-						<StackPane prefHeight="168.0" prefWidth="126.0"
-							GridPane.columnIndex="1" GridPane.rowIndex="0">
-							<children>
-								<ImageView fitHeight="168.0" fitWidth="126.0"
-									pickOnBounds="true" preserveRatio="false">
-									<image>
-										<Image url="@recursos/imagenes/Candelabro.png" />
-									</image>
-								</ImageView>
-								<Button mnemonicParsing="false" prefHeight="168.0"
-									prefWidth="126.0"
-									style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
-									fx:id="b_candelabro" text="Candelabro"
-									onMouseEntered="#hoverArma" onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarArma" textAlignment="CENTER"
-									wrapText="true">
-									<font>
-										<Font name="Constantia" size="12.0" />
-									</font>
-								</Button>
-							</children>
-						</StackPane>
-						<StackPane prefHeight="168.0" prefWidth="126.0"
-							GridPane.columnIndex="0" GridPane.rowIndex="1">
-							<children>
-								<ImageView fitHeight="168.0" fitWidth="126.0"
-									pickOnBounds="true" preserveRatio="false">
-									<image>
-										<Image url="@recursos/imagenes/EsenciaDeLotoNegro.png" />
-									</image>
-								</ImageView>
-								<Button mnemonicParsing="false" prefHeight="168.0"
-									prefWidth="126.0"
-									style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
-									fx:id="b_esencia" text="Esencia de Loto Negro"
-									onMouseEntered="#hoverArma" onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarArma" textAlignment="CENTER"
-									wrapText="true">
-									<font>
-										<Font name="Constantia" size="12.0" />
-									</font>
-								</Button>
-							</children>
-						</StackPane>
-						<StackPane prefHeight="168.0" prefWidth="126.0"
-							GridPane.columnIndex="1" GridPane.rowIndex="1">
-							<children>
-								<ImageView fitHeight="168.0" fitWidth="126.0"
-									pickOnBounds="true" preserveRatio="false">
-									<image>
-										<Image url="@recursos/imagenes/Baculo.png" />
-									</image>
-								</ImageView>
-								<Button mnemonicParsing="false" prefHeight="168.0"
-									prefWidth="126.0"
-									style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
-									fx:id="b_baculo" text="Báculo" onMouseEntered="#hoverArma"
-									onMouseExited="#ocultarDescripcion" onAction="#seleccionarArma"
-									textAlignment="CENTER" wrapText="true">
-									<font>
-										<Font name="Constantia" size="12.0" />
-									</font>
-								</Button>
-							</children>
-						</StackPane>
-						<StackPane prefHeight="168.0" prefWidth="126.0"
-							GridPane.columnIndex="0" GridPane.rowIndex="2">
-							<children>
-								<ImageView fitHeight="168.0" fitWidth="126.0"
-									pickOnBounds="true" preserveRatio="false">
-									<image>
-										<Image url="@recursos/imagenes/Caliz.png" />
-									</image>
-								</ImageView>
-								<Button mnemonicParsing="false" prefHeight="168.0"
-									prefWidth="126.0"
-									style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
-									fx:id="b_caliz" text="Cáliz de plata"
-									onMouseEntered="#hoverArma" onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarArma" textAlignment="CENTER"
-									wrapText="true">
-									<font>
-										<Font name="Constantia" size="12.0" />
-									</font>
-								</Button>
-							</children>
-						</StackPane>
-						<StackPane prefHeight="168.0" prefWidth="126.0"
-							GridPane.columnIndex="1" GridPane.rowIndex="2">
-							<children>
-								<ImageView fitHeight="168.0" fitWidth="126.0"
-									pickOnBounds="true" preserveRatio="false">
-									<image>
-										<Image url="@recursos/imagenes/Abrecartas.png" />
-									</image>
-								</ImageView>
-								<Button mnemonicParsing="false" prefHeight="168.0"
-									prefWidth="126.0"
-									style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
-									fx:id="b_abrecartas" text="Abrecartas"
-									onMouseEntered="#hoverArma" onMouseExited="#ocultarDescripcion"
-									onAction="#seleccionarArma" textAlignment="CENTER"
-									wrapText="true">
-									<font>
-										<Font name="Constantia" size="12.0" />
-									</font>
-								</Button>
-							</children>
-						</StackPane>
-					</children>
-				</GridPane>
-			</children>
-			<padding>
-				<Insets left="20.0" right="20.0" top="32.0" />
-			</padding>
-		</VBox>
-	</right>
-	<bottom>
-		<HBox fx:id="hbox_datosPartida" alignment="CENTER"
-			prefHeight="165.0"
-			style="-fx-border-color: #5c3a21; -fx-border-width: 5 0 0 0;"
-			BorderPane.alignment="CENTER">
-			<children>
-				<VBox alignment="CENTER" prefWidth="250.0" spacing="10.0"
-					style="-fx-border-color: #5c3a21; -fx-border-width: 0 3 0 0;">
-					<children>
-						<Text strokeType="OUTSIDE" strokeWidth="0.0"
-							text="Datos partida" textAlignment="CENTER"
-							wrappingWidth="134.39998626708984">
-							<font>
-								<Font name="Constantia Bold" size="16.0" />
-							</font>
-						</Text>
-						<HBox alignment="CENTER_LEFT" spacing="10.0">
-							<children>
-								<Label text="Ronda:">
-									<font>
-										<Font name="Constantia Bold Italic" size="18.0" />
-									</font>
-								</Label>
-								<Label fx:id="l_rondaTxt" text="00">
-									<font>
-										<Font name="Century" size="23.0" />
-									</font>
-								</Label>
-							</children>
-							<VBox.margin>
-								<Insets left="40.0" />
-							</VBox.margin>
-						</HBox>
-						<HBox alignment="CENTER_LEFT" spacing="10.0">
-							<children>
-								<Label text="Puntos:">
-									<font>
-										<Font name="Constantia Bold Italic" size="18.0" />
-									</font>
-								</Label>
-								<Label fx:id="l_puntosTxt" text="000">
-									<font>
-										<Font name="Century" size="23.0" />
-									</font>
-								</Label>
-							</children>
-							<VBox.margin>
-								<Insets left="40.0" />
-							</VBox.margin>
-						</HBox>
-					</children>
-				</VBox>
-				<VBox alignment="CENTER" prefWidth="650.0" spacing="10.0"
-					HBox.hgrow="ALWAYS">
-					<children>
-						<GridPane alignment="CENTER" hgap="30.0"
-							prefHeight="94.0" prefWidth="605.0">
-							<columnConstraints>
-								<ColumnConstraints halignment="CENTER"
-									hgrow="SOMETIMES" minWidth="10.0" />
-								<ColumnConstraints halignment="CENTER"
-									hgrow="SOMETIMES" minWidth="10.0" />
-								<ColumnConstraints halignment="CENTER"
-									hgrow="SOMETIMES" minWidth="10.0" />
-							</columnConstraints>
-							<rowConstraints>
-								<RowConstraints minHeight="10.0"
-									prefHeight="25.0" valignment="CENTER" vgrow="SOMETIMES" />
-								<RowConstraints minHeight="10.0"
-									prefHeight="20.0" vgrow="SOMETIMES" />
-								<RowConstraints minHeight="10.0"
-									prefHeight="22.0" vgrow="SOMETIMES" />
-							</rowConstraints>
-							<children>
-								<Text strokeType="OUTSIDE" strokeWidth="0.0"
-									text="¿Cuál es la deducción?" textAlignment="CENTER"
-									GridPane.columnSpan="3">
-									<font>
-										<Font name="Constantia Bold" size="16.0" />
-									</font>
-								</Text>
-								<Text fill="#4b2300" strokeType="OUTSIDE" strokeWidth="0.0"
-									text="Sospechoso" textAlignment="CENTER" GridPane.rowIndex="1">
-									<font>
-										<Font name="Constantia Bold" size="16.0" />
-									</font>
-								</Text>
-								<Text fill="#4b2300" strokeType="OUTSIDE" strokeWidth="0.0"
-									text="Arma" textAlignment="CENTER" GridPane.columnIndex="1"
-									GridPane.rowIndex="1">
-									<font>
-										<Font name="Constantia Bold" size="16.0" />
-									</font>
-								</Text>
-								<Text fill="#4b2300" strokeType="OUTSIDE" strokeWidth="0.0"
-									text="Lugar" textAlignment="CENTER" GridPane.columnIndex="2"
-									GridPane.rowIndex="1">
-									<font>
-										<Font name="Constantia Bold" size="16.0" />
-									</font>
-								</Text>
-								<Label fx:id="l_sospechoso" alignment="CENTER"
-									contentDisplay="CENTER" prefHeight="39.0" prefWidth="199.0"
-									text="&quot;sospechoso&quot;" textAlignment="CENTER"
-									GridPane.rowIndex="2">
-									<font>
-										<Font name="Constantia Bold" size="19.0" />
-									</font>
-								</Label>
-								<Label fx:id="l_arma" alignment="CENTER" prefHeight="53.0"
-									prefWidth="200.0" text="&quot;arma&quot;"
-									textAlignment="CENTER" GridPane.columnIndex="1"
-									GridPane.rowIndex="2">
-									<font>
-										<Font name="Constantia Bold" size="19.0" />
-									</font>
-								</Label>
-								<Label fx:id="l_lugar" alignment="CENTER"
-									contentDisplay="CENTER" prefHeight="110.0" prefWidth="186.0"
-									text="&quot;lugar&quot;" textAlignment="CENTER"
-									GridPane.columnIndex="2" GridPane.rowIndex="2">
-									<font>
-										<Font name="Constantia Bold" size="19.0" />
-									</font>
-								</Label>
-							</children>
-						</GridPane>
-						<HBox alignment="CENTER" spacing="40.0">
-							<children>
-								<Button onAction="#interrogar" fx:id="b_deducir"
-									mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0"
-									text="Deducir">
-									<font>
-										<Font name="Copperplate Gothic Bold" size="13.0" />
-									</font>
-								</Button>
-								<Button onAction="#acusar" fx:id="b_acusar"
-									mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0"
-									text="Acusar">
-									<font>
-										<Font name="Copperplate Gothic Bold" size="13.0" />
-									</font>
-								</Button>
-							</children>
-						</HBox>
-					</children>
-				</VBox>
-				<VBox alignment="CENTER" prefWidth="250.0" spacing="8.0"
-					style="-fx-border-color: #5c3a21; -fx-border-width: 0 0 0 3;">
-					<children>
-						<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pistas"
-							textAlignment="CENTER" wrappingWidth="100.0">
-							<font>
-								<Font name="Constantia Bold" size="16.0" />
-							</font>
-						</Text>
-						<Button fx:id="b_pista1" onAction="#pedirPista"
-							maxWidth="100.0" mnemonicParsing="false" text="Pista 1">
-							<font>
-								<Font name="Constantia Bold" size="14.0" />
-							</font>
-						</Button>
-						<Button fx:id="b_pista2" onAction="#pedirPista"
-							maxWidth="100.0" mnemonicParsing="false" text="Pista 2">
-							<font>
-								<Font name="Constantia Bold" size="14.0" />
-							</font>
-						</Button>
-						<Button fx:id="b_pista3" onAction="#pedirPista"
-							maxWidth="100.0" mnemonicParsing="false" text="Pista 3">
-							<font>
-								<Font name="Constantia Bold" size="14.0" />
-							</font>
-						</Button>
-					</children>
-				</VBox>
-			</children>
-		</HBox>
-	</bottom>
-</BorderPane>
+
+	<BorderPane fx:id="raizPartida" stylesheets="@Partida.css">
+		<left>
+			<VBox alignment="TOP_CENTER" prefWidth="320.0" spacing="12.0"
+				style="-fx-background-image: url('/vista/recursos/imagenes/madera.jpg'); -fx-background-size: cover;"
+				BorderPane.alignment="TOP_CENTER">
+				<children>
+					<Text strokeType="OUTSIDE" strokeWidth="0.0"
+						text="Sospechosos" textAlignment="CENTER" wrappingWidth="180.0">
+						<font>
+							<Font name="Constantia Bold Italic" size="19.0" />
+						</font>
+					</Text>
+					<GridPane hgap="12.0" vgap="12.0">
+						<columnConstraints>
+							<ColumnConstraints halignment="CENTER"
+								hgrow="SOMETIMES" minWidth="10.0" prefWidth="126.0" />
+							<ColumnConstraints halignment="CENTER"
+								hgrow="SOMETIMES" minWidth="10.0" prefWidth="126.0" />
+						</columnConstraints>
+						<rowConstraints>
+							<RowConstraints minHeight="10.0"
+								prefHeight="168.0" valignment="CENTER" vgrow="SOMETIMES" />
+							<RowConstraints minHeight="10.0"
+								prefHeight="168.0" valignment="CENTER" vgrow="SOMETIMES" />
+							<RowConstraints minHeight="10.0"
+								prefHeight="168.0" valignment="CENTER" vgrow="SOMETIMES" />
+						</rowConstraints>
+						<children>
+							<StackPane prefHeight="168.0" prefWidth="126.0"
+								GridPane.columnIndex="0" GridPane.rowIndex="0">
+								<children>
+									<ImageView fitHeight="168.0" fitWidth="126.0"
+										pickOnBounds="true" preserveRatio="false">
+										<image>
+											<Image url="@recursos/imagenes/Erion.png" />
+										</image>
+									</ImageView>
+									<Button fx:id="b_erion" onMouseEntered="#hoverPersonaje"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarPersonaje" mnemonicParsing="false"
+										prefHeight="168.0" prefWidth="126.0"
+										style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
+										text="Erion">
+										<font>
+											<Font name="Constantia" size="12.0" />
+										</font>
+									</Button>
+								</children>
+							</StackPane>
+							<StackPane prefHeight="168.0" prefWidth="126.0"
+								GridPane.columnIndex="1" GridPane.rowIndex="0">
+								<children>
+									<ImageView fitHeight="168.0" fitWidth="126.0"
+										pickOnBounds="true" preserveRatio="false">
+										<image>
+											<Image url="@recursos/imagenes/Etharel.png" />
+										</image>
+									</ImageView>
+									<Button fx:id="b_etharel" mnemonicParsing="false"
+										prefHeight="168.0" prefWidth="126.0"
+										style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
+										text="Etharel" onMouseEntered="#hoverPersonaje"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarPersonaje">
+										<font>
+											<Font name="Constantia" size="12.0" />
+										</font>
+									</Button>
+								</children>
+							</StackPane>
+							<StackPane prefHeight="168.0" prefWidth="126.0"
+								GridPane.columnIndex="0" GridPane.rowIndex="1">
+								<children>
+									<ImageView fitHeight="168.0" fitWidth="126.0"
+										pickOnBounds="true" preserveRatio="false">
+										<image>
+											<Image url="@recursos/imagenes/Estigia.png" />
+										</image>
+									</ImageView>
+									<Button mnemonicParsing="false" prefHeight="168.0"
+										prefWidth="126.0"
+										style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
+										fx:id="b_estigia" text="Estigia"
+										onMouseEntered="#hoverPersonaje"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarPersonaje">
+										<font>
+											<Font name="Constantia" size="12.0" />
+										</font>
+									</Button>
+								</children>
+							</StackPane>
+							<StackPane prefHeight="168.0" prefWidth="126.0"
+								GridPane.columnIndex="1" GridPane.rowIndex="1">
+								<children>
+									<ImageView fitHeight="168.0" fitWidth="126.0"
+										pickOnBounds="true" preserveRatio="false">
+										<image>
+											<Image url="@recursos/imagenes/Lucette.png" />
+										</image>
+									</ImageView>
+									<Button mnemonicParsing="false" prefHeight="168.0"
+										prefWidth="126.0"
+										style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
+										fx:id="b_lucette" text="Lucette"
+										onMouseEntered="#hoverPersonaje"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarPersonaje">
+										<font>
+											<Font name="Constantia" size="12.0" />
+										</font>
+									</Button>
+								</children>
+							</StackPane>
+							<StackPane prefHeight="168.0" prefWidth="126.0"
+								GridPane.columnIndex="0" GridPane.rowIndex="2">
+								<children>
+									<ImageView fitHeight="168.0" fitWidth="126.0"
+										pickOnBounds="true" preserveRatio="false">
+										<image>
+											<Image url="@recursos/imagenes/Dis.png" />
+										</image>
+									</ImageView>
+									<Button mnemonicParsing="false" prefHeight="168.0"
+										prefWidth="126.0"
+										style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
+										fx:id="b_dis" text="Dis" onMouseEntered="#hoverPersonaje"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarPersonaje">
+										<font>
+											<Font name="Constantia" size="12.0" />
+										</font>
+									</Button>
+								</children>
+							</StackPane>
+							<StackPane prefHeight="168.0" prefWidth="126.0"
+								GridPane.columnIndex="1" GridPane.rowIndex="2">
+								<children>
+									<ImageView fitHeight="168.0" fitWidth="126.0"
+										pickOnBounds="true" preserveRatio="false">
+										<image>
+											<Image url="@recursos/imagenes/Alastar.png" />
+										</image>
+									</ImageView>
+									<Button mnemonicParsing="false" prefHeight="168.0"
+										prefWidth="126.0"
+										style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
+										fx:id="b_alastar" text="Alastar"
+										onMouseEntered="#hoverPersonaje"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarPersonaje">
+										<font>
+											<Font name="Constantia" size="12.0" />
+										</font>
+									</Button>
+								</children>
+							</StackPane>
+						</children>
+					</GridPane>
+				</children>
+				<padding>
+					<Insets left="20.0" right="20.0" top="32.0" />
+				</padding>
+			</VBox>
+		</left>
+		<center>
+			<StackPane alignment="CENTER" maxWidth="Infinity"
+				maxHeight="Infinity"
+				style="-fx-background-image: url('@recursos/imagenes/Piedra.jpg'); -fx-background-size: cover; -fx-border-color: #5c3a21; -fx-border-width: 0 5 0 5; -fx-border-style: solid;"
+				BorderPane.alignment="CENTER">
+				<children>
+					<VBox alignment="CENTER" spacing="15.0">
+						<children>
+							<HBox alignment="CENTER" spacing="15.0">
+								<children>
+									<Label text="VALLENWOOD"
+										onMouseEntered="#hoverAmbientacion"
+										onMouseExited="#ocultarDescripcion"
+										style="-fx-font-size: 28px; -fx-font-family: Constantia; -fx-font-weight: bold; -fx-text-fill: #4b2300;" />
+
+									<Button fx:id="b_guardar" onAction="#guardarPartida"
+										mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0"
+										text="Guardar">
+										<font>
+											<Font name="Copperplate Gothic Bold" size="12.0" />
+										</font>
+									</Button>
+									<Button fx:id="b_guardarSalir" onAction="#guardarYSalir"
+										mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0"
+										text="Guardar y Salir">
+										<font>
+											<Font name="Copperplate Gothic Bold" size="12.0" />
+										</font>
+									</Button>
+									<Button fx:id="b_salir" onAction="#salirMenu"
+										mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0"
+										text="Salir">
+										<font>
+											<Font name="Copperplate Gothic Bold" size="12.0" />
+										</font>
+									</Button>
+								</children>
+							</HBox>
+							<Pane maxHeight="-Infinity" maxWidth="-Infinity"
+								prefHeight="490.0" prefWidth="420.0">
+								<children>
+									<ImageView fitHeight="490.0" fitWidth="420.0"
+										pickOnBounds="true">
+										<image>
+											<Image url="@recursos/imagenes/mapa - copia.png" />
+										</image>
+									</ImageView>
+									<Button fx:id="b_trono" onMouseEntered="#hoverEscenario"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarEscenario" layoutX="131.0"
+										layoutY="30.0" mnemonicParsing="false" prefHeight="175.0"
+										prefWidth="104.0" style="-fx-background-color: transparent;"
+										text="Salón del Trono" textAlignment="CENTER" wrapText="true">
+										<font>
+											<Font name="Copperplate Gothic Bold" size="12.0" />
+										</font>
+									</Button>
+									<Button fx:id="b_archivo"
+										onMouseEntered="#hoverEscenario"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarEscenario" layoutX="282.0"
+										layoutY="210.0" mnemonicParsing="false" prefHeight="196.0"
+										prefWidth="103.0" style="-fx-background-color: transparent;"
+										text="Archivo de Runas" textAlignment="CENTER" wrapText="true">
+										<font>
+											<Font name="Copperplate Gothic Bold" size="12.0" />
+										</font>
+									</Button>
+									<Button fx:id="b_dormitorio"
+										onMouseEntered="#hoverEscenario"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarEscenario" layoutX="241.0"
+										layoutY="116.0" mnemonicParsing="false" prefHeight="90.0"
+										prefWidth="148.0" style="-fx-background-color: transparent;"
+										text="Dormitorio Principal" textAlignment="CENTER"
+										wrapText="true">
+										<font>
+											<Font name="Copperplate Gothic Bold" size="12.0" />
+										</font>
+									</Button>
+									<Button fx:id="b_forja" onMouseEntered="#hoverEscenario"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarEscenario" layoutX="32.0"
+										layoutY="119.0" mnemonicParsing="false" prefHeight="103.0"
+										prefWidth="96.0" style="-fx-background-color: transparent;"
+										text="Forja de Honor" textAlignment="CENTER" wrapText="true">
+										<font>
+											<Font name="Copperplate Gothic Bold" size="12.0" />
+										</font>
+									</Button>
+									<Button fx:id="b_despensa"
+										onMouseEntered="#hoverEscenario"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarEscenario" layoutX="32.0"
+										layoutY="252.0" mnemonicParsing="false" prefHeight="99.0"
+										prefWidth="98.0" style="-fx-background-color: transparent;"
+										text="Despensa Real" textAlignment="CENTER" wrapText="true">
+										<font>
+											<Font name="Copperplate Gothic Bold" size="12.0" />
+										</font>
+									</Button>
+
+									<Button fx:id="b_invernadero"
+										onMouseEntered="#hoverEscenario"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarEscenario" layoutX="36.0"
+										layoutY="389.0" mnemonicParsing="false" prefHeight="78.0"
+										prefWidth="105.0" style="-fx-background-color: transparent;"
+										textAlignment="CENTER" wrapText="true"
+										text="Invernadero de Mandrágoras">
+										<font>
+											<Font name="Copperplate Gothic Bold" size="12.0" />
+										</font>
+									</Button>
+								</children>
+							</Pane>
+
+						</children>
+					</VBox>
+					<VBox fx:id="pnlPista" prefWidth="500" prefHeight="500"
+						alignment="TOP_LEFT" spacing="10" StackPane.alignment="CENTER"
+						mouseTransparent="true" visible="false" managed="false"
+						style="-fx-background-color: rgba(0,0,0,0.85); -fx-background-radius: 10;">
+
+						<children>
+							<Label fx:id="lblDescripcionFlotante"
+								style="-fx-text-fill: gold; -fx-font-size: 22px; -fx-font-weight: bold;" />
+
+							<Label fx:id="lblTextoPista" wrapText="true"
+								prefWidth="460"
+								style="-fx-text-fill: white; -fx-font-size: 16px;" />
+						</children>
+
+						<padding>
+							<Insets top="20" right="20" bottom="20" left="20" />
+						</padding>
+
+					</VBox>
+				</children>
+			</StackPane>
+		</center>
+		<right>
+			<VBox alignment="TOP_CENTER" prefWidth="320.0" spacing="12.0"
+				style="-fx-background-image: url('/vista/recursos/imagenes/madera.jpg'); -fx-background-size: cover;"
+				BorderPane.alignment="TOP_CENTER">
+				<children>
+					<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Armas"
+						textAlignment="CENTER" wrappingWidth="180.0">
+						<font>
+							<Font name="Constantia Bold Italic" size="19.0" />
+						</font>
+					</Text>
+					<GridPane hgap="12.0" prefHeight="516.0" prefWidth="307.0"
+						vgap="12.0">
+						<columnConstraints>
+							<ColumnConstraints halignment="CENTER"
+								hgrow="SOMETIMES" minWidth="10.0" prefWidth="126.0" />
+							<ColumnConstraints halignment="CENTER"
+								hgrow="SOMETIMES" minWidth="10.0" prefWidth="126.0" />
+						</columnConstraints>
+						<rowConstraints>
+							<RowConstraints minHeight="10.0"
+								prefHeight="168.0" valignment="CENTER" vgrow="SOMETIMES" />
+							<RowConstraints minHeight="10.0"
+								prefHeight="168.0" valignment="CENTER" vgrow="SOMETIMES" />
+							<RowConstraints minHeight="10.0"
+								prefHeight="168.0" valignment="CENTER" vgrow="SOMETIMES" />
+						</rowConstraints>
+						<children>
+							<StackPane prefHeight="168.0" prefWidth="126.0"
+								GridPane.columnIndex="0" GridPane.rowIndex="0">
+								<children>
+									<ImageView fitHeight="168.0" fitWidth="126.0"
+										pickOnBounds="true" preserveRatio="false">
+										<image>
+											<Image url="@recursos/imagenes/Atizador.png" />
+										</image>
+									</ImageView>
+									<Button mnemonicParsing="false" prefHeight="168.0"
+										prefWidth="126.0"
+										style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
+										fx:id="b_atizador" text="Atizador de Hierro Frío"
+										onMouseEntered="#hoverArma"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarArma" textAlignment="CENTER"
+										wrapText="true">
+										<font>
+											<Font name="Constantia" size="12.0" />
+										</font>
+									</Button>
+								</children>
+							</StackPane>
+							<StackPane prefHeight="168.0" prefWidth="126.0"
+								GridPane.columnIndex="1" GridPane.rowIndex="0">
+								<children>
+									<ImageView fitHeight="168.0" fitWidth="126.0"
+										pickOnBounds="true" preserveRatio="false">
+										<image>
+											<Image url="@recursos/imagenes/Candelabro.png" />
+										</image>
+									</ImageView>
+									<Button mnemonicParsing="false" prefHeight="168.0"
+										prefWidth="126.0"
+										style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
+										fx:id="b_candelabro" text="Candelabro de oro élfico"
+										onMouseEntered="#hoverArma"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarArma" textAlignment="CENTER"
+										wrapText="true">
+										<font>
+											<Font name="Constantia" size="12.0" />
+										</font>
+									</Button>
+								</children>
+							</StackPane>
+							<StackPane prefHeight="168.0" prefWidth="126.0"
+								GridPane.columnIndex="0" GridPane.rowIndex="1">
+								<children>
+									<ImageView fitHeight="168.0" fitWidth="126.0"
+										pickOnBounds="true" preserveRatio="false">
+										<image>
+											<Image url="@recursos/imagenes/EsenciaDeLotoNegro.png" />
+										</image>
+									</ImageView>
+									<Button mnemonicParsing="false" prefHeight="168.0"
+										prefWidth="126.0"
+										style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
+										fx:id="b_esencia" text="Esencia de Loto Negro"
+										onMouseEntered="#hoverArma"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarArma" textAlignment="CENTER"
+										wrapText="true">
+										<font>
+											<Font name="Constantia" size="12.0" />
+										</font>
+									</Button>
+								</children>
+							</StackPane>
+							<StackPane prefHeight="168.0" prefWidth="126.0"
+								GridPane.columnIndex="1" GridPane.rowIndex="1">
+								<children>
+									<ImageView fitHeight="168.0" fitWidth="126.0"
+										pickOnBounds="true" preserveRatio="false">
+										<image>
+											<Image url="@recursos/imagenes/Baculo.png" />
+										</image>
+									</ImageView>
+									<Button mnemonicParsing="false" prefHeight="168.0"
+										prefWidth="126.0"
+										style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
+										fx:id="b_baculo" text="Báculo del Alba"
+										onMouseEntered="#hoverArma"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarArma" textAlignment="CENTER"
+										wrapText="true">
+										<font>
+											<Font name="Constantia" size="12.0" />
+										</font>
+									</Button>
+								</children>
+							</StackPane>
+							<StackPane prefHeight="168.0" prefWidth="126.0"
+								GridPane.columnIndex="0" GridPane.rowIndex="2">
+								<children>
+									<ImageView fitHeight="168.0" fitWidth="126.0"
+										pickOnBounds="true" preserveRatio="false">
+										<image>
+											<Image url="@recursos/imagenes/Caliz.png" />
+										</image>
+									</ImageView>
+									<Button mnemonicParsing="false" prefHeight="168.0"
+										prefWidth="126.0"
+										style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
+										fx:id="b_caliz" text="Cáliz de plata alquímica"
+										onMouseEntered="#hoverArma"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarArma" textAlignment="CENTER"
+										wrapText="true">
+										<font>
+											<Font name="Constantia" size="12.0" />
+										</font>
+									</Button>
+								</children>
+							</StackPane>
+							<StackPane prefHeight="168.0" prefWidth="126.0"
+								GridPane.columnIndex="1" GridPane.rowIndex="2">
+								<children>
+									<ImageView fitHeight="168.0" fitWidth="126.0"
+										pickOnBounds="true" preserveRatio="false">
+										<image>
+											<Image url="@recursos/imagenes/Abrecartas.png" />
+										</image>
+									</ImageView>
+									<Button mnemonicParsing="false" prefHeight="168.0"
+										prefWidth="126.0"
+										style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold; -fx-alignment: bottom-center; -fx-padding: 8;"
+										fx:id="b_abrecartas" text="Abrecartas de basilisco"
+										onMouseEntered="#hoverArma"
+										onMouseExited="#ocultarDescripcion"
+										onAction="#seleccionarArma" textAlignment="CENTER"
+										wrapText="true">
+										<font>
+											<Font name="Constantia" size="12.0" />
+										</font>
+									</Button>
+								</children>
+							</StackPane>
+						</children>
+					</GridPane>
+				</children>
+				<padding>
+					<Insets left="20.0" right="20.0" top="32.0" />
+				</padding>
+			</VBox>
+		</right>
+		<bottom>
+			<HBox fx:id="hbox_datosPartida" alignment="CENTER"
+				prefHeight="165.0"
+				style="-fx-border-color: #5c3a21; -fx-border-width: 5 0 0 0;"
+				BorderPane.alignment="CENTER">
+				<children>
+					<VBox alignment="CENTER" prefWidth="250.0" spacing="10.0"
+						style="-fx-border-color: #5c3a21; -fx-border-width: 0 3 0 0;">
+						<children>
+							<Text strokeType="OUTSIDE" strokeWidth="0.0"
+								text="Sesión de Nicromancia" textAlignment="CENTER"
+								wrappingWidth="134.39998626708984">
+								<font>
+									<Font name="Constantia Bold" size="16.0" />
+								</font>
+							</Text>
+							<HBox alignment="CENTER_LEFT" spacing="10.0">
+								<children>
+									<Label text="Ronda:">
+										<font>
+											<Font name="Constantia Bold Italic" size="18.0" />
+										</font>
+									</Label>
+									<Label fx:id="l_rondaTxt" text="00">
+										<font>
+											<Font name="Century" size="23.0" />
+										</font>
+									</Label>
+								</children>
+								<VBox.margin>
+									<Insets left="40.0" />
+								</VBox.margin>
+							</HBox>
+							<HBox alignment="CENTER_LEFT" spacing="10.0">
+								<children>
+									<Label text="Maná:">
+										<font>
+											<Font name="Constantia Bold Italic" size="18.0" />
+										</font>
+									</Label>
+									<Label fx:id="l_puntosTxt" text="000">
+										<font>
+											<Font name="Century" size="23.0" />
+										</font>
+									</Label>
+								</children>
+								<VBox.margin>
+									<Insets left="40.0" />
+								</VBox.margin>
+							</HBox>
+						</children>
+					</VBox>
+					<VBox alignment="CENTER" prefWidth="650.0" spacing="10.0"
+						HBox.hgrow="ALWAYS">
+						<children>
+							<GridPane alignment="CENTER" hgap="30.0"
+								prefHeight="94.0" prefWidth="605.0">
+								<columnConstraints>
+									<ColumnConstraints halignment="CENTER"
+										hgrow="SOMETIMES" minWidth="10.0" />
+									<ColumnConstraints halignment="CENTER"
+										hgrow="SOMETIMES" minWidth="10.0" />
+									<ColumnConstraints halignment="CENTER"
+										hgrow="SOMETIMES" minWidth="10.0" />
+								</columnConstraints>
+								<rowConstraints>
+									<RowConstraints minHeight="10.0"
+										prefHeight="25.0" valignment="CENTER" vgrow="SOMETIMES" />
+									<RowConstraints minHeight="10.0"
+										prefHeight="20.0" vgrow="SOMETIMES" />
+									<RowConstraints minHeight="10.0"
+										prefHeight="22.0" vgrow="SOMETIMES" />
+								</rowConstraints>
+								<children>
+									<Text strokeType="OUTSIDE" strokeWidth="0.0"
+										text="¿Cuál es la deducción?" textAlignment="CENTER"
+										GridPane.columnSpan="3">
+										<font>
+											<Font name="Constantia Bold" size="16.0" />
+										</font>
+									</Text>
+									<Text fill="#4b2300" strokeType="OUTSIDE"
+										strokeWidth="0.0" text="Sospechoso" textAlignment="CENTER"
+										GridPane.rowIndex="1">
+										<font>
+											<Font name="Constantia Bold" size="16.0" />
+										</font>
+									</Text>
+									<Text fill="#4b2300" strokeType="OUTSIDE"
+										strokeWidth="0.0" text="Arma" textAlignment="CENTER"
+										GridPane.columnIndex="1" GridPane.rowIndex="1">
+										<font>
+											<Font name="Constantia Bold" size="16.0" />
+										</font>
+									</Text>
+									<Text fill="#4b2300" strokeType="OUTSIDE"
+										strokeWidth="0.0" text="Lugar" textAlignment="CENTER"
+										GridPane.columnIndex="2" GridPane.rowIndex="1">
+										<font>
+											<Font name="Constantia Bold" size="16.0" />
+										</font>
+									</Text>
+									<Label fx:id="l_sospechoso" alignment="CENTER"
+										contentDisplay="CENTER" prefHeight="39.0" prefWidth="199.0"
+										text="" textAlignment="CENTER" GridPane.rowIndex="2">
+										<font>
+											<Font name="Constantia Bold" size="19.0" />
+										</font>
+									</Label>
+									<Label fx:id="l_arma" alignment="CENTER"
+										prefHeight="53.0" prefWidth="200.0" text=""
+										textAlignment="CENTER" GridPane.columnIndex="1"
+										GridPane.rowIndex="2">
+										<font>
+											<Font name="Constantia Bold" size="19.0" />
+										</font>
+									</Label>
+									<Label fx:id="l_lugar" alignment="CENTER"
+										contentDisplay="CENTER" prefHeight="110.0" prefWidth="186.0"
+										text="" textAlignment="CENTER" GridPane.columnIndex="2"
+										GridPane.rowIndex="2">
+										<font>
+											<Font name="Constantia Bold" size="19.0" />
+										</font>
+									</Label>
+								</children>
+							</GridPane>
+							<HBox alignment="CENTER" spacing="40.0">
+								<children>
+									<Button onAction="#interrogar" fx:id="b_deducir"
+										mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0"
+										text="Deducir">
+										<font>
+											<Font name="Copperplate Gothic Bold" size="13.0" />
+										</font>
+									</Button>
+									<Button onAction="#acusar" fx:id="b_acusar"
+										mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0"
+										text="Acusar">
+										<font>
+											<Font name="Copperplate Gothic Bold" size="13.0" />
+										</font>
+									</Button>
+								</children>
+							</HBox>
+						</children>
+					</VBox>
+					<VBox alignment="CENTER" prefWidth="250.0" spacing="8.0"
+						style="-fx-border-color: #5c3a21; -fx-border-width: 0 0 0 3;">
+						<children>
+							<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pistas"
+								textAlignment="CENTER" wrappingWidth="100.0">
+								<font>
+									<Font name="Constantia Bold" size="16.0" />
+								</font>
+							</Text>
+							<Button fx:id="b_asesinato" text="Asesinato"
+								prefWidth="100.0" onAction="#mostrarAsesinato"
+								mnemonicParsing="false">
+								<font>
+									<Font name="Constantia Bold" size="14.0" />
+								</font>
+							</Button>
+							<Button fx:id="b_pista1" onAction="#pedirPista"
+								maxWidth="100.0" mnemonicParsing="false" text="Pista 1">
+								<font>
+									<Font name="Constantia Bold" size="14.0" />
+								</font>
+							</Button>
+							<Button fx:id="b_pista2" onAction="#pedirPista"
+								maxWidth="100.0" mnemonicParsing="false" text="Pista 2">
+								<font>
+									<Font name="Constantia Bold" size="14.0" />
+								</font>
+							</Button>
+							<Button fx:id="b_pista3" onAction="#pedirPista"
+								maxWidth="100.0" mnemonicParsing="false" text="Pista 3">
+								<font>
+									<Font name="Constantia Bold" size="14.0" />
+								</font>
+							</Button>
+						</children>
+					</VBox>
+				</children>
+			</HBox>
+		</bottom>
+	</BorderPane>
+</StackPane>

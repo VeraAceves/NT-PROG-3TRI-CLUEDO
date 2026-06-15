@@ -1,5 +1,7 @@
 package controlador;
 
+import java.util.List;
+
 import aplicacion.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +15,7 @@ import javafx.scene.text.Text;
 import modelo.Juego;
 import modelo.beans.*;
 import modelo.enums.*;
+import modelo.lore.*;
 
 public class PartidaController {
 
@@ -65,6 +68,8 @@ public class PartidaController {
 	@FXML
 	private Button b_acusar;
 	@FXML
+	private Button b_asesinato;
+	@FXML
 	private Button b_pista1;
 	@FXML
 	private Button b_pista2;
@@ -99,11 +104,20 @@ public class PartidaController {
 	private Personaje sospechosoSeleccionado;
 	private Arma armaSeleccionada;
 	private Escenario escenarioSeleccionado;
+	private Button btnPersonajeSeleccionado;
+	private Button btnArmaSeleccionada;
+	private Button btnEscenarioSeleccionado;
 
 	@FXML
 	private void initialize() {
-		juego = Main.getJuego();
-		nivel = juego.getNivelActual();
+
+	}
+
+	// Partida
+	public void setJuego(Juego juego) {
+		this.juego = juego;
+		this.nivel = juego.getNivelActual();
+		juego.inicializarNivel(nivel);
 		cargarPartida();
 	}
 
@@ -117,9 +131,55 @@ public class PartidaController {
 		l_rondaTxt.setText(String.valueOf(partida.getRondaActual()));
 		l_puntosTxt.setText(String.valueOf(partida.getPuntosActuales()));
 
-		l_sospechoso.setText("?");
-		l_arma.setText("?");
-		l_lugar.setText("?");
+		l_sospechoso.setText("—");
+		l_arma.setText("—");
+		l_lugar.setText("—");
+	}
+
+	@FXML
+	private void guardarPartida() {
+		try {
+			juego.guardarPartidaActual();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	private void salirMenu() {
+		try {
+			Main.mostrarInicio();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	@FXML
+	private void guardarYSalir() {
+		try {
+			guardarPartida();
+			salirMenu();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	// Pistas
+	@FXML
+	private void mostrarAsesinato() {
+
+		try {
+			String descripcion = juego.obtenerDescripcionNivel();
+
+			lblTextoPista.setText(descripcion);
+			pnlPista.setVisible(true);
+			pnlPista.setManaged(true);
+
+		} catch (Exception e) {
+			lblTextoPista.setText("No hay información del caso disponible");
+			pnlPista.setVisible(true);
+			pnlPista.setManaged(true);
+		}
 	}
 
 	@FXML
@@ -145,71 +205,90 @@ public class PartidaController {
 		pnlPista.setManaged(false);
 	}
 
+	// Flujo Principal
+
 	@FXML
 	private void interrogar() {
-		if (sospechosoSeleccionado == null || armaSeleccionada == null || escenarioSeleccionado == null) {
+
+		if (!hipotesisCompleta()) {
 			return;
 		}
 
-		try {
-			juego.realizarInterrogatorio(sospechosoSeleccionado, armaSeleccionada, escenarioSeleccionado);
+		juego.realizarInterrogatorio(sospechosoSeleccionado, armaSeleccionada, escenarioSeleccionado);
 
-			sospechosoSeleccionado = null;
-			armaSeleccionada = null;
-			escenarioSeleccionado = null;
+		Partida p = juego.getPartidaActual();
 
-			actualizarVista();
+		marcarBoton(btnPersonajeSeleccionado, p.isUltimoAcertoPersonaje());
+		marcarBoton(btnArmaSeleccionada, p.isUltimoAcertoArma());
+		marcarBoton(btnEscenarioSeleccionado, p.isUltimoAcertoEscenario());
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		actualizarVista();
+		limpiarSeleccion();
 	}
 
 	@FXML
 	private void acusar() {
-		if (sospechosoSeleccionado == null || armaSeleccionada == null || escenarioSeleccionado == null) {
+
+		if (!hipotesisCompleta())
 			return;
-		}
 
-		try {
-			juego.realizarAcusacion(sospechosoSeleccionado, armaSeleccionada, escenarioSeleccionado);
+		juego.realizarAcusacion(sospechosoSeleccionado, armaSeleccionada, escenarioSeleccionado);
 
-			Main.mostrarFinalPartida();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Main.mostrarFinalPartida();
 	}
 
-	private void actualizarVista() {
-		Partida partida = juego.getPartidaActual();
-		if (partida == null) {
-			return;
-		}
+	@FXML
+	private void seleccionarPersonaje(ActionEvent e) {
 
-		l_rondaTxt.setText(String.valueOf(partida.getRondaActual()));
-		l_puntosTxt.setText(String.valueOf(partida.getPuntosActuales()));
+		Button btn = (Button) e.getSource();
+		String nombre = btn.getText();
 
-		aplicarEstilo(l_sospechoso, partida.isUltimoAcertoPersonaje());
-		aplicarEstilo(l_arma, partida.isUltimoAcertoArma());
-		aplicarEstilo(l_lugar, partida.isUltimoAcertoEscenario());
-	}
-
-	private void aplicarEstilo(Label label, boolean esAcertado) {
-		label.getStyleClass().removeAll("label-acertado", "label-normal");
-
-		if (esAcertado) {
-			label.getStyleClass().add("label-acertado");
-		} else {
-			label.getStyleClass().add("label-normal");
+		for (Personaje p : nivel.getPersonajes()) {
+			if (p.getNombre().equals(nombre)) {
+				sospechosoSeleccionado = p;
+				l_sospechoso.setText(p.getNombre());
+				btnPersonajeSeleccionado = btn;
+				actualizarBotones();
+				return;
+			}
 		}
 	}
 
 	@FXML
-	private void ocultarDescripcion() {
-		pnlPista.setVisible(false);
-		pnlPista.setManaged(false);
+	private void seleccionarArma(ActionEvent e) {
+
+		Button btn = (Button) e.getSource();
+		String nombre = btn.getText();
+
+		for (Arma a : nivel.getArmas()) {
+			if (a.getNombre().equals(nombre)) {
+				armaSeleccionada = a;
+				l_arma.setText(a.getNombre());
+				btnArmaSeleccionada = btn;
+				actualizarBotones();
+				return;
+			}
+		}
 	}
+
+	@FXML
+	private void seleccionarEscenario(ActionEvent e) {
+
+		Button btn = (Button) e.getSource();
+		String nombre = btn.getText();
+
+		for (Escenario s : nivel.getEscenarios()) {
+			if (s.getNombre().equals(nombre)) {
+				escenarioSeleccionado = s;
+				l_lugar.setText(s.getNombre());
+				btnEscenarioSeleccionado = btn;
+				actualizarBotones();
+				return;
+			}
+		}
+	}
+
+	// Hover
 
 	private void mostrarDescripcion(String descripcion) {
 		if (descripcion == null)
@@ -221,16 +300,21 @@ public class PartidaController {
 	}
 
 	@FXML
+	private void ocultarDescripcion() {
+		pnlPista.setVisible(false);
+		pnlPista.setManaged(false);
+	}
+
+	@FXML
 	private void hoverPersonaje(MouseEvent e) {
 		Button btn = (Button) e.getSource();
 
 		String nombre = btn.getText();
 
-		for (Personaje p : nivel.getPersonajes()) {
-			if (p.getNombre().equals(nombre)) {
-				mostrarDescripcion(p.getDescripcion());
-				return;
-			}
+		LorePersonaje lore = LorePersonaje.get(nombre);
+
+		if (lore != null) {
+			mostrarDescripcion(lore.getDescripcion());
 		}
 	}
 
@@ -240,11 +324,10 @@ public class PartidaController {
 
 		String nombre = btn.getText();
 
-		for (Arma a : nivel.getArmas()) {
-			if (a.getNombre().equals(nombre)) {
-				mostrarDescripcion(a.getDescripcion());
-				return;
-			}
+		LoreArma lore = LoreArma.get(nombre);
+
+		if (lore != null) {
+			mostrarDescripcion(lore.getDescripcion());
 		}
 	}
 
@@ -260,78 +343,65 @@ public class PartidaController {
 			nombre = ((Text) node).getText();
 		}
 
-		for (Escenario s : nivel.getEscenarios()) {
-			if (s.getNombre().equals(nombre)) {
-				mostrarDescripcion(s.getDescripcion());
-				return;
-			}
+		LoreEscenario lore = LoreEscenario.get(nombre);
+
+		if (lore != null) {
+			mostrarDescripcion(lore.getDescripcion());
 		}
 	}
-	@FXML
-	private void seleccionarPersonaje(MouseEvent e) {
-	    Button btn = (Button) e.getSource();
-	    String nombre = btn.getText();
 
-	    for (Personaje p : nivel.getPersonajes()) {
-	        if (p.getNombre().equals(nombre)) {
-	            sospechosoSeleccionado = p;
-	            l_sospechoso.setText(p.getNombre());
-	            return;
-	        }
-	    }
-	}
 	@FXML
-	private void seleccionarArma(MouseEvent e) {
+	private void hoverAmbientacion(MouseEvent e) {
+		mostrarDescripcion(LoreHistoria.get());
+	}
 
-	    Button btn = (Button) e.getSource();
-	    String nombre = btn.getText();
+	// Utilidades
+	private void actualizarVista() {
+		Partida partida = juego.getPartidaActual();
+		if (partida == null) {
+			return;
+		}
 
-	    for (Arma a : nivel.getArmas()) {
-	        if (a.getNombre().equals(nombre)) {
-	            armaSeleccionada = a;
-	            l_arma.setText(a.getNombre());
-	            return;
-	        }
-	    }
-	}
-	@FXML
-	private void seleccionarEscenario(MouseEvent e) {
+		l_rondaTxt.setText(String.valueOf(partida.getRondaActual()));
+		l_puntosTxt.setText(String.valueOf(partida.getPuntosActuales()));
 
-	    Button btn = (Button) e.getSource();
-	    String nombre = btn.getText();
+	}
 
-	    for (Escenario s : nivel.getEscenarios()) {
-	        if (s.getNombre().equals(nombre)) {
-	            escenarioSeleccionado = s;
-	            l_lugar.setText(s.getNombre());
-	            return;
-	        }
-	    }
+	private void marcarBoton(Button b, boolean acierto) {
+
+		b.getStyleClass().removeAll("btn-normal", "btn-usado", "btn-acierto", "btn-error");
+
+		if (acierto) {
+			b.getStyleClass().add("btn-acierto");
+		} else {
+			b.getStyleClass().add("btn-error");
+		}
+
+		b.setDisable(true); // importante: ya no se puede volver a usar
 	}
-	@FXML
-	private void guardarPartida() {
-	    try {
-	        juego.guardarPartidaActual();
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+
+	private boolean hipotesisCompleta() {
+		return sospechosoSeleccionado != null && armaSeleccionada != null && escenarioSeleccionado != null;
 	}
-	@FXML
-	private void salirMenu() {
-	    try {
-	        Main.mostrarInicio();
-	    } catch (Exception ex) {
-	        ex.printStackTrace();
-	    }
+
+	private void actualizarBotones() {
+
+		boolean habilitar = hipotesisCompleta();
+
+		b_deducir.setDisable(!habilitar);
+		b_acusar.setDisable(!habilitar);
 	}
-	@FXML
-	private void guardarYSalir() {
-	    try {
-	        guardarPartida();   
-	        salirMenu();       
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+
+	private void limpiarSeleccion() {
+		sospechosoSeleccionado = null;
+		armaSeleccionada = null;
+		escenarioSeleccionado = null;
+
+		l_sospechoso.setText("—");
+		l_arma.setText("—");
+		l_lugar.setText("—");
+
+		actualizarBotones();
 	}
 
 }

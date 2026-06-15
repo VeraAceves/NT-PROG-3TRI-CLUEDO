@@ -134,18 +134,36 @@ public class MenuPartidaController {
 	}
 
 	private void iniciarPartida() {
-
 		if (jugadorValidado == null || idNivelSeleccionado == null) {
 			lblEstado.setText("Faltan datos para iniciar la partida");
 			return;
 		}
 
-		Juego juego = Main.getJuego();
+		try {
+			jugadorDAO.guardarJugador(jugadorValidado);
+		} catch (Exception e) {
+			lblEstado.setText("Error al guardar el jugador");
+			return;
+		}
 
 		Nivel nivel = new NivelDAO().obtenerNivelPorId(idNivelSeleccionado);
 
-		juego.iniciarNuevaPartida(jugadorValidado, nivel);
+		if (nivel == null) {
+			lblEstado.setText("ERROR: No se pudo cargar el nivel. Revisa la base de datos.");
+			System.err.println("Nivel no encontrado: " + idNivelSeleccionado);
+			return;
+		}
 
+		if (nivel.getAsesino() == null || nivel.getArmaCrimen() == null || nivel.getEscenarioCrimen() == null) {
+			lblEstado.setText("ERROR: El nivel no tiene definida la solución (asesino, arma o escenario).");
+			return;
+		}
+		System.out.println("Nivel cargado: " + nivel.getIdNivel());
+		System.out.println("Descripción: " + nivel.getDescripcion());
+		System.out.println("Pistas: " + (nivel.getPistas() != null ? nivel.getPistas().size() : 0));
+		System.out.println("Asesino: " + (nivel.getAsesino() != null ? nivel.getAsesino().getNombre() : "null"));
+		Juego juego = Main.getJuego();
+		juego.iniciarNuevaPartida(jugadorValidado, nivel);
 		Main.mostrarPartida();
 	}
 

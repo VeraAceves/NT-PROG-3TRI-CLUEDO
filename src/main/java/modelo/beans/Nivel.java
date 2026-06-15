@@ -1,5 +1,6 @@
 package modelo.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import modelo.enums.Dificultad;
@@ -21,6 +22,10 @@ public class Nivel {
 
 	// Constructores
 	public Nivel() {
+	    this.personajes = new ArrayList<>();
+	    this.armas = new ArrayList<>();
+	    this.escenarios = new ArrayList<>();
+	    this.pistas = new ArrayList<>();
 	}
 
 	public Nivel(String idNivel, Dificultad dificultad, Personaje asesino, Escenario escenarioCrimen, Arma armaCrimen,
@@ -34,6 +39,24 @@ public class Nivel {
 		this.descripcion = descripcion;
 		this.pistas = pistas;
 		this.pistaActual = pistaActual;
+	}
+
+	public Nivel(String idNivel, Dificultad dificultad, Personaje asesino, Escenario escenarioCrimen, Arma armaCrimen,
+			String descripcion, List<String> pistas, int pistaActual, List<Personaje> personajes, List<Arma> armas,
+			List<Escenario> escenarios) {
+
+		this.idNivel = idNivel;
+		this.dificultad = dificultad;
+		this.asesino = asesino;
+		this.escenarioCrimen = escenarioCrimen;
+		this.armaCrimen = armaCrimen;
+		this.descripcion = descripcion;
+		this.pistas = pistas;
+		this.pistaActual = pistaActual;
+
+		this.personajes = personajes;
+		this.armas = armas;
+		this.escenarios = escenarios;
 	}
 
 	// Getters y setters
