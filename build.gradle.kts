@@ -13,7 +13,8 @@ javafx {
         "javafx.base",
         "javafx.graphics",
         "javafx.controls",
-        "javafx.fxml"
+        "javafx.fxml",
+        "javafx.media"
     )
 }
 

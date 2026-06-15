@@ -81,7 +81,7 @@ public class FinalPartidaController {
 		if (partidaActual.getJugador() == null)
 			return;
 
-		String idJugador = partidaActual.getJugador().getIdJugador();
+		String idJugador = partidaActual.getJugador().getNombre();
 
 		List<Partida> historial = partidaDAO.obtenerHistorial(idJugador);
 

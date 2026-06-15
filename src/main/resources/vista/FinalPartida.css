@@ -174,7 +174,7 @@
 
     -fx-background-color: transparent;
 
-    -fx-background-image: url("../imagenes/madera.jpg");
+    -fx-background-image: url("@recursos/imagenes/madera.jpg");
     -fx-background-size: cover;
     -fx-background-position: center;
 

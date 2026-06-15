@@ -23,7 +23,7 @@
 	<BorderPane fx:id="raizPartida" stylesheets="@Partida.css">
 		<left>
 			<VBox alignment="TOP_CENTER" prefWidth="320.0" spacing="12.0"
-				style="-fx-background-image: url('/vista/recursos/imagenes/madera.jpg'); -fx-background-size: cover;"
+				style="-fx-background-image: url('@recursos/imagenes/madera.jpg'); -fx-background-size: cover;"
 				BorderPane.alignment="TOP_CENTER">
 				<children>
 					<Text strokeType="OUTSIDE" strokeWidth="0.0"
@@ -328,7 +328,7 @@
 		</center>
 		<right>
 			<VBox alignment="TOP_CENTER" prefWidth="320.0" spacing="12.0"
-				style="-fx-background-image: url('/vista/recursos/imagenes/madera.jpg'); -fx-background-size: cover;"
+				style="-fx-background-image: url('@recursos/imagenes/madera.jpg'); -fx-background-size: cover;"
 				BorderPane.alignment="TOP_CENTER">
 				<children>
 					<Text strokeType="OUTSIDE" strokeWidth="0.0" text="Armas"

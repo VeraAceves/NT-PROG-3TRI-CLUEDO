@@ -63,16 +63,6 @@ public class MenuPartidaController {
 			return;
 		}
 
-		try {
-			if (jugadorDAO.existeJugador(nombre)) {
-				lblEstado.setText("Ese nombre ya existe");
-				return;
-			}
-		} catch (Exception e) {
-			lblEstado.setText("Error al validar jugador");
-			return;
-		}
-
 		jugadorValidado = j;
 
 		lblEstado.setText("Jugador validado");
@@ -150,7 +140,6 @@ public class MenuPartidaController {
 
 		if (nivel == null) {
 			lblEstado.setText("ERROR: No se pudo cargar el nivel. Revisa la base de datos.");
-			System.err.println("Nivel no encontrado: " + idNivelSeleccionado);
 			return;
 		}
 
@@ -158,10 +147,6 @@ public class MenuPartidaController {
 			lblEstado.setText("ERROR: El nivel no tiene definida la solución (asesino, arma o escenario).");
 			return;
 		}
-		System.out.println("Nivel cargado: " + nivel.getIdNivel());
-		System.out.println("Descripción: " + nivel.getDescripcion());
-		System.out.println("Pistas: " + (nivel.getPistas() != null ? nivel.getPistas().size() : 0));
-		System.out.println("Asesino: " + (nivel.getAsesino() != null ? nivel.getAsesino().getNombre() : "null"));
 		Juego juego = Main.getJuego();
 		juego.iniciarNuevaPartida(jugadorValidado, nivel);
 		Main.mostrarPartida();

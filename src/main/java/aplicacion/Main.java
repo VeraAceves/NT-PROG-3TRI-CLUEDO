@@ -2,12 +2,16 @@ package aplicacion;
 
 import java.io.IOException;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
 import Persistencia.PartidaDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import modelo.Juego;
+import controlador.FinalPartidaController;
 import controlador.PartidaController;
 
 public class Main extends Application {
@@ -16,10 +20,10 @@ public class Main extends Application {
 
 	private static Scene escenaInicio;
 	private static Scene escenaMenuPartida;
-	private static Scene escenaFinalPartida;
 
 	private static Juego juego = new Juego();
 	private static PartidaDAO partidaDAO = new PartidaDAO();
+	private MediaPlayer mediaPlayer; 
 
 	public static void main(String[] args) {
 		launch(args);
@@ -34,12 +38,15 @@ public class Main extends Application {
 
 			escenaMenuPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/MenuPartida.fxml")));
 
-			escenaFinalPartida = new Scene(FXMLLoader.load(getClass().getResource("/vista/FinalPartida.fxml")));
-
 			stage.setScene(escenaInicio);
 			stage.setMaximized(true);
 			stage.setTitle("Cluedo Fantasy");
 			stage.show();
+			
+			Media media = new Media(getClass().getResource("/vista/recursos/musica.mp3").toString());
+			mediaPlayer = new MediaPlayer(media);
+			mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE); 
+			mediaPlayer.play();
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -52,10 +59,6 @@ public class Main extends Application {
 
 	public static void mostrarMenuPartida() {
 		stage.setScene(escenaMenuPartida);
-	}
-
-	public static void mostrarFinalPartida() {
-		stage.setScene(escenaFinalPartida);
 	}
 
 	public static void mostrarPartida() {
@@ -73,7 +76,20 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
+	public static void mostrarFinalPartida() {
+	    try {
+	        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/vista/FinalPartida.fxml"));
+	        Scene scene = new Scene(loader.load());
 
+	        FinalPartidaController controller = loader.getController();
+	        controller.cargarDatos(); 
+	        stage.setScene(scene);
+	        stage.setMaximized(true);
+
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
 
 	public static void reiniciarJuego() {
 		juego = new Juego();

@@ -6,6 +6,7 @@ module CluedoFantasy {
 	requires javafx.base;
 	requires java.sql;
 	requires java.desktop;
+	requires javafx.media;
 	requires org.mongodb.driver.sync.client;
 	requires org.mongodb.bson;
 	requires org.mongodb.driver.core;

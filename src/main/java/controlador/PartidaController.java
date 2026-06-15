@@ -222,6 +222,11 @@ public class PartidaController {
 		marcarBoton(btnArmaSeleccionada, p.isUltimoAcertoArma());
 		marcarBoton(btnEscenarioSeleccionado, p.isUltimoAcertoEscenario());
 
+		if (juego.getPartidaActual().getEstado() == EstadoPartida.FINALIZADA) {
+			juego.guardarPartidaActual();
+			Main.mostrarFinalPartida();
+			return;
+		}
 		actualizarVista();
 		limpiarSeleccion();
 	}
@@ -233,7 +238,7 @@ public class PartidaController {
 			return;
 
 		juego.realizarAcusacion(sospechosoSeleccionado, armaSeleccionada, escenarioSeleccionado);
-
+		juego.guardarPartidaActual();
 		Main.mostrarFinalPartida();
 	}
 
@@ -245,9 +250,14 @@ public class PartidaController {
 
 		for (Personaje p : nivel.getPersonajes()) {
 			if (p.getNombre().equals(nombre)) {
+				if (btnPersonajeSeleccionado != null) {
+					btnPersonajeSeleccionado.getStyleClass().remove("btn-seleccionado-actual");
+				}
 				sospechosoSeleccionado = p;
 				l_sospechoso.setText(p.getNombre());
 				btnPersonajeSeleccionado = btn;
+
+				btnPersonajeSeleccionado.getStyleClass().add("btn-seleccionado-actual");
 				actualizarBotones();
 				return;
 			}
@@ -262,9 +272,15 @@ public class PartidaController {
 
 		for (Arma a : nivel.getArmas()) {
 			if (a.getNombre().equals(nombre)) {
+
+				if (btnArmaSeleccionada != null) {
+					btnArmaSeleccionada.getStyleClass().remove("btn-seleccionado-actual");
+				}
 				armaSeleccionada = a;
 				l_arma.setText(a.getNombre());
 				btnArmaSeleccionada = btn;
+
+				btnArmaSeleccionada.getStyleClass().add("btn-seleccionado-actual");
 				actualizarBotones();
 				return;
 			}
@@ -279,9 +295,15 @@ public class PartidaController {
 
 		for (Escenario s : nivel.getEscenarios()) {
 			if (s.getNombre().equals(nombre)) {
+
+				if (btnEscenarioSeleccionado != null) {
+					btnEscenarioSeleccionado.getStyleClass().remove("btn-seleccionado-actual");
+				}
 				escenarioSeleccionado = s;
 				l_lugar.setText(s.getNombre());
 				btnEscenarioSeleccionado = btn;
+
+				btnEscenarioSeleccionado.getStyleClass().add("btn-seleccionado-actual");
 				actualizarBotones();
 				return;
 			}
@@ -368,16 +390,18 @@ public class PartidaController {
 	}
 
 	private void marcarBoton(Button b, boolean acierto) {
+		if (b == null)
+			return;
 
-		b.getStyleClass().removeAll("btn-normal", "btn-usado", "btn-acierto", "btn-error");
+		b.getStyleClass().removeAll("btn-normal", "btn-usado", "btn-acierto", "btn-error", "btn-seleccionado-actual");
 
 		if (acierto) {
 			b.getStyleClass().add("btn-acierto");
+
 		} else {
 			b.getStyleClass().add("btn-error");
-		}
 
-		b.setDisable(true); // importante: ya no se puede volver a usar
+		}
 	}
 
 	private boolean hipotesisCompleta() {
@@ -385,14 +409,24 @@ public class PartidaController {
 	}
 
 	private void actualizarBotones() {
-
 		boolean habilitar = hipotesisCompleta();
-
 		b_deducir.setDisable(!habilitar);
 		b_acusar.setDisable(!habilitar);
 	}
 
 	private void limpiarSeleccion() {
+
+		if (btnPersonajeSeleccionado != null)
+			btnPersonajeSeleccionado.getStyleClass().remove("btn-seleccionado-actual");
+		if (btnArmaSeleccionada != null)
+			btnArmaSeleccionada.getStyleClass().remove("btn-seleccionado-actual");
+		if (btnEscenarioSeleccionado != null)
+			btnEscenarioSeleccionado.getStyleClass().remove("btn-seleccionado-actual");
+
+		btnPersonajeSeleccionado = null;
+		btnArmaSeleccionada = null;
+		btnEscenarioSeleccionado = null;
+
 		sospechosoSeleccionado = null;
 		armaSeleccionada = null;
 		escenarioSeleccionado = null;
@@ -402,6 +436,9 @@ public class PartidaController {
 		l_lugar.setText("—");
 
 		actualizarBotones();
-	}
 
+		if (raizPartida != null) {
+			raizPartida.requestFocus();
+		}
+	}
 }

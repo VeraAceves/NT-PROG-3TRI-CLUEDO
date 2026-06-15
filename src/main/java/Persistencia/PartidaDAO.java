@@ -24,8 +24,7 @@ public class PartidaDAO {
 
 	public void guardarPartida(Partida partida) {
 
-		Document docJugador = new Document("idJugador", partida.getJugador().getIdJugador()).append("nombre",
-				partida.getJugador().getNombre());
+		Document docJugador = new Document("nombre", partida.getJugador().getNombre());
 
 		Document docNivel = new Document("idNivel", partida.getNivel().getIdNivel());
 
@@ -54,7 +53,7 @@ public class PartidaDAO {
 
 		List<Partida> historial = new ArrayList<>();
 
-		try (MongoCursor<Document> cursor = coleccion.find(Filters.eq("jugador.idJugador", idJugador))
+		try (MongoCursor<Document> cursor = coleccion.find(Filters.eq("jugador.nombre", idJugador))
 				.sort(new Document("_id", -1)).limit(3).iterator()) {
 
 			while (cursor.hasNext()) {
@@ -70,7 +69,7 @@ public class PartidaDAO {
 		Document docJugador = (Document) doc.get("jugador");
 		Document docNivel = (Document) doc.get("nivel");
 
-		Jugador jugador = new Jugador(docJugador.getString("idJugador"), docJugador.getString("nombre"));
+		Jugador jugador = new Jugador(null, docJugador.getString("nombre"));
 
 		Nivel nivel = new Nivel();
 		nivel.setIdNivel(docNivel.getString("idNivel"));
@@ -104,7 +103,7 @@ public class PartidaDAO {
 	public Partida obtenerUltimaPartida() {
 
 		Document doc = coleccion.find().sort(new Document("_id", -1)).first();
-		
+
 		if (doc == null) {
 			return null;
 		}

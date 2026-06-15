@@ -160,8 +160,28 @@
     -fx-opacity: 0.4;
 }
 
+/* Fuerza el color verde base */
 .btn-acierto {
-    -fx-background-color: #4CAF50;
+    -fx-background-color: linear-gradient(to bottom, #2E7D32, #1B5E20) !important;
+    -fx-text-fill: #E0F2F1 !important; 
+    -fx-effect: dropshadow(three-pass-box, rgba(46,125,50,0.4), 10, 0, 0, 0) !important; 
+     -fx-opacity: 0.4;
+}
+
+/* Color cuando pasas el ratón por encima del botón verde */
+.btn-acierto:hover {
+    -fx-background-color: #45a049 !important;
+}
+
+/* Color cuando el jugador vuelve a hacer clic en el botón verde */
+.btn-acierto:armed, .btn-acierto:focused {
+    -fx-background-color: #2e7d32 !important;
+    -fx-text-fill: white !important;
+}
+.btn-seleccionado-actual {
+    -fx-border-color: #FFD700 !important; /* Borde dorado */
+    -fx-border-width: 3.0px !important;
+    -fx-border-radius: 4.0px !important;
 }
 
 .btn-error {

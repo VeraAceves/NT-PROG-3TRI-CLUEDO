@@ -166,6 +166,10 @@ public class Partida {
 			return false;
 		}
 
+		this.ultimoAcertoPersonaje = nivel.personajeCorrecto(personaje);
+		this.ultimoAcertoArma = nivel.armaCorrecta(arma);
+		this.ultimoAcertoEscenario = nivel.escenarioCorrecto(escenario);
+
 		boolean acierto = comprobarSolucion(personaje, arma, escenario);
 
 		rondaActual++;
@@ -175,7 +179,6 @@ public class Partida {
 		}
 
 		if (puntosActuales <= 0 || rondaActual >= nivel.getDificultad().getNumeroRondas()) {
-
 			resultado = ResultadoPartida.DERROTA;
 			finalizarPartida();
 		}
