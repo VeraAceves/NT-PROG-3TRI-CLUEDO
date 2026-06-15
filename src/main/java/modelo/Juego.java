@@ -64,6 +64,12 @@ public class Juego {
 
 		partidaDAO.guardarPartida(partidaActual);
 	}
+	public String pedirPista(int indice) {
+	    if (!hayPartidaActiva()) {
+	        throw new IllegalStateException("No hay partida activa");
+	    }
+	    return partidaActual.solicitarPista(indice);
+	}
 
 	public boolean realizarInterrogatorio(Personaje p, Arma a, Escenario e) {
 		validarParametros(p, a, e);
@@ -82,12 +88,6 @@ public class Juego {
 		return partidaActual.getNivel().getDescripcion();
 	}
 
-	public String pedirSiguientePista() {
-		if (!hayPartidaActiva()) {
-			throw new IllegalStateException("No hay partida activa");
-		}
-		return partidaActual.solicitarPista();
-	}
 
 	public boolean hayPartidaActiva() {
 		return partidaActual != null && partidaActual.getEstado() == EstadoPartida.EN_CURSO;

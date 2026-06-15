@@ -663,19 +663,19 @@
 									<Font name="Constantia Bold" size="14.0" />
 								</font>
 							</Button>
-							<Button fx:id="b_pista1" onAction="#pedirPista"
+							<Button fx:id="b_pista1" onAction="#pedirPista1"
 								maxWidth="100.0" mnemonicParsing="false" text="Pista 1">
 								<font>
 									<Font name="Constantia Bold" size="14.0" />
 								</font>
 							</Button>
-							<Button fx:id="b_pista2" onAction="#pedirPista"
+							<Button fx:id="b_pista2" onAction="#pedirPista2"
 								maxWidth="100.0" mnemonicParsing="false" text="Pista 2">
 								<font>
 									<Font name="Constantia Bold" size="14.0" />
 								</font>
 							</Button>
-							<Button fx:id="b_pista3" onAction="#pedirPista"
+							<Button fx:id="b_pista3" onAction="#pedirPista3"
 								maxWidth="100.0" mnemonicParsing="false" text="Pista 3">
 								<font>
 									<Font name="Constantia Bold" size="14.0" />

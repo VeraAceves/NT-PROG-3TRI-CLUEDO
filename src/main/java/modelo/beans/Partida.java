@@ -17,6 +17,7 @@ public class Partida {
 	private boolean ultimoAcertoPersonaje;
 	private boolean ultimoAcertoArma;
 	private boolean ultimoAcertoEscenario;
+	private boolean[] pistasSolicitadas;
 	private static final int PENALIZACION_ERROR = 10;
 	private static final int PENALIZACION_PISTA = 10;
 
@@ -25,7 +26,7 @@ public class Partida {
 	}
 
 	public Partida(String idPartida, Jugador jugador, Nivel nivel) {
-		this.idPartida = idPartida;
+		this.idPartida = java.util.UUID.randomUUID().toString();
 		this.jugador = jugador;
 		this.nivel = nivel;
 		this.rondaActual = 1;
@@ -157,6 +158,7 @@ public class Partida {
 		this.puntosActuales = nivel.getDificultad().getPuntosIniciales();
 		this.pistasRestantes = nivel.getNumeroPistas();
 		this.resultado = null;
+		this.pistasSolicitadas = new boolean[nivel.getNumeroPistas()];
 		resetearAciertos();
 	}
 
@@ -205,18 +207,26 @@ public class Partida {
 		return nivel.personajeCorrecto(p) && nivel.armaCorrecta(a) && nivel.escenarioCorrecto(e);
 	}
 
-	public String solicitarPista() {
-
-		if (pistasRestantes <= 0 || estado == EstadoPartida.FINALIZADA) {
+	public String solicitarPista(int indice) {
+		if (estado == EstadoPartida.FINALIZADA) {
 			return null;
 		}
-
-		String pista = nivel.obtenerSiguientePista();
-
+		if (indice < 0 || indice >= nivel.getNumeroPistas()) {
+			return null;
+		}
+		if (pistasSolicitadas[indice]) {
+			return null;
+		}
+		String pista = nivel.getPistas().get(indice);
+		pistasSolicitadas[indice] = true;
 		pistasRestantes--;
 		restarPuntos(PENALIZACION_PISTA);
-
 		return pista;
+	}
+
+	public boolean isPistaSolicitada(int indice) {
+		return pistasSolicitadas != null && indice >= 0 && indice < pistasSolicitadas.length
+				&& pistasSolicitadas[indice];
 	}
 
 	public void restarPuntos(int puntos) {

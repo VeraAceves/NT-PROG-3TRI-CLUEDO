@@ -107,6 +107,7 @@ public class PartidaController {
 	private Button btnPersonajeSeleccionado;
 	private Button btnArmaSeleccionada;
 	private Button btnEscenarioSeleccionado;
+	private Button[] botonesPista;
 
 	@FXML
 	private void initialize() {
@@ -165,6 +166,39 @@ public class PartidaController {
 	}
 
 	// Pistas
+	private void inicializarBotonesPista() {
+		botonesPista = new Button[] { b_pista1, b_pista2, b_pista3 };
+		Partida partida = juego.getPartidaActual();
+		if (partida != null) {
+			for (int i = 0; i < botonesPista.length && i < partida.getNivel().getNumeroPistas(); i++) {
+				if (partida.isPistaSolicitada(i)) {
+					botonesPista[i].setDisable(true);
+				}
+			}
+		}
+	}
+
+	private void pedirPistaPorIndice(int indice) {
+		try {
+			String pista = juego.pedirPista(indice);
+			if (pista == null) {
+				lblTextoPista.setText("Pista no disponible (ya solicitada o inválida).");
+			} else {
+				lblTextoPista.setText(pista);
+				if (botonesPista != null && indice < botonesPista.length) {
+					botonesPista[indice].setDisable(true);
+				}
+				actualizarVista(); 
+			}
+			pnlPista.setVisible(true);
+			pnlPista.setManaged(true);
+		} catch (Exception e) {
+			lblTextoPista.setText("Error al obtener la pista.");
+			pnlPista.setVisible(true);
+			pnlPista.setManaged(true);
+		}
+	}
+
 	@FXML
 	private void mostrarAsesinato() {
 
@@ -183,20 +217,18 @@ public class PartidaController {
 	}
 
 	@FXML
-	private void pedirPista(ActionEvent event) {
+	private void pedirPista1() {
+		pedirPistaPorIndice(0);
+	}
 
-		try {
-			String pista = juego.pedirSiguientePista();
+	@FXML
+	private void pedirPista2() {
+		pedirPistaPorIndice(1);
+	}
 
-			lblTextoPista.setText(pista);
-			pnlPista.setVisible(true);
-			pnlPista.setManaged(true);
-
-		} catch (Exception e) {
-			lblTextoPista.setText("No hay pistas disponibles");
-			pnlPista.setVisible(true);
-			pnlPista.setManaged(true);
-		}
+	@FXML
+	private void pedirPista3() {
+		pedirPistaPorIndice(2);
 	}
 
 	@FXML

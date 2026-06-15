@@ -8,6 +8,7 @@ import com.mongodb.client.model.UpdateOptions;
 import org.bson.Document;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import modelo.beans.*;
 import modelo.enums.*;
@@ -24,29 +25,30 @@ public class PartidaDAO {
 
 	public void guardarPartida(Partida partida) {
 
-		Document docJugador = new Document("nombre", partida.getJugador().getNombre());
+		try {
+			if (partida.getIdPartida() == null) {
+				partida.setIdPartida(UUID.randomUUID().toString());
 
-		Document docNivel = new Document("idNivel", partida.getNivel().getIdNivel());
+			}
 
-		Document docPartida = new Document("idPartida", partida.getIdPartida()).append("jugador", docJugador)
-				.append("nivel", docNivel).append("rondaActual", partida.getRondaActual())
-				.append("puntosActuales", partida.getPuntosActuales())
-				.append("pistasRestantes", partida.getPistasRestantes())
-				.append("estado", partida.getEstado() != null ? partida.getEstado().name() : null)
-				.append("resultado", partida.getResultado() != null ? partida.getResultado().name() : null);
+			Document docJugador = new Document("idJugador", partida.getJugador().getIdJugador()).append("nombre",
+					partida.getJugador().getNombre());
 
-		coleccion.updateOne(Filters.eq("idPartida", partida.getIdPartida()), new Document("$set", docPartida),
-				new UpdateOptions().upsert(true));
-	}
+			Document docNivel = new Document("idNivel", partida.getNivel().getIdNivel());
 
-	public Partida cargarPartida(String idPartida) {
-		Document doc = coleccion.find(Filters.eq("idPartida", idPartida)).first();
+			Document docPartida = new Document("idPartida", partida.getIdPartida()).append("jugador", docJugador)
+					.append("nivel", docNivel).append("rondaActual", partida.getRondaActual())
+					.append("puntosActuales", partida.getPuntosActuales())
+					.append("pistasRestantes", partida.getPistasRestantes())
+					.append("estado", partida.getEstado().name())
+					.append("resultado", partida.getResultado() != null ? partida.getResultado().name() : null);
 
-		if (doc == null) {
-			return null;
+			coleccion.insertOne(docPartida);
+
+		} catch (Exception e) {
+			System.err.println("ERROR al guardar partida: " + e.getMessage());
+			e.printStackTrace();
 		}
-
-		return mapearDocumentoAPartida(doc);
 	}
 
 	public List<Partida> obtenerHistorial(String idJugador) {
