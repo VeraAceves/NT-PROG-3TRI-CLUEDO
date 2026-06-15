@@ -15,49 +15,46 @@ import beans.Nivel;
 import enums.EstadoPartida;
 import enums.ResultadoPartida;
 
+/**
+ * Gestiona el guardado, recuperación y el historial de las partidas jugadas en la colección "Partida".
+ */
 public class PartidaDAO {
 
-    // Colección de Mongo donde guardaremos y leeremos los datos
     private final MongoCollection<Document> coleccion;
 
+    /**
+     * Constructor que enlaza con la colección "Partida" de la base de datos.
+     */
     public PartidaDAO() {
-        // Obtenemos la conexión a la base de datos
         MongoDatabase db = Conexion.getDatabase();
-        // Nos conectamos a la colección "Partida"
         this.coleccion = db.getCollection("Partida");
     }
 
-    // =============================================================
-    // GUARDAR O ACTUALIZAR PARTIDA EN MONGODB
-    // =============================================================
+    /**
+     * Guarda el estado actual de una partida en la base de datos.
+     * Si la partida ya estaba guardada, actualiza sus puntos, rondas y resultados de las hipótesis.
+     * * @param partida El objeto Partida que contiene el estado actual a guardar.
+     */
     public void guardarPartida(Partida partida) {
         
-        // 1. Guardamos los datos esenciales del Jugador en un subdocumento
         Document docJugador = new Document("idJugador", partida.getJugador().getIdJugador())
                 .append("nombre", partida.getJugador().getNombre());
 
-        // 2. Guardamos la referencia al Nivel en otro subdocumento
         Document docNivel = new Document("idNivel", partida.getNivel().getIdNivel())
                 .append("nombre", partida.getNivel().getIdNivel());
 
-        // 3. Creamos el documento principal de la partida juntando todo
         Document docPartida = new Document("idPartida", partida.getIdPartida())
                 .append("jugador", docJugador)
                 .append("nivel", docNivel)
                 .append("rondaActual", partida.getRondaActual())
                 .append("puntosActuales", partida.getPuntosActuales())
                 .append("pistasRestantes", partida.getPistasRestantes())
-                
-                // Convertimos los Enums a texto (String) asegurándonos de que no sean nulos
                 .append("estado", partida.getEstado() != null ? partida.getEstado().name() : null)
                 .append("resultado", partida.getResultado() != null ? partida.getResultado().name() : null)
-                
-                // Guardamos los resultados del último interrogatorio (booleanos)
                 .append("ultimoAcertoPersonaje", partida.isUltimoAcertoPersonaje())
                 .append("ultimoAcertoArma", partida.isUltimoAcertoArma())
                 .append("ultimoAcertoEscenario", partida.isUltimoAcertoEscenario());
 
-        // 4. Upsert: Si el idPartida ya existe, lo actualiza. Si no existe, lo inserta nuevo.
         coleccion.updateOne(
                 Filters.eq("idPartida", partida.getIdPartida()),
                 new Document("$set", docPartida),
@@ -66,11 +63,12 @@ public class PartidaDAO {
         System.out.println("Partida guardada correctamente en MongoDB.");
     }
 
-    // =============================================================
-    // CARGAR UNA PARTIDA ESPECÍFICA POR SU ID
-    // =============================================================
+    /**
+     * Carga una partida guardada previamente utilizando su identificador.
+     * * @param idPartida El código de la partida a retomar.
+     * @return El objeto Partida reconstruido, o null si no se encuentra.
+     */
     public Partida cargarPartida(String idPartida) {
-        // Buscamos el primer documento que tenga este ID
         Document doc = coleccion.find(Filters.eq("idPartida", idPartida)).first();
         
         if (doc == null) {
@@ -78,27 +76,26 @@ public class PartidaDAO {
             return null;
         }
 
-        // Si lo encuentra, usamos el método de abajo para convertirlo a objeto Java
         return mapearDocumentoAPartida(doc);
     }
 
-    // =============================================================
-    // OBTENER LAS ÚLTIMAS 10 PARTIDAS TERMINADAS DE UN JUGADOR
-    // =============================================================
+    /**
+     * Busca las últimas 10 partidas finalizadas de un jugador en concreto para mostrar sus estadísticas.
+     * * @param idJugador El código del usuario del que queremos ver el historial.
+     * @return Una lista (List) con las partidas ya terminadas, ordenadas de más reciente a más antigua.
+     */
     public List<Partida> obtenerHistorial(String idJugador) {
         List<Partida> historial = new ArrayList<>();
         
-        // Filtramos para buscar solo las de ese jugador que estén en estado FINALIZADA
         try (MongoCursor<Document> cursor = coleccion.find(
                 Filters.and(
                         Filters.eq("jugador.idJugador", idJugador),
                         Filters.eq("estado", EstadoPartida.FINALIZADA.name())
                 ))
-                .sort(new Document("_id", -1)) // Las ordenamos de más nueva a más vieja
-                .limit(10)                     // Cogemos solo las últimas 10
+                .sort(new Document("_id", -1)) 
+                .limit(10)                     
                 .iterator()) {
             
-            // Recorremos los resultados y los vamos metiendo en la lista
             while (cursor.hasNext()) {
                 historial.add(mapearDocumentoAPartida(cursor.next()));
             }
@@ -106,11 +103,11 @@ public class PartidaDAO {
         return historial;
     }
 
-    // =============================================================
-    // OBTENER LA ÚLTIMA PARTIDA GLOBAL (Para continuar jugando)
-    // =============================================================
+    /**
+     * Recupera la partida guardada más recientemente de forma global.
+     * * @return El objeto Partida de la última sesión jugada, o null si la base de datos está vacía.
+     */
     public Partida obtenerUltimaPartida() {
-        // Buscamos el último documento insertado en la colección general
         Document doc = coleccion.find().sort(new Document("_id", -1)).first();
 
         if (doc == null) {
@@ -120,34 +117,30 @@ public class PartidaDAO {
         return mapearDocumentoAPartida(doc);
     }
 
-    // =============================================================
-    // MÉTODO PRIVADO: CONVERTIR DE MONGODB (BSON) A JAVA (OBJETO)
-    // =============================================================
+    /**
+     * Método auxiliar privado que traduce un documento BSON sacado de MongoDB a un objeto Partida de Java.
+     * * @param doc El documento JSON/BSON recuperado de la base de datos.
+     * @return El objeto Partida con todas sus propiedades y enums correctamente asignados.
+     */
     private Partida mapearDocumentoAPartida(Document doc) {
         
-        // 1. Extraemos los bloques de datos (subdocumentos) del Jugador y del Nivel
         Document docJugador = (Document) doc.get("jugador");
         Document docNivel = (Document) doc.get("nivel");
 
-        // 2. Reconstruimos el objeto Jugador
         Jugador jugador = new Jugador(
                 docJugador.getString("idJugador"), 
                 docJugador.getString("nombre")
         );
 
-        // 3. Reconstruimos el objeto Nivel (con el ID es suficiente para esta pantalla)
         Nivel nivel = new Nivel();
         nivel.setIdNivel(docNivel.getString("idNivel"));
         
-        // 4. Creamos la Partida base
         Partida partida = new Partida(doc.getString("idPartida"), jugador, nivel);
         
-        // 5. Recuperamos los números. Si por algún motivo están vacíos, ponemos un valor por defecto
         partida.setRondaActual(doc.getInteger("rondaActual", 1));
         partida.setPuntosActuales(doc.getInteger("puntosActuales", 0));
         partida.setPistasRestantes(doc.getInteger("pistasRestantes", 0));
 
-        // 6. Volvemos a transformar el texto a tipos Enum
         if (doc.getString("estado") != null) {
             partida.setEstado(EstadoPartida.valueOf(doc.getString("estado")));
         }
@@ -155,7 +148,6 @@ public class PartidaDAO {
             partida.setResultado(ResultadoPartida.valueOf(doc.getString("resultado")));
         }
 
-        // 7. Recuperamos los booleanos de la última hipótesis. (false si el campo no existe)
         partida.setUltimoAcertoPersonaje(doc.getBoolean("ultimoAcertoPersonaje", false));
         partida.setUltimoAcertoArma(doc.getBoolean("ultimoAcertoArma", false));
         partida.setUltimoAcertoEscenario(doc.getBoolean("ultimoAcertoEscenario", false));
