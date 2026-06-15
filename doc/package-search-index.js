@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"aplicacion"},{"l":"controlador"},{"l":"modelo"},{"l":"modelo.beans"},{"l":"modelo.enums"},{"l":"modelo.factory"},{"l":"modelo.lore"},{"l":"Persistencia"}];updateSearchResults();
